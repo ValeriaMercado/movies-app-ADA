@@ -1,6 +1,8 @@
 import { Avatar, Divider, Flex, Heading, IconButton } from '@chakra-ui/react'
-import { FiAlignJustify } from "react-icons/fi";
+import { FiHome,FiAward,FiTrendingUp, FiAlignJustify } from "react-icons/fi";
 import { useState } from 'react'
+import { NavItem } from '../navItem';
+
 
 export const SideBar = () => {
   const [navSize, setNavSize] = useState('large')
@@ -27,7 +29,7 @@ export const SideBar = () => {
           background="none"
           mt={5}
           _hover={{ background: 'none' }}
-          icon={<FiAlignJustify />}
+          icon={<FiAlignJustify/>}
           onClick={() => {
             if (navSize == "small")
             setNavSize("large")
@@ -35,6 +37,12 @@ export const SideBar = () => {
             setNavSize("small")
           }}
         />
+
+
+        <NavItem navSize={navSize} title={'Home'} icon={FiHome}/>
+        <NavItem navSize={navSize} title={'Top Rated'} icon={FiAward}/>
+        <NavItem navSize={navSize} title={'Upcoming'} icon={FiTrendingUp}/>
+
       </Flex>
       <Flex
         p="5%"
