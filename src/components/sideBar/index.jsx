@@ -1,5 +1,5 @@
-import { Avatar, Divider, Flex, Heading, IconButton } from '@chakra-ui/react'
-import { FiHome,FiAward,FiTrendingUp, FiAlignJustify } from "react-icons/fi";
+import { Avatar, Divider, Flex, Heading, IconButton, Input, InputGroup, InputLeftElement} from '@chakra-ui/react'
+import { FiHome,FiAward,FiTrendingUp, FiAlignJustify,FiSearch } from "react-icons/fi";
 import { useState } from 'react'
 import { NavItem } from '../navItem';
 
@@ -8,6 +8,7 @@ export const SideBar = () => {
   const [navSize, setNavSize] = useState('large')
   return (
     <Flex 
+      backgroundColor="brand.primary"
       pos="sticky"
       left="5"
       h="95vh"
@@ -38,6 +39,14 @@ export const SideBar = () => {
           }}
         />
 
+        <InputGroup>
+          <InputLeftElement
+            pointerEvents='none'
+            children={<FiSearch color="brand.secondary" fontSize='xl' />}
+          />
+          <Input type='text' />
+        </InputGroup>
+
 
         <NavItem navSize={navSize} title={'Home'} icon={FiHome}/>
         <NavItem navSize={navSize} title={'Top Rated'} icon={FiAward}/>
@@ -54,7 +63,7 @@ export const SideBar = () => {
         <Divider/>
         <Flex mt={4} display={navSize == "small" ? "none" : "flex"}>
           <Avatar size="sm" src=""/>
-          <Flex lexDir="column" ml={4} display="flex">
+          <Flex flexDir="column" ml={4} display="flex">
               <Heading as="h3" size="sm" >Maca Álvarez</Heading>
           </Flex>
         </Flex>
