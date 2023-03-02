@@ -1,7 +1,7 @@
 import { useContext, useEffect } from "react"
 import { Context } from "../../context/Context"
 import {Box } from "@chakra-ui/react"
-import { CategoryFilms } from "../popularFilms"
+import { CategoryFilms } from "../categoryFilm"
 
 export const Home = () => {
 const context = useContext(Context)
@@ -11,20 +11,17 @@ const context = useContext(Context)
 // }, [])
 
 return (
- 
-    <>
     <Box
-    display='flex'
-    justifyContent='center'
-    alignItems='center'
-    bg={context.clearTheme ? 'brand.secondary' : 'brand.accent'}
-    width='100%'
-    height='100vh'
+        as='section'
+        display='flex'
+        justifyContent='center'
+        alignItems='center'
+        bg={context.clearTheme ? 'brand.secondary' : 'brand.accent'}
+        width='100%'
+        height='100vh'
     >
         <CategoryFilms categoryTitle='Popular Movies' cat='popular'/>
         <CategoryFilms categoryTitle='Top Rated' cat='top_rated'/>
-
     </Box>
-    </>
 )
 }
