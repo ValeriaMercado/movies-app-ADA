@@ -2,24 +2,24 @@ import {SideBar}  from "./components/sideBar"
 import { ChakraProvider } from '@chakra-ui/react'
 import {theme} from './resources/theme'
 import { Footer } from "./components/footer"
-import { Context } from "./context/Context"
+import { Home } from "./components/home"
+import { ContextProvider } from "./provider/ContextProvider"
 
 const App = () => {
 
-  const [clearTheme, setClearTheme] = useState(false)
-  
-  const context = {
-    clearTheme: clearTheme,
-    setClearTheme: setClearTheme
-  }
+
 
   return (
-    <Context.Provider>
-        <ChakraProvider theme={theme}>
+
+    <ContextProvider>
+      <ChakraProvider theme={theme}>
           <SideBar/>
+          <Home/>
           <Footer/>
         </ChakraProvider>
-    </Context.Provider>
+    </ContextProvider>
+
+
   )
 }
 
