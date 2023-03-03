@@ -1,7 +1,10 @@
-import React from 'react'
+
+import { UpcomingTopRated } from '../components/upcomingTopRated'
+import { MoviesCards } from '../moviesCard'
 
 export const TopRated = () => {
+
   return (
-    <div>TopRated</div>
+   <UpcomingTopRated searchCategory={`top_rated`}/>
   )
 }

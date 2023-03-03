@@ -8,7 +8,7 @@ export const SideBar = () => {
   const [navSize, setNavSize] = useState('large')
   return (
     <Flex 
-      backgroundColor="brand.primary"
+      backgroundColor={"brand.primary"}
       pos="sticky"
       left="5"
       h="95vh"
@@ -49,7 +49,7 @@ export const SideBar = () => {
 
 
         <NavItem link={'/'} navSize={navSize} title={'Home'} icon={FiHome}/>
-        <NavItem link={'/topRated'} navSize={navSize} title={'Top Rated'} icon={FiAward}/>
+        <NavItem link={'/top_rated'} navSize={navSize} title={'Top Rated'} icon={FiAward}/>
         <NavItem link={'/upcoming'} navSize={navSize} title={'Upcoming'} icon={FiTrendingUp}/>
 
       </Flex>

@@ -6,24 +6,30 @@ import { Home } from "./components/home"
 import { ContextProvider } from "./provider/ContextProvider"
 import { BrowserRouter, Route, Routes } from "react-router-dom/dist"
 import { TopRated } from "./topRated"
-import { Upcoming } from "./upcoming"
+import { SideBar } from './components/sideBar'
+import { Upcoming } from './components/upcoming'
+
 
 const App = () => {
 
 
 
   return (
-      <BrowserRouter>
+      
         <ContextProvider>
           <ChakraProvider theme={theme}>
+            <BrowserRouter>
+            <SideBar/>
             <Routes>
               <Route path='/' element={<Home/>}/>
-              <Route path='/topRated' element={<TopRated/>}/>
+              <Route path='/top_rated' element={<TopRated/>}/>
               <Route path='/upcoming' element={<Upcoming/>}/>
+
             </Routes>
+            </BrowserRouter>
           </ChakraProvider>
         </ContextProvider>
-      </BrowserRouter>
+      
   )
 }
 

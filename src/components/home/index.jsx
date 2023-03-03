@@ -22,7 +22,6 @@ return (
         bg={context.clearTheme ? 'brand.secondary' : 'brand.accent'}
         width='100%'
     >
-        <SideBar/>
         <CategoryFilms categoryTitle='Popular Movies' cat='popular'/>
         <CategoryFilms categoryTitle='Top Rated' cat='top_rated'/>
         <Footer/>

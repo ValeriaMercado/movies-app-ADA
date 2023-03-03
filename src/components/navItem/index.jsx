@@ -1,5 +1,5 @@
 import { Flex, MenuButton,Text, Menu, Icon } from "@chakra-ui/react"
-import {Link } from 'react-router-dom'
+import {Link as ReactLink } from 'react-router-dom'
 
 export const NavItem = ({navSize , icon,title,active,link}) => {
   return (
@@ -9,7 +9,7 @@ export const NavItem = ({navSize , icon,title,active,link}) => {
         w="100%"
         alignItems={navSize == "small" ? "center" : "flex-start"}>
           <Menu placement="rigth">
-            <Link
+            <ReactLink  to={link}
                 backgroundColor={active && "brand.primary" }
                 p={3}
                 borderRadius={8}
@@ -19,10 +19,10 @@ export const NavItem = ({navSize , icon,title,active,link}) => {
               <MenuButton w='100%'>
                 <Flex>
                   <Icon as={icon} fontSize='xl' color={active ? "#553C9A" : "brand.accent"}  />
-                  <Link to={link} ><Text ml={5} display={navSize == "small" ? "none" : "flex"}>{title}</Text></Link>
+                  <Text ml={5} display={navSize == "small" ? "none" : "flex"}>{title}</Text>
                 </Flex>
               </MenuButton>
-            </Link>
+            </ReactLink>
           </Menu>
 
     </Flex>
