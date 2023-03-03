@@ -1,6 +1,6 @@
 import { MoviesCards } from "../../moviesCard"
 import { useState, useEffect } from "react"
-
+import { Box } from "@chakra-ui/react"
 export const UpcomingTopRated = ({searchCategory}) => {
 
    const [movies , setMovies] = useState([])
@@ -13,10 +13,15 @@ export const UpcomingTopRated = ({searchCategory}) => {
  
 
     return (
-      <>
+      <Box
+        display='flex'
+        justifyContent='center'
+        flexWrap= 'wrap'
+      >
         {movies.map(movie=>{
         return(
           <MoviesCards
+            
             searchCategory = {searchCategory}
             key = {movie.id}
             alt = {movie.title} 
@@ -25,7 +30,7 @@ export const UpcomingTopRated = ({searchCategory}) => {
             img = {movie.poster_path}
           />)
       })}
-      </>
+      </Box>
  
     )
 }

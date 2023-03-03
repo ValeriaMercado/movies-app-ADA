@@ -1,6 +1,5 @@
 
 import { UpcomingTopRated } from '../components/upcomingTopRated'
-import { MoviesCards } from '../moviesCard'
 
 export const TopRated = () => {
 

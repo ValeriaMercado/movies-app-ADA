@@ -8,7 +8,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom/dist"
 import { TopRated } from "./topRated"
 import { SideBar } from './components/sideBar'
 import { Upcoming } from './components/upcoming'
-
+//import { Navbar } from './components/sideBar'
 
 const App = () => {
 
@@ -20,6 +20,7 @@ const App = () => {
           <ChakraProvider theme={theme}>
             <BrowserRouter>
             <SideBar/>
+            {/* <Navbar/> */}
             <Routes>
               <Route path='/' element={<Home/>}/>
               <Route path='/top_rated' element={<TopRated/>}/>

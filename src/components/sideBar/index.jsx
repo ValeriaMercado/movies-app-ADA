@@ -8,7 +8,7 @@ export const SideBar = () => {
   const [navSize, setNavSize] = useState('large')
   return (
     <Flex 
-      backgroundColor={"brand.primary"}
+      bg="brand.primary"
       pos="sticky"
       left="5"
       h="95vh"
@@ -73,3 +73,24 @@ export const SideBar = () => {
     </Flex>
   )
 }
+
+
+// import React from 'react'
+
+// export const Navbar = () => {
+//   return (
+//     <Menu>
+//     <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
+//       Actions
+//     </MenuButton>
+//     <MenuList>
+//       <MenuItem>Download</MenuItem>
+//       <MenuItem>Create a Copy</MenuItem>
+//       <MenuItem>Mark as Draft</MenuItem>
+//       <MenuItem>Delete</MenuItem>
+//       <MenuItem>Attend a Workshop</MenuItem>
+//     </MenuList>
+//   </Menu>
+    
+//   )
+// }
