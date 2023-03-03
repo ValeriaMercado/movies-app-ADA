@@ -48,9 +48,9 @@ export const SideBar = () => {
         </InputGroup>
 
 
-        <NavItem navSize={navSize} title={'Home'} icon={FiHome}/>
-        <NavItem navSize={navSize} title={'Top Rated'} icon={FiAward}/>
-        <NavItem navSize={navSize} title={'Upcoming'} icon={FiTrendingUp}/>
+        <NavItem link={'/'} navSize={navSize} title={'Home'} icon={FiHome}/>
+        <NavItem link={'/topRated'} navSize={navSize} title={'Top Rated'} icon={FiAward}/>
+        <NavItem link={'/upcoming'} navSize={navSize} title={'Upcoming'} icon={FiTrendingUp}/>
 
       </Flex>
       <Flex

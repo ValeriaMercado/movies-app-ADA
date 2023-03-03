@@ -2,6 +2,8 @@ import { useContext, useEffect } from "react"
 import { Context } from "../../context/Context"
 import {Box } from "@chakra-ui/react"
 import { CategoryFilms } from "../categoryFilm"
+import { SideBar } from "../sideBar"
+import { Footer } from "../footer"
 
 export const Home = () => {
 const context = useContext(Context)
@@ -14,14 +16,16 @@ return (
     <Box
         as='section'
         display='flex'
+        flexDirection='column'
         justifyContent='center'
         alignItems='center'
         bg={context.clearTheme ? 'brand.secondary' : 'brand.accent'}
         width='100%'
-        height='100vh'
     >
+        <SideBar/>
         <CategoryFilms categoryTitle='Popular Movies' cat='popular'/>
         <CategoryFilms categoryTitle='Top Rated' cat='top_rated'/>
+        <Footer/>
     </Box>
 )
 }
