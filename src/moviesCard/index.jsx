@@ -6,7 +6,7 @@ import { Card, CardBody, CardFooter, Image, Heading, Text,Divider,ButtonGroup, B
 export const MoviesCards = ({key,alt,movieTitle,movieDetails,img}) => {
 
   return (
-    
+
           <Card key={key} maxW='25%' display='flex' flexDirection='column' alignItems='center' m={4}>
             <CardBody display='flex' flexDirection='column' alignItems='center'>
               <Image
@@ -32,7 +32,7 @@ export const MoviesCards = ({key,alt,movieTitle,movieDetails,img}) => {
               </Stack>
             </CardBody>
           </Card>
-       
+
         )
 
 }
