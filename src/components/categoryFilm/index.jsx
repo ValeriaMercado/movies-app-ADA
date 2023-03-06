@@ -1,11 +1,13 @@
 import { Box, Text} from '@chakra-ui/react'
 import { useEffect, useState } from 'react'
+import { useFetch } from '../../hooks/useFetch'
 import { EachMovie } from '../eachMovie'
 
 export const CategoryFilms = ({categoryTitle,cat}) => {
     const [movies, setMovies] = useState([])
 
     //controlar que este fetch me trae solo la pag 1 y solo en lenguaje ingles.
+   
 
     useEffect(()=>{
         fetch(`https://api.themoviedb.org/3/movie/${cat}?api_key=ae186e957330197b5106a6c66c8bd1df&language=en-US&page=1`)

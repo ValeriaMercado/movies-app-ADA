@@ -1,6 +1,7 @@
 import { MoviesCards } from "../../moviesCard"
 //import { useState, useEffect } from "react"
-import { Box } from "@chakra-ui/react"
+import { Box, Spinner } from "@chakra-ui/react"
+
 import { useFetch } from "../../hooks/useFetch"
 import { useContext } from "react"
 import { Context } from "../../context/Context"
@@ -16,7 +17,7 @@ export const UpcomingTopRated = ({searchCategory}) => {
 //     .then(data=>setMovies(data.results))
 //  },[])
 
-  const movies = useFetch(`https://api.themoviedb.org/3/movie/${searchCategory}?api_key=ae186e957330197b5106a6c66c8bd1df&language=${context.language}-US&page=1`,context.language)
+  const [movies, isLoading] = useFetch(`https://api.themoviedb.org/3/movie/${searchCategory}?api_key=ae186e957330197b5106a6c66c8bd1df&language=${context.language}-US&page=1`,context.language)
 
     return (
       <Box
@@ -24,7 +25,16 @@ export const UpcomingTopRated = ({searchCategory}) => {
         justifyContent='center'
         flexWrap= 'wrap'
       >
-        {movies.map(movie=>{
+        {isLoading
+        &&
+        <Spinner
+          thickness='4px'
+          speed='0.65s'
+          emptyColor='gray.200'
+          color='blue.500'
+          size='xl'
+        />}
+        {movies?.map(movie=>{
         return(
           <MoviesCards
 
