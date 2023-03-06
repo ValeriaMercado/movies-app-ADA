@@ -4,6 +4,7 @@ import {Box } from "@chakra-ui/react"
 import { CategoryFilms } from "../categoryFilm"
 import { SideBar } from "../sideBar"
 import { Footer } from "../footer"
+import { Navbar } from "../navBar"
 
 export const Home = () => {
 const context = useContext(Context)
@@ -22,6 +23,7 @@ return (
         bg={context.clearTheme ? 'brand.secondary' : 'brand.accent'}
         width='100%'
     >
+        {/* <Navbar/> */}
         <CategoryFilms categoryTitle='Popular Movies' cat='popular'/>
         <CategoryFilms categoryTitle='Top Rated' cat='top_rated'/>
         <Footer/>

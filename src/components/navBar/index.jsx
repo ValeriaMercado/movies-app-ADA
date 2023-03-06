@@ -1,27 +1,38 @@
-import { Menu, MenuButton, MenuItem, MenuList } from "@chakra-ui/react"
-import {ChevronDownIcon} from '@chakra-ui/icons'
+import { Box,Menu, MenuButton, MenuList, MenuItem, Button } from "@chakra-ui/react"
+import { ChevronDownIcon } from "@chakra-ui/icons"
+import { NavItem } from "../navItem"
+
 export const Navbar = () => {
   return (
-        <Box>
-            
-        </Box>
-    
+    <Box height="60px" width="100%" bg="brand.primary" display="flex" alignItems="center" >
+      <Box as="b"  color="white" px={4}>MovieApp</Box>
+
+      <Box>
+        <Box> </Box>
+      </Box>
+
+
+      
+    </Box>
   )
 }
-// import { Flex, FlexProps } from '@chakra-ui/react'
 
-// export const Container = (props: FlexProps) => (
-//   <Flex
-//     direction="column"
-//     alignItems="center"
-//     justifyContent="flex-start"
-//     bg="gray.50"
-//     color="black"
-//     _dark={{
-//       bg: 'gray.900',
-//       color: 'white',
-//     }}
-//     transition="all 0.15s ease-out"
-//     {...props}
-//   />
-// )
+// <Menu>
+//         <MenuButton
+//             as={Button}
+//             rightIcon={<ChevronDownIcon />}
+//             borderRadius="10px"
+//             bg="tomato"
+//             color="white"
+//             px={4}
+//             h={8}>
+//           Actions
+//         </MenuButton>
+//         <MenuList>
+//           <MenuItem>Download</MenuItem>
+//           <MenuItem>Create a Copy</MenuItem>
+//           <MenuItem>Mark as Draft</MenuItem>
+//           <MenuItem>Delete</MenuItem>
+//           <MenuItem>Attend a Workshop</MenuItem>
+//         </MenuList>
+//       </Menu>

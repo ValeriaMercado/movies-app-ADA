@@ -8,6 +8,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom/dist"
 import { TopRated } from "./topRated"
 import { SideBar } from './components/sideBar'
 import { Upcoming } from './components/upcoming'
+import { SelectLanguage } from './components/selectLanguage'
 //import { Navbar } from './components/sideBar'
 //import { Navbar } from './components/navBar'
 
@@ -21,6 +22,7 @@ const App = () => {
           <ChakraProvider theme={theme}>
             <BrowserRouter>
              <SideBar/>
+             <SelectLanguage/>
             {/* <Navbar/> */}
             <Routes>
               <Route path='/' element={<Home/>}/>
