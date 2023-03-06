@@ -1,19 +1,18 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 
 export const useFetch = (url) => {
 
-    const getFetch = async ()=>{
-        const resp = await fetch (url);
-        const data = await resp.json()
-    }
+    const [movies , setMovies] = useState([])
 
     useEffect(()=>{
-        getFetch()
-
-    }, [url])
-
-
-    return {}
+       fetch(url)
+       .then(res=>res.json())
+       .then(data=>setMovies(data.results))
+    },[])
     
-    
+
+
+    return movies
+
+
 }

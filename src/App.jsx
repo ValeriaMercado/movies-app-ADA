@@ -9,7 +9,7 @@ import { TopRated } from "./topRated"
 import { SideBar } from './components/sideBar'
 import { Upcoming } from './components/upcoming'
 //import { Navbar } from './components/sideBar'
-import { Navbar } from './components/navBar'
+//import { Navbar } from './components/navBar'
 
 const App = () => {
 
@@ -20,8 +20,7 @@ const App = () => {
         <ContextProvider>
           <ChakraProvider theme={theme}>
             <BrowserRouter>
-            <Navbar/>
-            <SideBar/>
+             <SideBar/>
             {/* <Navbar/> */}
             <Routes>
               <Route path='/' element={<Home/>}/>
