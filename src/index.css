@@ -1,0 +1,5 @@
+.carousel .control-arrow,
+.carousel.carousel-slider .control-arrow,
+.carousel .carousel-status {
+  opacity: 0;
+}
