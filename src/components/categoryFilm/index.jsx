@@ -1,19 +1,16 @@
 import { Box, Text} from '@chakra-ui/react'
-import { useEffect, useState } from 'react'
 import { useFetch } from '../../hooks/useFetch'
 import { EachMovie } from '../eachMovie'
+import { useContext } from "react"
+import { Context } from "../../context/Context"
 
-export const CategoryFilms = ({categoryTitle,cat}) => {
-    const [movies, setMovies] = useState([])
+export const CategoryFilms = ({categoryTitle,searchCategory}) => {
 
-    //controlar que este fetch me trae solo la pag 1 y solo en lenguaje ingles.
-   
 
-    useEffect(()=>{
-        fetch(`https://api.themoviedb.org/3/movie/${cat}?api_key=ae186e957330197b5106a6c66c8bd1df&language=en-US&page=1`)
-            .then(res=>res.json())
-            .then(data=>setMovies(data.results))
-    },[])
+    const context = useContext(Context)
+
+    const [movies, isLoading] = useFetch(`https://api.themoviedb.org/3/movie/${searchCategory}?api_key=ae186e957330197b5106a6c66c8bd1df&language=${context.language}-US&page=1`,context.language)
+
 
     return (
         <Box w='30%' h='300px' borderRadius='10px' overflow='scroll'  margin='25px' >

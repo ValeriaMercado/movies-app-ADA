@@ -1,7 +1,7 @@
 import { Avatar, Divider, Flex, Heading, IconButton, Input, InputGroup, InputLeftElement} from '@chakra-ui/react'
 import { FiHome,FiAward,FiTrendingUp, FiAlignJustify,FiSearch } from "react-icons/fi";
 import { useState } from 'react'
-import { NavItem } from '../navItem';
+//import { NavItem } from '../navItem';
 
 
 export const SideBar = () => {
@@ -48,9 +48,9 @@ export const SideBar = () => {
         </InputGroup>
 
 
-        <NavItem link={'/'} navSize={navSize} title={'Home'} icon={FiHome}/>
+        {/* <NavItem link={'/'} navSize={navSize} title={'Home'} icon={FiHome}/>
         <NavItem link={'/top_rated'} navSize={navSize} title={'Top Rated'} icon={FiAward}/>
-        <NavItem link={'/upcoming'} navSize={navSize} title={'Upcoming'} icon={FiTrendingUp}/>
+        <NavItem link={'/upcoming'} navSize={navSize} title={'Upcoming'} icon={FiTrendingUp}/> */}
 
       </Flex>
       <Flex
