@@ -52,7 +52,13 @@ export const Home = () => {
                 <Text w={"80%"} color={"white"} p="10px" ml={"150px"}>
                   {p.overview}
                 </Text>
-                <Button bg={"purple.900"} color="white" w={"10%"} ml={"50%"}>
+                <Button bg={"purple.600"} color="white" w={"10%"} ml={"50%"}>
+                  <Button
+                    bg={"purple.600"}
+                    color="white"
+                    w={"10%"}
+                    ml={"50%"}
+                  ></Button>
                   More
                 </Button>
               </Flex>
