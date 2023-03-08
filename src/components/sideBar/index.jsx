@@ -1,13 +1,27 @@
-import { Avatar, Divider, Flex, Heading, IconButton, Input, InputGroup, InputLeftElement} from '@chakra-ui/react'
-import { FiHome,FiAward,FiTrendingUp, FiAlignJustify,FiSearch } from "react-icons/fi";
-import { useState } from 'react'
-import { NavItem } from '../navItem';
-
+import {
+  Avatar,
+  Divider,
+  Flex,
+  Heading,
+  IconButton,
+  Input,
+  InputGroup,
+  InputLeftElement,
+} from "@chakra-ui/react";
+import {
+  FiHome,
+  FiAward,
+  FiTrendingUp,
+  FiAlignJustify,
+  FiSearch,
+} from "react-icons/fi";
+import { useState } from "react";
+import { NavItem } from "../navItem";
 
 export const SideBar = () => {
-  const [navSize, setNavSize] = useState('large')
+  const [navSize, setNavSize] = useState("large");
   return (
-    <Flex 
+    <Flex
       backgroundColor="brand.primary"
       pos="sticky"
       left="5"
@@ -20,38 +34,34 @@ export const SideBar = () => {
       justifyContent="space-between"
     >
       <Flex
-          p="5%"
-          flexDir="column"
-          w="100%"
-          alignItems={navSize == "small" ? "center" : "flex-start"}
-          as="nav"
+        p="5%"
+        flexDir="column"
+        w="100%"
+        alignItems={navSize == "small" ? "center" : "flex-start"}
+        as="nav"
       >
         <IconButton
           background="none"
           mt={5}
-          _hover={{ background: 'none' }}
-          icon={<FiAlignJustify/>}
+          _hover={{ background: "none" }}
+          icon={<FiAlignJustify />}
           onClick={() => {
-            if (navSize == "small")
-            setNavSize("large")
-            else
-            setNavSize("small")
+            if (navSize == "small") setNavSize("large");
+            else setNavSize("small");
           }}
         />
 
         <InputGroup>
           <InputLeftElement
-            pointerEvents='none'
-            children={<FiSearch color="brand.secondary" fontSize='xl' />}
+            pointerEvents="none"
+            children={<FiSearch color="brand.secondary" fontSize="xl" />}
           />
-          <Input type='text' />
+          <Input type="text" />
         </InputGroup>
 
-
-        <NavItem navSize={navSize} title={'Home'} icon={FiHome}/>
-        <NavItem navSize={navSize} title={'Top Rated'} icon={FiAward}/>
-        <NavItem navSize={navSize} title={'Upcoming'} icon={FiTrendingUp}/>
-
+        <NavItem navSize={navSize} title={"Home"} icon={FiHome} />
+        <NavItem navSize={navSize} title={"Top Rated"} icon={FiAward} />
+        <NavItem navSize={navSize} title={"Upcoming"} icon={FiTrendingUp} />
       </Flex>
       <Flex
         p="5%"
@@ -60,16 +70,16 @@ export const SideBar = () => {
         alignItems={navSize == "small" ? "center" : "flex-start"}
         mb={4}
       >
-        <Divider/>
+        <Divider />
         <Flex mt={4} display={navSize == "small" ? "none" : "flex"}>
-          <Avatar size="sm" src=""/>
+          <Avatar size="sm" src="" />
           <Flex flexDir="column" ml={4} display="flex">
-              <Heading as="h3" size="sm" >Maca Álvarez</Heading>
+            <Heading as="h3" size="sm">
+              Maca Álvarez
+            </Heading>
           </Flex>
         </Flex>
-
       </Flex>
-
     </Flex>
-  )
-}
+  );
+};

@@ -1,10 +1,12 @@
 import { useContext, useEffect, useState } from "react";
 import { Context } from "../../context/Context";
-import { Box, Button, Flex, Text } from "@chakra-ui/react";
+import { Box, Button, ButtonGroup, Flex, Text } from "@chakra-ui/react";
 import { CategoryFilms } from "../categoryFilm";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 import { Link } from "react-router-dom";
+import { SideBar } from "../sideBar";
+import { Footer } from "../footer";
 
 export const Home = () => {
   const context = useContext(Context);
@@ -21,6 +23,7 @@ export const Home = () => {
 
   return (
     <Flex flexDirection={"column"}>
+      <SideBar />
       <Box as="div">
         <Carousel autoPlay interval="10000" transitionTime="2000" infiniteLoop>
           {movie?.map((p) => (
@@ -35,6 +38,7 @@ export const Home = () => {
                 alignItems: "center",
               }}
               key={p.id}
+              className="background"
             >
               <Flex
                 flexDirection={"column"}
@@ -45,22 +49,25 @@ export const Home = () => {
                   fontSize={"45px"}
                   fontWeight="extrabold"
                   color="white"
+                  position="relative"
                   key={p.id}
                 >
                   {p.original_title}
                 </Text>
-                <Text w={"80%"} color={"white"} p="10px" ml={"150px"}>
+                <Text
+                  w={"80%"}
+                  color={"white"}
+                  p="10px"
+                  ml={"150px"}
+                  position="relative"
+                >
                   {p.overview}
                 </Text>
-                <Button bg={"purple.600"} color="white" w={"10%"} ml={"50%"}>
-                  <Button
-                    bg={"purple.600"}
-                    color="white"
-                    w={"10%"}
-                    ml={"50%"}
-                  ></Button>
-                  More
-                </Button>
+                <Link to={`/details/${p.id}`} ml={"50%"}>
+                  <Button bg={"purple.600"} color="white" w={"10%"}>
+                    More
+                  </Button>
+                </Link>
               </Flex>
             </div>
           ))}
@@ -78,6 +85,7 @@ export const Home = () => {
         <CategoryFilms categoryTitle="Popular Movies" cat="popular" />
         <CategoryFilms categoryTitle="Top Rated" cat="top_rated" />
       </Box>
+      <Footer />
     </Flex>
   );
 };
