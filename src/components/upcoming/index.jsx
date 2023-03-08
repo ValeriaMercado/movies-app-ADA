@@ -1,9 +1,9 @@
 import React from 'react'
-import { UpcomingTopRated } from '../upcomingTopRated'
+import { UpcomingTopRated } from '../boxToPickContent'
 
 export const Upcoming = () => {
   return (
-   <UpcomingTopRated searchCategory={`upcoming`}/>
+   <UpcomingTopRated searchCategory={`upcoming`} serieOrMovie={`movie`}/>
     
   )
 }

@@ -1,4 +1,4 @@
-import { MoviesCards } from "../../moviesCard"
+import { MoviesCards } from "../moviesCard"
 //import { useState, useEffect } from "react"
 import { Box, Spinner } from "@chakra-ui/react"
 
@@ -7,17 +7,10 @@ import { useContext } from "react"
 import { Context } from "../../context/Context"
 
 
-export const UpcomingTopRated = ({searchCategory}) => {
+export const BoxToPickContent = ({searchCategory,serieOrMovie}) => {
   const context = useContext(Context)
-//    const [movies , setMovies] = useState([])
 
-//  useEffect(()=>{
-//     fetch(`https://api.themoviedb.org/3/movie/${searchCategory}?api_key=ae186e957330197b5106a6c66c8bd1df&language=en-US&page=1`)
-//     .then(res=>res.json())
-//     .then(data=>setMovies(data.results))
-//  },[])
-
-  const [movies, isLoading] = useFetch(`https://api.themoviedb.org/3/movie/${searchCategory}?api_key=ae186e957330197b5106a6c66c8bd1df&language=${context.language}-US&page=1`,context.language)
+  const {movies, isLoading} = useFetch(`https://api.themoviedb.org/3/${serieOrMovie}/${searchCategory}?api_key=ae186e957330197b5106a6c66c8bd1df&language=${context.language}-US&page=1`,context.language)
 
     return (
       <Box

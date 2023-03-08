@@ -13,7 +13,7 @@ export const Home = () => {
   return (
     <Flex flexDirection={"column"}>
       <Box as="div">
-        <MoviesCarousel searchCategory={`popular`}/>
+        <MoviesCarousel searchCategory={`popular`} serieOrMovie={`movie`}/>
       </Box>
       <Box
         as="section"
@@ -27,8 +27,8 @@ export const Home = () => {
         <Box display="flex" flexDirection="column">
           <SelectLanguage/>
           <Box display="flex" flexDirection="row">
-            <CategoryFilms categoryTitle="Popular Movies" searchCategory="popular" />
-            <CategoryFilms categoryTitle="Top Rated" searchCategory="top_rated" />
+            <CategoryFilms categoryTitle="Popular Movies" searchCategory="popular" serieOrMovie={`movie`} />
+            <CategoryFilms categoryTitle="Top Rated" searchCategory="top_rated" serieOrMovie={`movie`} />
           </Box>
         </Box>
       </Box>

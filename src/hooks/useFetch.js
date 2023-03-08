@@ -15,9 +15,10 @@ export const useFetch = (url,dependence) => {
         })
     },[dependence])
 
-    return [
-        movies , isLoading
-    ]
+    return {
 
+        movies: movies,
+        isLoading: isLoading
+    }
 
 }

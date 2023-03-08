@@ -3,11 +3,11 @@
 
 import { Card, CardBody, CardFooter, Image, Heading, Text,Divider,ButtonGroup, Button,Stack } from '@chakra-ui/react'
 
-export const MoviesCards = ({key,alt,movieTitle,movieDetails,img}) => {
+export const MoviesCards = ({alt,movieTitle,movieDetails,img}) => {
 
   return (
 
-          <Card key={key} maxW='25%' display='flex' flexDirection='column' alignItems='center' m={4}>
+          <Card  maxW='25%' display='flex' flexDirection='column' alignItems='center' m={4}>
             <CardBody display='flex' flexDirection='column' alignItems='center'>
               <Image
                 src={`https://image.tmdb.org/t/p/w500/${img}`}

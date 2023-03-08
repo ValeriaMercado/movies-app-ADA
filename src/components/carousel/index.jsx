@@ -11,13 +11,13 @@ import { useFetch } from "../../hooks/useFetch";
 
 import React from 'react'
 
-export const MoviesCarousel = ({searchCategory}) => {
+export const MoviesCarousel = ({searchCategory,serieOrMovie}) => {
 
     const context = useContext(Context);
 
 
 
-    const [movies] = useFetch(`https://api.themoviedb.org/3/movie/${searchCategory}?api_key=ae186e957330197b5106a6c66c8bd1df&language=${context.language}-US&page=1`,context.language)
+    const {movies} = useFetch(`https://api.themoviedb.org/3/${serieOrMovie}/${searchCategory}?api_key=ae186e957330197b5106a6c66c8bd1df&language=${context.language}-US&page=1`,context.language)
 
   return (
     
@@ -52,12 +52,6 @@ export const MoviesCarousel = ({searchCategory}) => {
               {p.overview}
             </Text>
             <Button bg={"purple.600"} color="white" w={"10%"} ml={"50%"}>
-              <Button
-                bg={"purple.600"}
-                color="white"
-                w={"10%"}
-                ml={"50%"}
-              ></Button>
               More
             </Button>
           </Flex>
