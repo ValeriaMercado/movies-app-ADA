@@ -1,0 +1,13 @@
+{
+    "navbar":{
+        "Search":"Busca",
+        "Home": "Inicio",
+        "Movies":"Películas",
+        "Series":"Series",
+        "Upcoming":"Estrenos",
+        "Top Rated": "Mejor Puntuadas",
+        "Latest": "Novedades",
+        "Popular": "Populares"
+
+    }
+}

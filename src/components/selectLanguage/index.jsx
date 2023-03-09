@@ -8,7 +8,6 @@ export const SelectLanguage = () => {
     const handleChangeLanguage = (e) =>{
         context.setLanguage(e.target.value)
     }
-    console.log("languaje", context.language)
 
   return (
     <>
