@@ -1,19 +1,24 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 
-export const useFetch = (url) => {
+export const useFetch = (url,dependence) => {
 
-    const getFetch = async ()=>{
-        const resp = await fetch (url);
-        const data = await resp.json()
-    }
+    const [movies , setMovies] = useState([])
+    const [isLoading, setIsLoading] = useState(false)
 
     useEffect(()=>{
-        getFetch()
+       setIsLoading(true)
+       fetch(url)
+       .then(res=>res.json())
+       .then(data=>{
+            setMovies(data.results)
+            setIsLoading(false)
+        })
+    },[dependence])
 
-    }, [url])
+    return {
 
+        movies: movies,
+        isLoading: isLoading
+    }
 
-    return {}
-    
-    
 }
