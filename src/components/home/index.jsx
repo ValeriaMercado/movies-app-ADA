@@ -13,6 +13,8 @@ export const Home = () => {
     <Flex flexDirection={"column"}>
       <Box as="div">
         <MoviesCarousel searchCategory={`popular`} serieOrMovie={`movie`}/>
+
+        <MoviesCarousel searchCategory={`popular`} serieOrMovie={`movie`}/> 
       </Box>
       <Box
         as="section"
