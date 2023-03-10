@@ -8,19 +8,17 @@ import { Link } from "react-router-dom";
 import { SelectLanguage } from "../selectLanguage";
 import { useFetch } from "../../hooks/useFetch";
 
+import React from "react";
 
-import React from 'react'
+export const MoviesCarousel = ({ searchCategory, serieOrMovie }) => {
+  const context = useContext(Context);
 
-export const MoviesCarousel = ({searchCategory,serieOrMovie}) => {
-
-    const context = useContext(Context);
-
-
-
-    const {movies} = useFetch(`https://api.themoviedb.org/3/${serieOrMovie}/${searchCategory}?api_key=ae186e957330197b5106a6c66c8bd1df&language=${context.language}-US&page=1`,context.language)
+  const { movies } = useFetch(
+    `https://api.themoviedb.org/3/${serieOrMovie}/${searchCategory}?api_key=ae186e957330197b5106a6c66c8bd1df&language=${context.language}-US&page=1`,
+    context.language
+  );
 
   return (
-    
     <Carousel autoPlay interval="10000" transitionTime="2000" infiniteLoop>
       {movies?.map((p) => (
         <div
@@ -31,9 +29,9 @@ export const MoviesCarousel = ({searchCategory,serieOrMovie}) => {
             backgroundSize: "100%",
             padding: "200px",
             display: "flex",
-            alignItems: "center",
           }}
           key={p.id}
+          className="background"
         >
           <Flex
             flexDirection={"column"}
@@ -44,20 +42,28 @@ export const MoviesCarousel = ({searchCategory,serieOrMovie}) => {
               fontSize={"45px"}
               fontWeight="extrabold"
               color="white"
+              position="relative"
               key={p.id}
             >
               {p.original_title}
             </Text>
-            <Text w={"80%"} color={"white"} p="10px" ml={"150px"}>
+            <Text
+              w={"80%"}
+              color={"white"}
+              p="10px"
+              ml={"150px"}
+              position="relative"
+            >
               {p.overview}
             </Text>
-            <Button bg={"purple.600"} color="white" w={"10%"} ml={"50%"}>
-              More
-            </Button>
+            <Link to={`/details/movie/${p.id}`} ml={"50%"}>
+              <Button bg={"purple.600"} color="white" w={"10%"}>
+                More
+              </Button>
+            </Link>
           </Flex>
         </div>
       ))}
     </Carousel>
-
-  )
-}
+  );
+};
