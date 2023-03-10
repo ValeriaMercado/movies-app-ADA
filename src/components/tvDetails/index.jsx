@@ -14,20 +14,20 @@ import {
   ListItem,
 } from "@chakra-ui/react";
 
-const MovieDetails = () => {
+const TVDetails = () => {
   const params = useParams();
   const [movie, setMovie] = useState([]);
   const [trailer, setTrailer] = useState(true);
 
   useEffect(() => {
     fetch(
-      `https://api.themoviedb.org/3/movie/${params.movieDetails}?api_key=ae186e957330197b5106a6c66c8bd1df&/`
+      `https://api.themoviedb.org/3/tv/${params.TVDetails}?api_key=ae186e957330197b5106a6c66c8bd1df&/`
     )
       .then((res) => res.json())
       .then((data) => {
         setMovie(data);
       });
-  }, [params.movieDetails]);
+  }, [params.TVDetails]);
 
   return (
     <Box w="100%">
@@ -46,7 +46,7 @@ const MovieDetails = () => {
             mb="50px"
             pt="200px"
             src={`http://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-            alt={movie.original_title}
+            alt={movie.title}
           />
           <Flex direction={"column"}>
             <Button
@@ -76,7 +76,7 @@ const MovieDetails = () => {
                     color="white"
                     fontWeight="extrabold"
                   >
-                    {movie.original_title}
+                    {movie.name}
                   </Text>
                   <Text
                     fontSize={"24px"}
@@ -86,7 +86,7 @@ const MovieDetails = () => {
                     ml={"20px"}
                     mt="20px"
                   >
-                    {moment(movie.release_date, "YYYY-MM-DD").format("YYYY")}
+                    {moment(movie.first_air_date, "YYYY-MM-DD").format("YYYY")}
                   </Text>
                 </Flex>
 
@@ -130,4 +130,4 @@ const MovieDetails = () => {
   );
 };
 
-export default MovieDetails;
+export default TVDetails;
