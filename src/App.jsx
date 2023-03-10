@@ -1,4 +1,4 @@
-
+import { Suspense } from "react";
 import { BrowserRouter,Route,Routes } from "react-router-dom";
 import { Footer } from "./components/footer";
 import { Home } from "./components/home";
@@ -7,8 +7,11 @@ import { ContextProvider } from "./provider/ContextProvider";
 import {BoxToPickContent} from "./components/boxToPickContent"
 
 
+
+
 const App = () => {
   return (
+  <Suspense fallback={null}>
     <BrowserRouter>
       <ContextProvider>
         <Navbar/>
@@ -26,6 +29,7 @@ const App = () => {
         <Footer/>
       </ContextProvider>
     </BrowserRouter>
+  </Suspense>
 
 
   );

@@ -15,7 +15,6 @@ export const SelectLanguage = () => {
             <option value='en'>English</option>
             <option value='es'>Español</option>
         </Select>
-
     </>
   )
 }

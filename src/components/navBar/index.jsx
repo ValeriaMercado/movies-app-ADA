@@ -21,10 +21,10 @@ import { Context } from "../../context/Context"
 import { SearchButton } from "../inputSearch";
 
 
+
 export const Navbar = () => {
   const { isOpen, onToggle } = useDisclosure();
   const context = useContext(Context)
-  console.log(typeof(context.language))
 
 
   return (
@@ -42,10 +42,10 @@ export const Navbar = () => {
                   <SearchButton/>
 
                   <HStack as={"nav"} spacing={4} display={{ base: "none", md: "flex" }}>
-                      <NavLink sectionTitle="Home" link={'/'}/>
+                      <NavLink sectionTitle={"Home"} link={'/'}/>
                       <Box>
                           <Menu>
-                            <MenuButton as={Button} rightIcon={<ChevronDownIcon />}> {context.language ==='es'?'Peliculas':'Movies'} </MenuButton>
+                            <MenuButton as={Button} rightIcon={<ChevronDownIcon />}> {context.language ==='es'?'Péliclas':"Movies"}  </MenuButton>
                             <MenuList>
                               <MenuItem><NavLink sectionTitle={context.language ==='es'?'Estrenos':"Upcoming"} link={'/upcoming'}/></MenuItem>
                               <MenuItem><NavLink sectionTitle={context.language ==='es'?'Mejor Puntuadas':"Top Rated"} link={'/top_rated'}/></MenuItem>
