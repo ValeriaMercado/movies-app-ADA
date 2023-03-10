@@ -1,4 +1,3 @@
-
 import {
   Box,
   Flex,
@@ -17,11 +16,16 @@ import {
 } from "@chakra-ui/react";
 import { HamburgerIcon, CloseIcon, ChevronDownIcon } from "@chakra-ui/icons";
 import { NavLink } from "../navItem";
+import { useContext } from "react"
+import { Context } from "../../context/Context"
+import { SearchButton } from "../inputSearch";
 
 
 
 export const Navbar = () => {
   const { isOpen, onToggle } = useDisclosure();
+  const context = useContext(Context)
+
 
   return (
           <Box bg={useColorModeValue("gray.100", "gray.900")} px={4}>
@@ -35,14 +39,16 @@ export const Navbar = () => {
                 />
                 <HStack spacing={8} alignItems={"center"}>
                   <Box>LOGO</Box>
+                  <SearchButton/>
+
                   <HStack as={"nav"} spacing={4} display={{ base: "none", md: "flex" }}>
-                      <NavLink sectionTitle="Home" link={'/'}/>
+                      <NavLink sectionTitle={"Home"} link={'/'}/>
                       <Box>
                           <Menu>
-                            <MenuButton as={Button} rightIcon={<ChevronDownIcon />}> Movies </MenuButton>
+                            <MenuButton as={Button} rightIcon={<ChevronDownIcon />}> {context.language ==='es'?'Péliclas':"Movies"}  </MenuButton>
                             <MenuList>
-                              <MenuItem><NavLink sectionTitle="Upcoming" link={'/upcoming'}/></MenuItem>
-                              <MenuItem><NavLink sectionTitle="Top Rated" link={'/top_rated'}/></MenuItem>
+                              <MenuItem><NavLink sectionTitle={context.language ==='es'?'Estrenos':"Upcoming"} link={'/upcoming'}/></MenuItem>
+                              <MenuItem><NavLink sectionTitle={context.language ==='es'?'Mejor Puntuadas':"Top Rated"} link={'/top_rated'}/></MenuItem>
                             </MenuList>
                           </Menu>
                       </Box>
@@ -50,8 +56,8 @@ export const Navbar = () => {
                           <Menu>
                             <MenuButton as={Button} rightIcon={<ChevronDownIcon />}> Series </MenuButton>
                             <MenuList>
-                              <MenuItem><NavLink sectionTitle="Popular Series" link={'/popular'}/></MenuItem>
-                              <MenuItem><NavLink sectionTitle="Latest Tv Shows" link={'/latest'}/></MenuItem>
+                              <MenuItem><NavLink sectionTitle={context.language ==='es'?'Populares':"Popular"} link={'/popular'}/></MenuItem>
+                              <MenuItem><NavLink sectionTitle={context.language ==='es'?'Lo último':"Latest Tv Shows"} link={'/latest'}/></MenuItem>
                             </MenuList>
                           </Menu>
                       </Box>
@@ -66,10 +72,10 @@ export const Navbar = () => {
                       </Box>
                       <Box>
                           <Menu>
-                            <MenuButton as={Button} rightIcon={<ChevronDownIcon />}> Movies </MenuButton>
+                            <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>Movies</MenuButton>
                             <MenuList>
-                              <MenuItem><NavLink sectionTitle="Upcoming" link={'/upcoming'}/></MenuItem>
-                              <MenuItem><NavLink sectionTitle="Top Rated" link={'/top_rated'}/></MenuItem>
+                              <MenuItem><NavLink sectionTitle={context.language ==='es'?'Estrenos':"Upcoming"} link={'/upcoming'}/></MenuItem>
+                              <MenuItem><NavLink sectionTitle={context.language ==='es'?'Mejor Puntuadas':"Top Rated"}  link={'/top_rated'}/></MenuItem>
                             </MenuList>
                           </Menu>
                       </Box>
@@ -77,8 +83,8 @@ export const Navbar = () => {
                           <Menu>
                             <MenuButton as={Button} rightIcon={<ChevronDownIcon />}> Series </MenuButton>
                             <MenuList>
-                              <MenuItem><NavLink sectionTitle="Popular Series" link={'/popular'}/></MenuItem>
-                              <MenuItem><NavLink sectionTitle="Latest Tv Shows" link={'/latest'}/></MenuItem>
+                              <MenuItem><NavLink sectionTitle={context.language ==='es'?'Populares':"Popular"} link={'/popular'}/></MenuItem>
+                              <MenuItem><NavLink sectionTitle={context.language ==='es'?'Lo último':"Latest Tv Shows"} link={'/latest'}/></MenuItem>
                             </MenuList>
                           </Menu>
                       </Box>

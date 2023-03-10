@@ -13,7 +13,7 @@ export const CategoryFilms = ({categoryTitle,searchCategory,serieOrMovie}) => {
 
 
     return (
-        <Box w='30%' h='300px' borderRadius='10px' overflow='scroll'  margin='25px' >
+        <Box w='40%' h='300px' borderRadius='10px' overflow='scroll'  margin='25px' >
             <Box bg='brand.primary' h='60px'  display='flex' justifyContent='center' alignItems='cen
         '    color='white' w='100%'><Text as='b' fontSize='3xl'>{categoryTitle}</Text></Box>
             {movies?.map(movie=>{

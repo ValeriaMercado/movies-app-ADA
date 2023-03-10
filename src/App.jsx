@@ -1,3 +1,7 @@
+
+import { BrowserRouter,Route,Routes } from "react-router-dom";
+
+
 import { Footer } from "./components/footer";
 import { Home } from "./components/home";
 import { Navbar } from "./components/navbar";
@@ -7,8 +11,11 @@ import MovieDetails from "./components/moviesDetails";
 import TVDetails from "./components/tvDetails";
 import { BoxToPickContent } from "./components/boxToPickContent";
 
+
+
 const App = () => {
   return (
+  <Suspense fallback={null}>
     <BrowserRouter>
       <Navbar />
       <ContextProvider>
@@ -56,6 +63,8 @@ const App = () => {
         </Routes>
       </ContextProvider>
     </BrowserRouter>
+
+
   );
 };
 
