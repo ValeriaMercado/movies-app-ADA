@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import ReactPlayer from "react-player";
 import { useParams } from "react-router-dom";
 import { Box } from "@chakra-ui/react";
-import { useFetch } from "../../hooks/useFetch";
 
 const MovieTrailer = ({ serieOrMovie }) => {
   const params = useParams();
@@ -10,14 +9,14 @@ const MovieTrailer = ({ serieOrMovie }) => {
 
   useEffect(() => {
     fetch(
-      `https://api.themoviedb.org/3/movie/${params.movieDetails}}/videos?api_key=ae186e957330197b5106a6c66c8bd1df&/`
+      `https://api.themoviedb.org/3/tv/${params.TVDetails}}/videos?api_key=ae186e957330197b5106a6c66c8bd1df&/`
     )
       .then((res) => res.json())
       .then((data) => {
         setMovie(data.results[0]);
         console.log(data);
       });
-  }, [params.movieDetails]);
+  }, [params.TVDetails]);
 
   return (
     <Box pos={"absolute"}>
