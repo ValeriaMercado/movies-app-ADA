@@ -8,13 +8,16 @@ import { MoviesCarousel } from "../carousel";
 import { SelectLanguage } from "../selectLanguage";
 
 export const Home = () => {
+
   const context = useContext(Context);
 
   return (
     <Flex flexDirection={"column"}>
-      <Box as="div">
-        <MoviesCarousel searchCategory={`popular`} serieOrMovie={`movie`} />
-      </Box>
+
+      {/* <Box as="div">
+        <MoviesCarousel searchCategory={`popular`} serieOrMovie={`movie`}/>
+      </Box> */}
+
       <Box
         as="section"
         display="flex"

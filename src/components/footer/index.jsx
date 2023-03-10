@@ -6,7 +6,6 @@ import { FiMoon, FiSun } from "react-icons/fi";
 
 export const Footer = () => {
     const context = useContext(Context)
-    console.log('footer', context.clearTheme)
 
     const changeTheme = () =>{
         context.clearTheme ? context.setClearTheme(false) : context.setClearTheme(true)
