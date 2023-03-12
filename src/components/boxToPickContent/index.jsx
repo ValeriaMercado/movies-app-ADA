@@ -31,6 +31,7 @@ export const BoxToPickContent = ({ searchCategory, serieOrMovie }) => {
             key={movie.id}
             alt={movie.title}
             movieTitle={movie.title}
+            TvTitle={movie.name}
             movieDetails={movie.overview}
             img={movie.poster_path}
             id={movie.id}

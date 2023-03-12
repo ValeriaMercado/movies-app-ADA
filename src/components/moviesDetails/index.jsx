@@ -12,25 +12,41 @@ import {
   Flex,
   UnorderedList,
   ListItem,
+  Spinner,
 } from "@chakra-ui/react";
 
 const MovieDetails = () => {
   const params = useParams();
   const [movie, setMovie] = useState([]);
   const [trailer, setTrailer] = useState(true);
+  const [isLoading, setLoading] = useState(false);
 
   useEffect(() => {
+    setLoading(true);
     fetch(
       `https://api.themoviedb.org/3/movie/${params.movieDetails}?api_key=ae186e957330197b5106a6c66c8bd1df&/`
     )
       .then((res) => res.json())
       .then((data) => {
         setMovie(data);
-      });
+        setLoading(false);
+      }, 3000);
   }, [params.movieDetails]);
 
   return (
     <Box w="100%">
+      {isLoading && (
+        <Spinner
+          thickness="4px"
+          speed="0.65s"
+          emptyColor="gray.200"
+          color="blue.500"
+          size="xl"
+          mb={"500px"}
+          mt={"300px"}
+          ml="50%"
+        />
+      )}
       <div
         style={{
           backgroundImage: `url(https://image.tmdb.org/t/p/original/${movie.backdrop_path})`,

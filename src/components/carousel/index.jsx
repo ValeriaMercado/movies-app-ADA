@@ -5,16 +5,15 @@ import { CategoryFilms } from "../categoryFilm";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 import { Link } from "react-router-dom";
-import { SelectLanguage } from "../selectLanguage";
 import { useFetch } from "../../hooks/useFetch";
 
 import React from "react";
 
-export const MoviesCarousel = ({ searchCategory, serieOrMovie }) => {
+export const MoviesCarousel = () => {
   const context = useContext(Context);
 
   const { movies } = useFetch(
-    `https://api.themoviedb.org/3/${serieOrMovie}/${searchCategory}?api_key=ae186e957330197b5106a6c66c8bd1df&language=${context.language}-US&page=1`,
+    `https://api.themoviedb.org/3/trending/all/day?api_key=ae186e957330197b5106a6c66c8bd1df&language=${context.language}-US&page=1`,
     context.language
   );
 
@@ -45,7 +44,7 @@ export const MoviesCarousel = ({ searchCategory, serieOrMovie }) => {
               position="relative"
               key={p.id}
             >
-              {p.original_title}
+              {p.original_title ? p.original_title : p.name}
             </Text>
             <Text
               w={"80%"}
@@ -56,11 +55,19 @@ export const MoviesCarousel = ({ searchCategory, serieOrMovie }) => {
             >
               {p.overview}
             </Text>
-            <Link to={`/details/movie/${p.id}`} ml={"50%"}>
-              <Button bg={"purple.600"} color="white" w={"10%"}>
-                More
-              </Button>
-            </Link>
+            {p.original_title ? (
+              <Link to={`/details/movie/${p.id}`} ml={"50%"}>
+                <Button bg={"purple.600"} color="white" w={"10%"}>
+                  More
+                </Button>
+              </Link>
+            ) : (
+              <Link to={`/details/tv/${p.id}`}>
+                <Button bg={"purple.600"} color="white" w={"10%"}>
+                  More
+                </Button>
+              </Link>
+            )}
           </Flex>
         </div>
       ))}
