@@ -5,18 +5,15 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Footer } from "../footer";
 import { CategoryFilms } from "../categoryFilm";
 import { MoviesCarousel } from "../carousel";
-import { SelectLanguage } from "../selectLanguage";
 
 export const Home = () => {
-
   const context = useContext(Context);
 
   return (
     <Flex flexDirection={"column"}>
-
-      {/* <Box as="div">
-        <MoviesCarousel searchCategory={`popular`} serieOrMovie={`movie`}/>
-      </Box> */}
+      <Box as="div">
+        <MoviesCarousel searchCategory={`popular`} serieOrMovie={`movie`} />
+      </Box>
 
       <Box
         as="section"
@@ -28,7 +25,6 @@ export const Home = () => {
         height="100vh"
       >
         <Box display="flex" flexDirection="column">
-          <SelectLanguage />
           <Box display="flex" flexDirection="row">
             <CategoryFilms
               categoryTitle="Popular Movies"

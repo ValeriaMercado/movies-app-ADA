@@ -6,6 +6,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import MovieDetails from "./components/moviesDetails";
 import TVDetails from "./components/tvDetails";
 import { BoxToPickContent } from "./components/boxToPickContent";
+import { SearchButton } from "./components/inputSearch";
+import MoviesSearch from "./components/searchResults";
 
 const App = () => {
   return (
@@ -14,6 +16,7 @@ const App = () => {
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/search" element={<MoviesSearch />} />
           <Route
             path="/upcoming"
             element={
@@ -42,9 +45,12 @@ const App = () => {
             }
           />
           <Route
-            path="/latest"
+            path="/topTv"
             element={
-              <BoxToPickContent searchCategory={`latest`} serieOrMovie={`tv`} />
+              <BoxToPickContent
+                searchCategory={`top_rated`}
+                serieOrMovie={`tv`}
+              />
             }
           />
           <Route path="/" element={<Home />} />
