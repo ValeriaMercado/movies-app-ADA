@@ -24,13 +24,10 @@
 //   );
 // }
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Input, Flex, InputGroup, InputLeftElement } from "@chakra-ui/react";
 import { SearchIcon } from "@chakra-ui/icons";
-import { useContext, useEffect } from "react";
-import { Context } from "../../context/Context";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
-import { Navigate } from "react-router-dom";
 
 export const SearchButton = () => {
   const navigate = useNavigate();

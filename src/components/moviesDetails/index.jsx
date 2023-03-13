@@ -14,6 +14,7 @@ import {
   ListItem,
   Spinner,
 } from "@chakra-ui/react";
+import MovieCredits from "./movieCredits";
 
 const MovieDetails = () => {
   const params = useParams();
@@ -51,7 +52,7 @@ const MovieDetails = () => {
         style={{
           backgroundImage: `url(https://image.tmdb.org/t/p/original/${movie.backdrop_path})`,
           height: "100%",
-          backgroundSize: "100%",
+          backgroundSize: "cover",
         }}
         className="backdrop"
       >
@@ -70,8 +71,8 @@ const MovieDetails = () => {
               size="md"
               w={"150px"}
               ml={"500px"}
-              mt="200px"
               mb="10px"
+              mt="200px"
               onClick={() => setTrailer(!trailer)}
             >
               {trailer ? <Icon as={BsPlayCircle} /> : " "}
@@ -141,6 +142,7 @@ const MovieDetails = () => {
             )}
           </Flex>
         </Flex>
+        <MovieCredits />
       </div>
     </Box>
   );

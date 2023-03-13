@@ -1,15 +1,4 @@
-import {
-  Card,
-  CardBody,
-  CardFooter,
-  Image,
-  Heading,
-  Text,
-  Divider,
-  ButtonGroup,
-  Button,
-  Stack,
-} from "@chakra-ui/react";
+import { Card, CardBody, Image, Text, Button } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import { AiOutlinePlayCircle } from "react-icons/ai";
 
