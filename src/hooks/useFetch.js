@@ -1,24 +1,22 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState } from "react";
 
-export const useFetch = (url,dependence) => {
+export const useFetch = (url, dependence) => {
+  const [movies, setMovies] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [page, SetPage] = useState(1);
 
-    const [movies , setMovies] = useState([])
-    const [isLoading, setIsLoading] = useState(false)
+  useEffect(() => {
+    setIsLoading(true);
+    fetch(url)
+      .then((res) => res.json())
+      .then((data) => {
+        setMovies(data.results);
+        setIsLoading(false);
+      });
+  }, [dependence, page]);
 
-    useEffect(()=>{
-       setIsLoading(true)
-       fetch(url)
-       .then(res=>res.json())
-       .then(data=>{
-            setMovies(data.results)
-            setIsLoading(false)
-        })
-    },[dependence])
-
-    return {
-
-        movies: movies,
-        isLoading: isLoading
-    }
-
-}
+  return {
+    movies: movies,
+    isLoading: isLoading,
+  };
+};

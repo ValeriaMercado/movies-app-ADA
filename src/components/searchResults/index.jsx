@@ -1,14 +1,13 @@
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import { BiLastPage, BiFirstPage } from "react-icons/Bi";
-import { Button, Flex, Spinner, Text } from "@chakra-ui/react";
+import { Flex, Spinner } from "@chakra-ui/react";
 import { MoviesCards } from "../moviesCard";
-import { Home } from "../home";
+import ReactPaginate from "react-paginate";
 
 const MoviesSearch = () => {
   const [isLoading, setLoading] = useState(false);
   const [movies, SetMovies] = useState([]);
-  const [page, SetPage] = useState(1);
+  const [page, setPage] = useState(1);
   const [searchParams, setSearchParams] = useSearchParams({
     query: "",
   });
@@ -27,12 +26,8 @@ const MoviesSearch = () => {
       }, 3000);
   }, [searchParams, page]);
 
-  const handleClickNext = () => {
-    SetPage(page + 1);
-  };
-
-  const handleClickPrev = () => {
-    SetPage(page - 1);
+  const handlePageChange = (selectedPage) => {
+    setPage(selectedPage.selected + 1);
   };
 
   return (
@@ -62,15 +57,23 @@ const MoviesSearch = () => {
         ))}
       </Flex>
 
-      <Flex justifyContent={"center"}>
-        <Button onClick={handleClickPrev} mr="50px" mb="20px" mt={"30px"}>
-          <BiFirstPage />
-          <Text ml={"10px"}>Prev</Text>
-        </Button>
-        <Button onClick={handleClickNext} mr="50px" mb="20px" mt={"30px"}>
-          <Text mr={"10px"}>Next</Text>
-          <BiLastPage />
-        </Button>
+      <Flex display={"flex"}>
+        <ReactPaginate
+          display="flex"
+          breakClassName={"pagination__break"}
+          previousLabel={"Prev"}
+          nextLabel={"Next"}
+          pageCount={100}
+          marginPagesDisplayed={2}
+          pageRangeDisplayed={5}
+          onPageChange={handlePageChange}
+          containerClassName={"pagination"}
+          previousLinkClassName={"pagination__link"}
+          nextLinkClassName={"pagination__link"}
+          disabledClassName={"pagination__link--disabled"}
+          activeClassName={"pagination__link--active"}
+          breakLabel="..."
+        />
       </Flex>
     </>
   );
