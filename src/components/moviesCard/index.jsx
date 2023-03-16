@@ -24,11 +24,14 @@ export const MoviesCards = ({
 }) => {
   return (
     <Card
-      maxW="25%"
+      //maxW="25%"
       display="flex"
       flexDirection="column"
       alignItems="center"
       m={4}
+      border="2px solid"
+      overflow="hidden"
+      height="500px"
     >
       <CardBody display="flex" flexDirection="column" alignItems="center">
         <Image
@@ -39,7 +42,7 @@ export const MoviesCards = ({
         />
         <Stack mt="6" spacing="3">
           <Heading size="md">{movieTitle}</Heading>
-          <Text noOfLines={[1, 2, 3]}>{movieDetails}</Text>
+          {/* <Text noOfLines={[1, 2, 3]}>{movieDetails}</Text> */}
           <Divider />
           <CardFooter>
             {movieTitle ? (

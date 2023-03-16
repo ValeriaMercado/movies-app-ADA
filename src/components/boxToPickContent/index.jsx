@@ -52,6 +52,34 @@ import { useContext } from "react";
 import { Context } from "../../context/Context";
 
 
+
+
+
+// const SampleNextArrow = (props) => {
+//   const { className, style, onClick } = props;
+//   return (
+//     <div
+//       className={className}
+//       style={{ ...style, display: "block" }}
+//       onClick={onClick}
+//     />
+//   );
+// }
+
+// const SamplePrevArrow = (props) => {
+//   const { className, style, onClick } = props;
+//   return (
+//     <div
+//       className={className}
+//       style={{ ...style, display: "block", background:"gray"}}
+//       onClick={onClick}
+//     />
+//   );
+//}
+
+
+
+
 export const BoxToPickContent = ({ searchCategory, serieOrMovie }) => {
   const context = useContext(Context);
 
@@ -62,17 +90,20 @@ export const BoxToPickContent = ({ searchCategory, serieOrMovie }) => {
 
   const settings = {
     dots: true,
-    infinite: false,
+    infinite: true,
     speed: 500,
-    slidesToShow: 4,
-    slidesToScroll: 4,
+    slidesToShow: 3,
+    slidesToScroll: 3,
     initialSlide: 0,
+    rows:1,
+    //nextArrow: <SampleNextArrow />,
+    //prevArrow: <SamplePrevArrow />,
     responsive: [
       {
         breakpoint: 1024,
         settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
+          slidesToShow: 2,
+          slidesToScroll: 2,
           infinite: true,
           dots: true
         }
@@ -96,13 +127,8 @@ export const BoxToPickContent = ({ searchCategory, serieOrMovie }) => {
   };
 
   return (
-    <Slider {...settings}
-        // dots={true} // muestra los puntos de navegación
-        // infinite={true} // permite navegar infinitamente
-        // speed={500} // velocidad de transición
-        // slidesToShow={5} // número de tarjetas mostradas a la vez
-        // slidesToScroll={1} // número de tarjetas que se desplazan a la vez
-    >
+    <Box width="70%" margin="0 auto" marginTop="50 px">
+      <Slider {...settings} className="slider">
       {movies?.map((movie) => {
         return (
             <MoviesCards
@@ -116,7 +142,9 @@ export const BoxToPickContent = ({ searchCategory, serieOrMovie }) => {
             />
     );
     })}
-    </Slider>
+      </Slider>
+    </Box>
+    
 
   );
 };
