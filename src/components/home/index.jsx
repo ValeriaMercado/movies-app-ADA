@@ -6,6 +6,7 @@ import { Footer } from "../footer";
 import { CategoryFilms } from "../categoryFilm";
 import { MoviesCarousel } from "../carousel";
 import { SelectLanguage } from "../selectLanguage";
+import { BoxToPickContent } from "../boxToPickContent";
 
 export const Home = () => {
 
@@ -29,13 +30,18 @@ export const Home = () => {
           <SelectLanguage />
           <Box display="flex" flexDirection="row">
             <CategoryFilms
-              categoryTitle="Popular Movies"
-              searchCategory="popular"
+            categoryTitle={"Popular Movies"}
+            searchCategory={`popular`}
+            serieOrMovie={`movie`}
+            />
+            <BoxToPickContent
+              categoryTitle={"Popular Movies"}
+              searchCategory={`popular`}
               serieOrMovie={`movie`}
             />
-            <CategoryFilms
-              categoryTitle="Top Rated"
-              searchCategory="top_rated"
+            <BoxToPickContent
+              categoryTitle={"Top Rated Movies"}
+              searchCategory={`top_rated`}
               serieOrMovie={`movie`}
             />
           </Box>

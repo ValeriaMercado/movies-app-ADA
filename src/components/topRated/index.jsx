@@ -1,7 +1,7 @@
-import { BoxToPickContent } from "../boxToPickContent";
+// import { BoxToPickContent } from "../boxToPickContent";
 
-export const TopRated = () => {
-  return (
-    <UpcomingTopRated searchCategory={`top_rated`} serieOrMovie={`movie`} />
-  );
-};
+// export const TopRated = () => {
+//   return (
+//     <UpcomingTopRated searchCategory={`top_rated`} serieOrMovie={`movie`} />
+//   );
+// };

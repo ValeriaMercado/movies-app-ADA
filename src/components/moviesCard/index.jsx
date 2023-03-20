@@ -35,7 +35,7 @@ export const MoviesCards = ({
     >
       <CardBody display="flex" flexDirection="column" alignItems="center">
         <Image
-          src={`https://image.tmdb.org/t/p/w500/${img}`}
+          src={`https://image.tmdb.org/t/p/w500${img}`}
           alt={alt}
           borderRadius="lg"
           width={"90%"}

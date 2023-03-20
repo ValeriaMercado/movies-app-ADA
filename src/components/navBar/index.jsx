@@ -16,15 +16,38 @@ import {
 } from "@chakra-ui/react";
 import { HamburgerIcon, CloseIcon, ChevronDownIcon } from "@chakra-ui/icons";
 import { NavLink } from "../navItem";
-import { useContext } from "react"
+import { useContext, useState, useEffect } from "react"
 import { Context } from "../../context/Context"
 import { SearchButton } from "../inputSearch";
+import { navbarTranslations } from "../../translations/navbar";
 
 
 
 export const Navbar = () => {
   const { isOpen, onToggle } = useDisclosure();
   const context = useContext(Context)
+  //console.log(navbarTranslations())
+
+
+    //   const [currentLanguage, setCurrentLanguage] = useState({})
+    //   if(context.language === 'es'){
+    //     setCurrentLanguage({
+    //       home : "Inicio",
+    //       movies : "Películas",
+    //       series : "Series",
+    //       upcoming : "Novedades",
+    //       topRated : "Mejor Puntuadas"
+    //     })
+    //     }
+    //     else{
+    //       setCurrentLanguage({
+    //         home : "Home",
+    //         movies : "Movies",
+    //         series : "Series",
+    //         upcoming : "Upcoming",
+    //         topRated : "Top Rated"
+    //     })
+    //  }
 
 
   return (
@@ -45,7 +68,7 @@ export const Navbar = () => {
                       <NavLink sectionTitle={"Home"} link={'/'}/>
                       <Box>
                           <Menu>
-                            <MenuButton as={Button} rightIcon={<ChevronDownIcon />}> {context.language ==='es'?'Péliclas':"Movies"}  </MenuButton>
+                            <MenuButton as={Button} rightIcon={<ChevronDownIcon />}> {context.language ==='es'?'Películas':"Movies"}  </MenuButton>
                             <MenuList>
                               <MenuItem><NavLink sectionTitle={context.language ==='es'?'Estrenos':"Upcoming"} link={'/upcoming'}/></MenuItem>
                               <MenuItem><NavLink sectionTitle={context.language ==='es'?'Mejor Puntuadas':"Top Rated"} link={'/top_rated'}/></MenuItem>
@@ -94,3 +117,5 @@ export const Navbar = () => {
           </Box>
   )
 }
+
+

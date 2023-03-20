@@ -46,7 +46,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { MoviesCards } from "../moviesCard";
 //import { useState, useEffect } from "react"
-import { Box, Spinner } from "@chakra-ui/react";
+import { Box, Spinner,Text } from "@chakra-ui/react";
 import { useFetch } from "../../hooks/useFetch";
 import { useContext } from "react";
 import { Context } from "../../context/Context";
@@ -80,7 +80,7 @@ import { Context } from "../../context/Context";
 
 
 
-export const BoxToPickContent = ({ searchCategory, serieOrMovie }) => {
+export const BoxToPickContent = ({ searchCategory, serieOrMovie,categoryTitle }) => {
   const context = useContext(Context);
 
   const { movies, isLoading } = useFetch(
@@ -128,6 +128,7 @@ export const BoxToPickContent = ({ searchCategory, serieOrMovie }) => {
 
   return (
     <Box width="70%" margin="0 auto" marginTop="50 px">
+      <Text>{categoryTitle}</Text>
       <Slider {...settings} className="slider">
       {movies?.map((movie) => {
         return (
