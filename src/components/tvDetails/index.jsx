@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import moment from "moment";
 import MovieTrailer from "./indexTrailer";
@@ -15,27 +15,22 @@ import {
   Spinner,
 } from "@chakra-ui/react";
 import TvCredits from "./tvCredits";
+import { useFetchTVDetails } from "../../hooks/useFetchTV";
+import { Context } from "../../context/Context";
+import { ViewOffIcon } from "@chakra-ui/icons";
 
 const TVDetails = () => {
   const params = useParams();
-  const [tv, setTv] = useState([]);
   const [trailer, setTrailer] = useState(true);
   const [isLoading, setLoading] = useState(false);
+  const context = useContext(Context);
 
-  useEffect(() => {
-    setLoading(true);
-    fetch(
-      `https://api.themoviedb.org/3/tv/${params.TVDetails}?api_key=ae186e957330197b5106a6c66c8bd1df&/`
-    )
-      .then((res) => res.json())
-      .then((data) => {
-        setTv(data);
-        setLoading(false);
-      }, 3000);
-  }, [params.TVDetails]);
+  const { tv } = useFetchTVDetails(
+    `https://api.themoviedb.org/3/tv/${params.TVDetails}?api_key=ae186e957330197b5106a6c66c8bd1df&language=${context.language}`
+  );
 
   return (
-    <Box>
+    <Box key={tv.id}>
       {isLoading && (
         <Spinner
           thickness="4px"
@@ -50,7 +45,11 @@ const TVDetails = () => {
       )}
       <div
         style={{
-          backgroundImage: `url(https://image.tmdb.org/t/p/original/${tv.backdrop_path})`,
+          backgroundImage: `${
+            tv.backdrop_path
+              ? `url(https://image.tmdb.org/t/p/original/${tv.backdrop_path})`
+              : ""
+          }`,
           height: "100%",
           backgroundSize: "cover",
         }}
@@ -62,8 +61,13 @@ const TVDetails = () => {
             ml={"200px"}
             mb="50px"
             pt="200px"
-            src={`http://image.tmdb.org/t/p/w500/${tv.poster_path}`}
+            src={
+              tv.poster_path
+                ? `http://image.tmdb.org/t/p/w500/${tv.poster_path} `
+                : " "
+            }
             alt={tv.title}
+            key={tv.id}
           />
           <Flex direction={"column"}>
             <Button
@@ -75,9 +79,8 @@ const TVDetails = () => {
               mt="200px"
               onClick={() => setTrailer(!trailer)}
             >
-              {trailer ? <Icon as={BsPlayCircle} /> : " "}
-
-              {trailer ? "   Trailer" : "Hide trailer"}
+              {trailer ? <Icon mr={"10px"} as={BsPlayCircle} /> : " "}
+              {trailer ? "Trailer" : <ViewOffIcon />}
             </Button>
             {!trailer && (
               <Box as="div" ml={"100px"}>
@@ -92,6 +95,7 @@ const TVDetails = () => {
                     position="relative"
                     color="white"
                     fontWeight="extrabold"
+                    key={tv.id}
                   >
                     {tv.name}
                   </Text>
@@ -112,6 +116,7 @@ const TVDetails = () => {
                   mr={"100px"}
                   position="relative"
                   color="white"
+                  key={tv.id}
                 >
                   {tv.overview}
                 </Text>
@@ -123,7 +128,7 @@ const TVDetails = () => {
                   color="white"
                   fontWeight="extrabold"
                 >
-                  GENRES
+                  {context.language === "en" ? "GENRES" : "GÉNEROS"}
                 </Text>
                 <Flex alignItems="center">
                   <UnorderedList
@@ -133,7 +138,7 @@ const TVDetails = () => {
                     color="white"
                   >
                     {tv?.genres?.map((g) => (
-                      <ListItem>{g.name}</ListItem>
+                      <ListItem key={g.id}>{g.name}</ListItem>
                     ))}
                   </UnorderedList>
                 </Flex>

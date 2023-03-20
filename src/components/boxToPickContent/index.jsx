@@ -12,9 +12,10 @@ export const BoxToPickContent = ({ searchCategory, serieOrMovie }) => {
   const context = useContext(Context);
   const [page, setPage] = useState(1);
   const [movies, setMovies] = useState([]);
+
   const { isLoading } = useFetch(
     `https://api.themoviedb.org/3/${serieOrMovie}/${searchCategory}?api_key=ae186e957330197b5106a6c66c8bd1df&language=${context.language}-US&page=${page}`,
-    context.language
+    page
   );
 
 
@@ -71,7 +72,7 @@ export const BoxToPickContent = ({ searchCategory, serieOrMovie }) => {
           breakClassName={"pagination__break"}
           previousLabel={"Prev"}
           nextLabel={"Next"}
-          pageCount={100}
+          pageCount={19}
           marginPagesDisplayed={2}
           pageRangeDisplayed={5}
           onPageChange={handlePageChange}

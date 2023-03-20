@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 import {
@@ -10,14 +10,16 @@ import {
   ListItem,
   List,
 } from "@chakra-ui/react";
+import { Context } from "../../context/Context";
 
 const TvCredits = () => {
   const params = useParams();
   const [tv, setTv] = useState([]);
+  const context = useContext(Context);
 
   useEffect(() => {
     fetch(
-      `https://api.themoviedb.org/3/tv/${params.TVDetails}/credits?api_key=ae186e957330197b5106a6c66c8bd1df&/`
+      `https://api.themoviedb.org/3/tv/${params.TVDetails}/credits?api_key=ae186e957330197b5106a6c66c8bd1df&language=${context.language}/`
     )
       .then((res) => res.json())
       .then((data) => {
@@ -33,7 +35,7 @@ const TvCredits = () => {
         fontWeight="extrabold"
         mb="10px"
       >
-        CAST
+        {context.language === "en" ? "CAST" : "ELENCO"}
       </Text>
       <Flex w="100%" overflowX="scroll" pos={"relative"}>
         <UnorderedList
@@ -42,8 +44,9 @@ const TvCredits = () => {
           pt={"10px"}
           mb="30px"
         >
-          {tv?.cast?.map((g) => (
+          {tv?.cast?.map((g, index) => (
             <List
+              key={index}
               mb={"10px"}
               w="150px"
               mr={"15px"}
@@ -51,7 +54,11 @@ const TvCredits = () => {
               borderRadius={"10px"}
             >
               <Image
-                src={`http://image.tmdb.org/t/p/original/${g.profile_path}`}
+                src={
+                  g.profile_path
+                    ? `http://image.tmdb.org/t/p/original/${g.profile_path}`
+                    : ""
+                }
                 borderTopRadius="10px"
               ></Image>
               <ListItem

@@ -24,35 +24,24 @@
 //   );
 // }
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { Input, Flex, InputGroup, InputLeftElement } from "@chakra-ui/react";
 import { SearchIcon } from "@chakra-ui/icons";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
+import { useFetchSearch } from "../../hooks/useFetchSearch";
 
 export const SearchButton = () => {
   const navigate = useNavigate();
   const [valorInput, setValorInput] = useState("");
-  const [movies, SetMovies] = useState([]);
-  const [page, SetPage] = useState(1);
   const [searchParams, setSearchParams] = useSearchParams({
     query: "",
   });
 
-  useEffect(() => {
-    fetch(
-      `https://api.themoviedb.org/3/search/multi?api_key=ae186e957330197b5106a6c66c8bd1df&query=${searchParams.get(
-        "query"
-      )}&page=${page}`
-    )
-      .then((res) => res.json())
-      .then((data) => {
-        SetMovies(data.results);
-      });
-  }, [searchParams, page]);
-
+  useFetchSearch(
+    `https://api.themoviedb.org/3/trending/all/day?api_key=ae186e957330197b5106a6c66c8bd1df&page=1`
+  );
   const handleChange = (e) => {
     setValorInput(e.target.value);
-    e.target.reset();
   };
 
   const handleClick = () => {
