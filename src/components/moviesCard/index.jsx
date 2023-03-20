@@ -1,49 +1,55 @@
-import { Card, CardBody, Image, Text, Button } from "@chakra-ui/react";
+import { Card, Button } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
-import { AiOutlinePlayCircle } from "react-icons/ai";
+import { BsFillPlayCircleFill } from "react-icons/bs";
+import { useMediaQuery } from "react-responsive";
 
-export const MoviesCards = ({ alt, movieTitle, img, id, TvTitle }) => {
+export const MoviesCards = ({ alt, movieTitle, img, id }) => {
+  const isSmallScreen = useMediaQuery({
+    query: "(max-width: 768px)",
+  });
+
   return (
     <>
       <Card
-        maxW="20%"
+        maxW={isSmallScreen ? "35%" : "20%"}
+        height={isSmallScreen ? "190px" : "400px"}
         display="flex"
-        flexDirection="column"
-        alignItems="center"
         m={4}
+        ml={isSmallScreen ? 4 : ""}
+        backgroundImage={img ? `https://image.tmdb.org/t/p/w500/${img}` : " "}
+        backgroundPosition="center"
+        width={"100%"}
+        backgroundSize="100%"
+        alt={movieTitle}
+        className="card-background"
       >
-        <CardBody display="flex" flexDirection="column" alignItems="center">
-          {img ? (
-            <Image
-              src={`https://image.tmdb.org/t/p/w500/${img}`}
-              alt={alt}
-              borderRadius="lg"
-              width={"100%"}
-            />
-          ) : (
-            <Text>No image found</Text>
-          )}
-
-          {movieTitle ? (
-            <Link to={`/details/movie/${id}`}>
-              <Button variant="ghost" fontSize={"40px"} ml="180px" mt={"20px"}>
-                <AiOutlinePlayCircle />
-              </Button>
-            </Link>
-          ) : (
-            <Link to={`/details/tv/${id}`}>
-              <Button
-                variant="ghost"
-                colorScheme="black"
-                fontSize={"40px"}
-                ml="180px"
-                mt={"20px"}
-              >
-                <AiOutlinePlayCircle />
-              </Button>
-            </Link>
-          )}
-        </CardBody>
+        {movieTitle ? (
+          <Link to={`/details/movie/${id}`}>
+            <Button
+              variant={"unstyled"}
+              fontSize={isSmallScreen ? "45px" : "45px"}
+              ml={isSmallScreen ? "170px" : "210px"}
+              mt={isSmallScreen ? "140px" : "345px"}
+              position="relative"
+              className="btn-card"
+            >
+              <BsFillPlayCircleFill />
+            </Button>
+          </Link>
+        ) : (
+          <Link to={`/details/tv/${id}`}>
+            <Button
+              variant={"unstyled"}
+              fontSize={isSmallScreen ? "30px" : "45px"}
+              ml={isSmallScreen ? "150px" : "210px"}
+              mt={isSmallScreen ? "175px" : "345px"}
+              position="relative"
+              className="btn-card"
+            >
+              <BsFillPlayCircleFill />
+            </Button>
+          </Link>
+        )}
       </Card>
     </>
   );

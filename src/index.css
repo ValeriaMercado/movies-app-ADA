@@ -73,3 +73,37 @@
   color: #fff;
   border-color: #3d045a;
 }
+
+.card-background {
+  position: relative;
+}
+
+.card-background:before {
+  content: "";
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+.card-background:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+  transform: scale(1.05);
+}
+
+/* .btn-card:hover > .btn-card {
+  border-radius: 500px;
+  color: aliceblue;
+} */
+
+.btn-card {
+  visibility: hidden;
+}
+
+.card-background:hover .btn-card {
+  position: absolute;
+  visibility: visible;
+  color: #ffffff;
+}
