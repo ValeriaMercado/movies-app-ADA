@@ -1,9 +1,11 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { Context } from "../context/Context";
 
-export const useFetch = (url, dependence) => {
+export const useFetch = (url, dependence, id) => {
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [page, SetPage] = useState(1);
+  const [page, setPage] = useState(1);
+  const context = useContext(Context);
 
   useEffect(() => {
     setIsLoading(true);
@@ -13,7 +15,7 @@ export const useFetch = (url, dependence) => {
         setMovies(data.results);
         setIsLoading(false);
       });
-  }, [dependence, page]);
+  }, [dependence, page, context.language, id]);
 
   return {
     movies: movies,

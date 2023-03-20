@@ -8,6 +8,7 @@ import TVDetails from "./components/tvDetails";
 import { BoxToPickContent } from "./components/boxToPickContent";
 import { SearchButton } from "./components/inputSearch";
 import MoviesSearch from "./components/searchResults";
+import { NotFound } from "./components/404";
 
 const App = () => {
   return (
@@ -53,12 +54,12 @@ const App = () => {
               />
             }
           />
-          <Route path="/" element={<Home />} />
           <Route
             path="/details/movie/:movieDetails"
             element={<MovieDetails />}
           />
           <Route path="/details/tv/:TVDetails" element={<TVDetails />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </ContextProvider>
     </BrowserRouter>

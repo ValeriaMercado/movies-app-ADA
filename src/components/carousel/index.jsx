@@ -18,17 +18,21 @@ export const MoviesCarousel = () => {
   );
 
   return (
-    <Carousel autoPlay interval="10000" transitionTime="2000" infiniteLoop>
+    <Carousel
+      autoPlay
+      interval="10000"
+      transitionTime="2000"
+      infiniteLoop
+      set
+      showThumbs={false}
+    >
       {movies?.map((p) => (
-        <div
-          style={{
-            backgroundImage: `url(https://image.tmdb.org/t/p/original/${p.backdrop_path})`,
-            height: "400px",
-            width: "100%",
-            backgroundSize: "100%",
-            padding: "200px",
-            display: "flex",
-          }}
+        <Box
+          backgroundImage={`url(https://image.tmdb.org/t/p/original/${p.backdrop_path})`}
+          height="400px"
+          w={"100%"}
+          backgroundSize="100%"
+          padding={"10%"}
           key={p.id}
           className="background"
         >
@@ -50,8 +54,9 @@ export const MoviesCarousel = () => {
               w={"80%"}
               color={"white"}
               p="10px"
-              ml={"150px"}
+              textAlign={"center"}
               position="relative"
+              margin={"auto"}
             >
               {p.overview}
             </Text>
@@ -69,7 +74,7 @@ export const MoviesCarousel = () => {
               </Link>
             )}
           </Flex>
-        </div>
+        </Box>
       ))}
     </Carousel>
   );
