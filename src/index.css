@@ -38,3 +38,38 @@
   position: relavite;
   width: 400px;
 }
+
+.pagination__break {
+  margin: 0 5px;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  margin: 0 auto;
+  padding: 0;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
+.pagination li {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.pagination__link {
+  display: block;
+
+  text-decoration: none;
+  color: #333;
+  border: 1px solid #ccc;
+}
+
+.pagination__link--active {
+  background-color: #3d045a;
+
+  color: #fff;
+  border-color: #3d045a;
+}

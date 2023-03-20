@@ -1,5 +1,5 @@
 import { Context } from "../context/Context"
-import { useState, useEffect } from "react"
+import { useState } from "react"
 export const ContextProvider = ({children}) => {
 
     const [clearTheme, setClearTheme] = useState(false)
