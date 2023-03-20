@@ -10,6 +10,8 @@ import "./index.css"
 import { CategoryFilms } from "./components/categoryFilm";
 //import {CategoryFilms} from './components/categoryFilm'
 
+import { SearchButton } from "./components/inputSearch";
+import MoviesSearch from "./components/searchResults";
 
 const App = () => {
   return (
@@ -23,6 +25,7 @@ const App = () => {
             /> */}
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/search" element={<MoviesSearch />} />
           <Route
             path="/upcoming"
             element={
