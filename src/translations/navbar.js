@@ -1,9 +1,8 @@
-import { useContext, useState } from "react";
-import { Context } from "../context/Context";
 
-export const navbarTranslations = () =>{
-    const context = useContext(Context);
-    const [lang, setlang] = useState({
+
+export const navbarTranslations = (par) =>{
+   
+        if (par.language === 'en'){ return{
         home: "Home",
         search: "Search",
         movies: "Movies",
@@ -11,11 +10,13 @@ export const navbarTranslations = () =>{
         topRated: "Top Rated",
         upcomimg: "Upcoming",
         popular: "Popular",
-        latest: "Latest"
-    })
+        latest: "Latest",
+        top: "Top Series",
+        search: "Search"
+    }}
 
-    if (context.language === 'es'){
-        setlang({
+    if (par.language === 'es'){
+       return {
             home: "Inicio",
             search: "Busqueda",
             movies: "Películas",
@@ -23,12 +24,14 @@ export const navbarTranslations = () =>{
             topRated: "Mejor Puntuadas",
             upcomimg: "Próximamente",
             popular: "Populares",
-            latest: "Lo último"
-        })
+            latest: "Lo último",
+            top: "Series Top",
+            search: "Busca"
+        }
     }
 
-    if (context.language === 'fr'){
-        setlang({
+    if (par.language === 'fr'){
+      return{
             home: "Maison",
             search: "Chercher",
             movies: "Films",
@@ -36,10 +39,11 @@ export const navbarTranslations = () =>{
             topRated: "Les mieux notés",
             upcomimg: "Bientôt disponible",
             popular: "Populaire",
-            latest: "Dernier"
-        })
+            latest: "Dernier",
+            top: "Top Série",
+            search:"recherche"
+        }
     }
-    return lang
 }
 
 //este codigo me genera un bucle infinito

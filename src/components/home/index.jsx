@@ -26,16 +26,16 @@ export const Home = () => {
       >
         <Box display="flex" flexDirection="column">
           <Box display="flex" flexDirection="row">
-            <CategoryFilms
+            {/* <CategoryFilms
               categoryTitle="Popular Movies"
               searchCategory="popular"
               serieOrMovie={`movie`}
-            />
-            <CategoryFilms
+            /> */}
+            {/* <CategoryFilms
               categoryTitle="Top Rated"
               searchCategory="top_rated"
               serieOrMovie={`movie`}
-            />
+            /> */}
           </Box>
         </Box>
       </Box>

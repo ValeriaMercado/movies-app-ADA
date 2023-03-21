@@ -1,11 +1,9 @@
-import { MoviesCards } from "../moviesCard";
 import { Context } from "../../context/Context";
 import { MoviesCards } from "../moviesCard";
 import { useState, useEffect } from "react";
 import { Box, Spinner, Flex } from "@chakra-ui/react";
 import { useFetch } from "../../hooks/useFetch";
 import { useContext } from "react";
-import { Context } from "../../context/Context";
 import ReactPaginate from "react-paginate";
 
 export const BoxToPickContent = ({ searchCategory, serieOrMovie }) => {

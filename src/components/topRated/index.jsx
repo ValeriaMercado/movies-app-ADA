@@ -1,4 +1,4 @@
-import { BoxToPickContent } from "../boxToPickContent";
+
 
 // export const TopRated = () => {
 //   return (

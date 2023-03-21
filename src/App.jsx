@@ -8,9 +8,6 @@ import TVDetails from "./components/tvDetails";
 import { BoxToPickContent } from "./components/boxToPickContent";
 import "./index.css"
 import { CategoryFilms } from "./components/categoryFilm";
-//import {CategoryFilms} from './components/categoryFilm'
-
-import { SearchButton } from "./components/inputSearch";
 import MoviesSearch from "./components/searchResults";
 import { NotFound } from "./components/404";
 
@@ -19,11 +16,6 @@ const App = () => {
     <BrowserRouter>
       <ContextProvider>
         <Navbar />
-        {/* <BoxToPickContent
-              categoryTitle={"Top Rated Movies"}
-              searchCategory={`top_rated`}
-              serieOrMovie={`movie`}
-            /> */}
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/search" element={<MoviesSearch />} />
@@ -40,7 +32,7 @@ const App = () => {
           <Route
             path="/top_rated"
             element={
-              <BoxToPickContent
+              <CategoryFilms
                 categoryTitle={``}
                 searchCategory={`top_rated`}
                 serieOrMovie={`movie`}

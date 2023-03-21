@@ -20,35 +20,22 @@ import { Context } from "../../context/Context"
 import { SearchButton } from "../inputSearch";
 import { navbarTranslations } from "../../translations/navbar";
 import { SelectLanguage } from "../selectLanguage";
+import { useTranslate } from "../../hooks/useTranslate";
 
 
 
 export const Navbar = () => {
   const { isOpen, onToggle } = useDisclosure();
   const context = useContext(Context)
-  //console.log(navbarTranslations())
 
-
-    //   const [currentLanguage, setCurrentLanguage] = useState({})
-    //   if(context.language === 'es'){
-    //     setCurrentLanguage({
-    //       home : "Inicio",
-    //       movies : "Películas",
-    //       series : "Series",
-    //       upcoming : "Novedades",
-    //       topRated : "Mejor Puntuadas"
-    //     })
-    //     }
-    //     else{
-    //       setCurrentLanguage({
-    //         home : "Home",
-    //         movies : "Movies",
-    //         series : "Series",
-    //         upcoming : "Upcoming",
-    //         topRated : "Top Rated"
-    //     })
-    //  }
-
+  const translations = useTranslate(navbarTranslations(context))
+  //  const [translations, setTranslations] = useState({})
+ 
+  //  useEffect(()=>{
+     
+  //   setTranslations(navbarTranslations(context))
+   
+  // },[context.language])
 
 
   return (
@@ -66,29 +53,22 @@ export const Navbar = () => {
           <SearchButton />
 
           <HStack as={"nav"} spacing={4} display={{ base: "none", md: "flex" }}>
-            <NavLink sectionTitle={"Home"} link={"/"} />
+            <NavLink sectionTitle={translations.home} link={"/"} />
             <Box>
               <Menu>
                 <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
-                  {" "}
-                  {context.language === "es" ? "Películas" : "Movies"}{" "}
+                  {translations.movies}
                 </MenuButton>
                 <MenuList>
                   <MenuItem>
                     <NavLink
-                      sectionTitle={
-                        context.language === "es" ? "Estrenos" : "Upcoming"
-                      }
+                      sectionTitle={translations.upcoming}
                       link={"/upcoming"}
                     />
                   </MenuItem>
                   <MenuItem>
                     <NavLink
-                      sectionTitle={
-                        context.language === "es"
-                          ? "Mejor Puntuadas"
-                          : "Top Rated"
-                      }
+                      sectionTitle={translations.topRated}
                       link={"/top_rated"}
                     />
                   </MenuItem>
@@ -98,23 +78,18 @@ export const Navbar = () => {
             <Box>
               <Menu>
                 <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
-                  {" "}
-                  Series{" "}
+                  {translations.series}
                 </MenuButton>
                 <MenuList>
                   <MenuItem>
                     <NavLink
-                      sectionTitle={
-                        context.language === "es" ? "Populares" : "Popular"
-                      }
+                      sectionTitle={translations.popular}
                       link={"/popular"}
                     />
                   </MenuItem>
                   <MenuItem>
                     <NavLink
-                      sectionTitle={
-                        context.language === "es" ? "Top series" : "Top tv"
-                      }
+                      sectionTitle={translations.top}
                       link={"/topTv"}
                     />
                   </MenuItem>
@@ -131,29 +106,23 @@ export const Navbar = () => {
         <Box pb={4} display="flex" justifyContent="center">
           <Stack as={"nav"} spacing={4}>
             <Box display="flex" justifyContent="flex-start" marginLeft={4}>
-              <NavLink sectionTitle="Home" link={"/"} />
+              <NavLink sectionTitle={translations.home} link={"/"} />
             </Box>
             <Box>
               <Menu>
                 <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
-                  Movies
+                  {translations.movies}
                 </MenuButton>
                 <MenuList>
                   <MenuItem>
                     <NavLink
-                      sectionTitle={
-                        context.language === "es" ? "Estrenos" : "Upcoming"
-                      }
+                      sectionTitle={translations.upcoming}
                       link={"/upcoming"}
                     />
                   </MenuItem>
                   <MenuItem>
                     <NavLink
-                      sectionTitle={
-                        context.language === "es"
-                          ? "Mejor Puntuadas"
-                          : "Top Rated"
-                      }
+                      sectionTitle={translations.topRated}
                       link={"/top_rated"}
                     />
                   </MenuItem>
@@ -163,25 +132,18 @@ export const Navbar = () => {
             <Box>
               <Menu>
                 <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
-                  {" "}
-                  Series{" "}
+                  {translations.series}
                 </MenuButton>
                 <MenuList>
                   <MenuItem>
                     <NavLink
-                      sectionTitle={
-                        context.language === "es" ? "Populares" : "Popular"
-                      }
+                      sectionTitle={translations.popular}
                       link={"/popular"}
                     />
                   </MenuItem>
                   <MenuItem>
                     <NavLink
-                      sectionTitle={
-                        context.language === "es"
-                          ? "Top series"
-                          : "Top Tv Shows"
-                      }
+                      sectionTitle={translations.top}
                       link={"/topTv"}
                     />
                   </MenuItem>
