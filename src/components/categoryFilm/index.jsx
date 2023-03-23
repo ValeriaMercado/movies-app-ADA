@@ -1,13 +1,13 @@
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css"; 
-import "slick-carousel/slick/slick-theme.css";
-import { MoviesCards } from "../moviesCard";
-import { Box,Text,Card,Image } from "@chakra-ui/react";
-import { useFetch } from "../../hooks/useFetch";
-import { useContext } from "react";
-import { Context } from "../../context/Context";
+import { Splide, SplideSlide } from '@splidejs/react-splide';
+import '@splidejs/splide/dist/css/themes/splide-default.min.css';
+import { Box, Text, Card, Image } from '@chakra-ui/react';
+import { useFetch } from '../../hooks/useFetch';
+import { useContext } from 'react';
+import { Context } from '../../context/Context';
 
-export const CategoryFilms = ({ searchCategory, serieOrMovie,categoryTitle }) => {
+
+
+export const CategoryFilms = ({ searchCategory, serieOrMovie, categoryTitle}) => {
   const context = useContext(Context);
 
   const { movies, isLoading } = useFetch(
@@ -15,65 +15,45 @@ export const CategoryFilms = ({ searchCategory, serieOrMovie,categoryTitle }) =>
     context.language
   );
 
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 3,
-    slidesToScroll: 3,
-    initialSlide: 0,
-    //rows:1,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
-          infinite: true,
-          dots: true
-        }
+  const options = {
+    type: 'slide',
+    perPage: 5,
+    perMove: 5,
+    gap: '1rem',
+    breakpoints: {
+      1024: {
+        perPage: 2,
+        perMove: 2,
+        gap: '0.5rem',
       },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
-          initialSlide: 2
-        }
+      600: {
+        perPage: 1,
+        perMove: 1,
+        gap: '0.5rem',
       },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1
-        }
-      }
-    ]
+      480: {
+        perPage: 1,
+        perMove: 1,
+        gap: '0.5rem',
+      },
+    },
   };
 
   return (
-    <Box width="70%" margin="0 auto" marginTop="50 px">
-      <Text>{categoryTitle}</Text>
-      <Slider {...settings} className="slider">
-      {movies?.map((movie) => {
-        return (
-            // <MoviesCards
-            //   searchCategory={searchCategory}
-            //   key={movie.id}
-            //   alt={movie.title}
-            //   movieTitle={movie.title}
-            //   movieDetails={movie.overview}
-            //   img={movie.poster_path}
-            //   id={movie.id}
-            // />
-            <Card key={movie.id} margin="30px">
-                <Image src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}/>
+    <Box width={{ base: '50%', md: '60%', lg: '70%' }} margin="0 auto" marginTop="50px">
+     <Text display="flex" justifyContent="center" color="white" fontWeight="bold">{categoryTitle}</Text>
+      <Splide options={options} style={{ width: '100%' }}>
+        {movies?.map((movie) => (
+          <SplideSlide key={movie.id} style={{ padding: 0, margin: 0 }}>
+            <Card margin="10px">
+              <Image
+                src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+              />
             </Card>
-    );
-    })}
-      </Slider>
+          </SplideSlide>
+        ))}
+      </Splide>
     </Box>
-    
-
   );
 };
+

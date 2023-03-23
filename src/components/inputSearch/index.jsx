@@ -1,11 +1,12 @@
 
-import { useState, useContext, useEffect} from "react";
+import { useState, useContext} from "react";
 import { Input, Flex, InputGroup, InputLeftElement } from "@chakra-ui/react";
 import { SearchIcon } from "@chakra-ui/icons";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { useFetchSearch } from "../../hooks/useFetchSearch";
-import { navbarTranslations } from "../../translations/navbar";
+import { navbarTranslations } from "../../translations/navbarTranslations";
 import { Context } from "../../context/Context";
+import { useTranslate } from "../../hooks/useTranslate";
 
 export const SearchButton = () => {
   const navigate = useNavigate();
@@ -13,13 +14,7 @@ export const SearchButton = () => {
 
 
   const context = useContext(Context)
-   const [translations, setTranslations] = useState({})
-  useEffect(()=>{
-     
-    setTranslations(navbarTranslations(context))
-   
-  },[context.language])
-
+  const translations = useTranslate(navbarTranslations(context))
 
 
   const [searchParams, setSearchParams] = useSearchParams({

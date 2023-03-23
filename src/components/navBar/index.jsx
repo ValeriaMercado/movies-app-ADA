@@ -18,7 +18,7 @@ import { NavLink } from "../navItem";
 import { useContext, useState, useEffect } from "react"
 import { Context } from "../../context/Context"
 import { SearchButton } from "../inputSearch";
-import { navbarTranslations } from "../../translations/navbar";
+import { navbarTranslations } from "../../translations/navbarTranslations";
 import { SelectLanguage } from "../selectLanguage";
 import { useTranslate } from "../../hooks/useTranslate";
 
@@ -29,14 +29,7 @@ export const Navbar = () => {
   const context = useContext(Context)
 
   const translations = useTranslate(navbarTranslations(context))
-  //  const [translations, setTranslations] = useState({})
- 
-  //  useEffect(()=>{
-     
-  //   setTranslations(navbarTranslations(context))
-   
-  // },[context.language])
-
+  
 
   return (
     <Box bg={useColorModeValue("gray.100", "gray.900")} px={4}>

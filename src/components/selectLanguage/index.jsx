@@ -1,9 +1,13 @@
 import { Select } from "@chakra-ui/react";
 import { useContext } from "react";
 import { Context } from "../../context/Context";
+import { generalTranslations } from "../../translations/generalTranslations";
+import {useTranslate} from "../../hooks/useTranslate"
 
 export const SelectLanguage = () => {
   const context = useContext(Context);
+  const translations = useTranslate(generalTranslations(context))
+
   const handleChangeLanguage = (e) => {
     context.setLanguage(e.target.value);
   };
@@ -12,7 +16,7 @@ export const SelectLanguage = () => {
     <>
       <Select
         mr={"40px"}
-        placeholder="Select language"
+        placeholder={translations.selectLanguage}
         onChange={handleChangeLanguage}
       >
         <option value="en">English</option>

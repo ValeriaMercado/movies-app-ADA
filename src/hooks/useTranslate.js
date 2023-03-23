@@ -3,17 +3,15 @@ import { Context } from "../context/Context"
 import { useContext,useEffect,useState } from "react"
 
 
-export const useTranslate = (transFolder) => {
+export const useTranslate = (translationsFolder) => {
 
     const context = useContext(Context)
     const [translations, setTranslations] = useState({})
 
     useEffect(()=>{
-        setTranslations(transFolder)
-      },[context.language])
+        setTranslations(translationsFolder)
+    },[context.language])
 
-
-  
     return (
     translations
     )

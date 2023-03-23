@@ -1,5 +1,7 @@
 import { useContext } from "react";
 import { Context } from "../../context/Context";
+import { useTranslate } from "../../hooks/useTranslate";
+import { footerTranslations } from "../../translations/footerTranslations";
 import { FiMoon, FiSun } from "react-icons/fi";
 import {
   ButtonGroup,
@@ -8,12 +10,13 @@ import {
   Stack,
   Text,
   Box,
-  Select,
 } from "@chakra-ui/react";
 import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
 
+
 export const Footer = () => {
   const context = useContext(Context);
+  const translations = useTranslate(footerTranslations(context))
 
   const changeTheme = () => {
     context.clearTheme
@@ -69,8 +72,7 @@ export const Footer = () => {
           </ButtonGroup>
         </Stack>
         <Text fontSize="sm" color="subtle">
-          &copy; {new Date().getFullYear()} Created by Macarena & Valeria. All
-          rights reserved.
+          &copy; {new Date().getFullYear()} {translations.createdBy}
         </Text>
       </Stack>
     </Container>

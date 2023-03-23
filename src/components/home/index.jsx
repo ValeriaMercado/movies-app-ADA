@@ -5,12 +5,19 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Footer } from "../footer";
 import { CategoryFilms } from "../categoryFilm";
 import { MoviesCarousel } from "../carousel";
+import {useTranslate} from "../../hooks/useTranslate"
+import { generalTranslations } from "../../translations/generalTranslations";
+import { Portada } from "../portada";
+
 
 export const Home = () => {
   const context = useContext(Context);
+  const translations =  useTranslate(generalTranslations(context))
+
 
   return (
-    <Flex flexDirection={"column"}>
+    <Flex flexDirection={"column"} h="100vh">
+      <Portada/>
       <Box as="div">
         <MoviesCarousel searchCategory={`popular`} serieOrMovie={`movie`} />
       </Box>
@@ -24,19 +31,20 @@ export const Home = () => {
         width="100%"
         height="100vh"
       >
-        <Box display="flex" flexDirection="column">
-          <Box display="flex" flexDirection="row">
-            {/* <CategoryFilms
-              categoryTitle="Popular Movies"
+        <Box w={{ base: '100%', md: '90%', lg: '90%' }}  display="flex" flexDirection="column" justifyContent="center" alignItems="center" border="2px solid">
+
+
+            <CategoryFilms
+              categoryTitle={translations.popular}
               searchCategory="popular"
               serieOrMovie={`movie`}
-            /> */}
-            {/* <CategoryFilms
-              categoryTitle="Top Rated"
+            />
+            <CategoryFilms
+              categoryTitle={translations.topRated}
               searchCategory="top_rated"
               serieOrMovie={`movie`}
-            /> */}
-          </Box>
+            />
+
         </Box>
       </Box>
       <Footer />

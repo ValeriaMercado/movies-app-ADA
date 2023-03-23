@@ -1,5 +1,4 @@
 
-
 export const navbarTranslations = (par) =>{
    
         if (par.language === 'en'){ return{
@@ -46,4 +45,3 @@ export const navbarTranslations = (par) =>{
     }
 }
 
-//este codigo me genera un bucle infinito
