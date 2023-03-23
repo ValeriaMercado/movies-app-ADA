@@ -1,4 +1,4 @@
-// import { UpcomingTopRated } from "../boxToPickContent";
+
 
 // export const TopRated = () => {
 //   return (

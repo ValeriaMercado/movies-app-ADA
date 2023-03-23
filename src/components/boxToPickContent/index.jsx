@@ -1,9 +1,9 @@
+import { Context } from "../../context/Context";
 import { MoviesCards } from "../moviesCard";
 import { useState, useEffect } from "react";
 import { Box, Spinner, Flex } from "@chakra-ui/react";
 import { useFetch } from "../../hooks/useFetch";
 import { useContext } from "react";
-import { Context } from "../../context/Context";
 import ReactPaginate from "react-paginate";
 
 export const BoxToPickContent = ({ searchCategory, serieOrMovie }) => {
@@ -15,6 +15,7 @@ export const BoxToPickContent = ({ searchCategory, serieOrMovie }) => {
     `https://api.themoviedb.org/3/${serieOrMovie}/${searchCategory}?api_key=ae186e957330197b5106a6c66c8bd1df&language=${context.language}-US&page=${page}`,
     page
   );
+
 
   const handlePageChange = (selectedPage) => {
     setPage(selectedPage.selected + 1);

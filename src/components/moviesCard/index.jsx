@@ -52,5 +52,6 @@ export const MoviesCards = ({ alt, movieTitle, img, id }) => {
         )}
       </Card>
     </>
+
   );
 };

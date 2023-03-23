@@ -1,38 +1,22 @@
-// import { useState } from "react";
-// import { Button, Input, InputGroup, InputLeftElement } from "@chakra-ui/react";
-// import { SearchIcon } from "@chakra-ui/icons";
 
-// export const InputSearch = () => {
-//   const [showInput, setShowInput] = useState(false);
-
-//   const toggleShowInput = () => {
-//     setShowInput(!showInput);
-//   };
-
-//   return (
-//     <>
-//       <Button leftIcon={<SearchIcon />} onClick={toggleShowInput}>
-//         Search
-//       </Button>
-//       {showInput && (
-//         <InputGroup mt={4}>
-//           <InputLeftElement pointerEvents="none" children={<SearchIcon />} />
-//           <Input type="text" placeholder="Buscar..." />
-//         </InputGroup>
-//       )}
-//     </>
-//   );
-// }
-
-import { useState, useEffect, useContext } from "react";
+import { useState, useContext} from "react";
 import { Input, Flex, InputGroup, InputLeftElement } from "@chakra-ui/react";
 import { SearchIcon } from "@chakra-ui/icons";
-import { Link, useNavigate, useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { useFetchSearch } from "../../hooks/useFetchSearch";
+import { navbarTranslations } from "../../translations/navbarTranslations";
+import { Context } from "../../context/Context";
+import { useTranslate } from "../../hooks/useTranslate";
 
 export const SearchButton = () => {
   const navigate = useNavigate();
   const [valorInput, setValorInput] = useState("");
+
+
+  const context = useContext(Context)
+  const translations = useTranslate(navbarTranslations(context))
+
+
   const [searchParams, setSearchParams] = useSearchParams({
     query: "",
   });
@@ -68,7 +52,7 @@ export const SearchButton = () => {
         />
         <Input
           type="search"
-          placeholder="Search"
+          placeholder={translations.search}
           onSubmit={handleClick}
           onChange={handleChange}
           value={valorInput}

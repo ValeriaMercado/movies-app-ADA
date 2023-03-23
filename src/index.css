@@ -1,3 +1,7 @@
+body {
+  overflow-x: hidden;
+}
+
 .carousel .control-arrow,
 .carousel.carousel-slider .control-arrow,
 .carousel .carousel-status {

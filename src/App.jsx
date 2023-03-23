@@ -6,7 +6,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import MovieDetails from "./components/moviesDetails";
 import TVDetails from "./components/tvDetails";
 import { BoxToPickContent } from "./components/boxToPickContent";
-import { SearchButton } from "./components/inputSearch";
+import "./index.css"
+import { CategoryFilms } from "./components/categoryFilm";
 import MoviesSearch from "./components/searchResults";
 import { NotFound } from "./components/404";
 
@@ -22,6 +23,7 @@ const App = () => {
             path="/upcoming"
             element={
               <BoxToPickContent
+                categoryTitle={``}
                 searchCategory={`upcoming`}
                 serieOrMovie={`movie`}
               />
@@ -30,7 +32,8 @@ const App = () => {
           <Route
             path="/top_rated"
             element={
-              <BoxToPickContent
+              <CategoryFilms
+                categoryTitle={``}
                 searchCategory={`top_rated`}
                 serieOrMovie={`movie`}
               />
@@ -40,18 +43,19 @@ const App = () => {
             path="/popular"
             element={
               <BoxToPickContent
+                categoryTitle={``}
                 searchCategory={`popular`}
                 serieOrMovie={`tv`}
               />
             }
           />
           <Route
-            path="/topTv"
+            path="/latest"
             element={
               <BoxToPickContent
-                searchCategory={`top_rated`}
-                serieOrMovie={`tv`}
-              />
+                  categoryTitle={``}
+                  searchCategory={`latest`}
+                  serieOrMovie={`tv`} />
             }
           />
           <Route
@@ -63,6 +67,8 @@ const App = () => {
         </Routes>
       </ContextProvider>
     </BrowserRouter>
+
+
   );
 };
 
