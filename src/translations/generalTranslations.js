@@ -3,17 +3,19 @@ export const generalTranslations = (par) =>{
    
     if (par.language === 'en'){ return{
     selectLanguage: "Select Language",
-    topRated: "Top Rated",
+    topRated: "Top Rated Series",
     popular: "Popular Movies",
-    trailer: "Watch Trailer"
+    trailer: "Watch Trailer",
+    play: "Play"
 }}
 
 if (par.language === 'es'){
    return {
     selectLanguage: "Selecccione lenguaje",
     popular: "Películas Populares",
-    topRated: "Mejor Puntuadas",
-    trailer: "Ver Trailer"
+    topRated: " Series Mejor Puntuadas",
+    trailer: "Ver Trailer",
+    play: "Reproducir"
     
     }
 }
@@ -21,26 +23,29 @@ if (par.language === 'es'){
 if (par.language === 'fr'){
   return{
     selectLanguage: "Langue de sélection",
-    topRated: "Les mieux notés",
+    topRated: "la série la mieux notée",
     popular: "Populaire",
-    trailer: "Voir la bande-annonce"
+    trailer: "Voir la bande-annonce",
+    reproducir:"Jouer"
     }
 }
 
 if (par.language === 'it'){
   return{
     selectLanguage: "Lingua di selezione",
-    topRated: "Più votati",
+    topRated: "la serie più votata",
     popular: "Popolare",
-    trailer: "Guarda il trailer"
+    trailer: "Guarda il trailer",
+    play:"Giocare"
     }
 }
 if (par.language === 'ru'){
   return {
     selectLanguage: "выберите язык",
     popular: "Популярные фильмы",
-    topRated: "Лучший рейтинг",
-    trailer: "Смотреть трейлер"
+    topRated: "сериал с лучшим рейтингом",
+    trailer: "Смотреть трейлер",
+    play: "играть"
    }
 }
 

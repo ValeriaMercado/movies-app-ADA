@@ -107,7 +107,7 @@ export const Navbar = () => {
                   {translations.movies}
                 </MenuButton>
                 <MenuList>
-                  <MenuItem>
+                   <MenuItem>
                     <NavLink
                       sectionTitle={translations.upcoming}
                       link={"/upcoming"}
@@ -119,6 +119,7 @@ export const Navbar = () => {
                       link={"/top_rated"}
                     />
                   </MenuItem>
+                 
                 </MenuList>
               </Menu>
             </Box>

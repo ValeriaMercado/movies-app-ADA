@@ -17,7 +17,7 @@ export const Home = () => {
 
   return (
     <Flex flexDirection={"column"} w="100%">
-      {/* <Portada/> */}
+      <Portada/>
       <Box as="div">
         <MoviesCarousel searchCategory={`popular`} serieOrMovie={`movie`} />
       </Box>
@@ -42,7 +42,7 @@ export const Home = () => {
             <CategoryFilms
               categoryTitle={translations.topRated}
               searchCategory="top_rated"
-              serieOrMovie={`movie`}
+              serieOrMovie={`tv`}
             />
 
         </Box>
