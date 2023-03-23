@@ -7,7 +7,6 @@ import MovieDetails from "./components/moviesDetails";
 import TVDetails from "./components/tvDetails";
 import { BoxToPickContent } from "./components/boxToPickContent";
 import "./index.css"
-import { CategoryFilms } from "./components/categoryFilm";
 import MoviesSearch from "./components/searchResults";
 import { NotFound } from "./components/404";
 
@@ -32,7 +31,7 @@ const App = () => {
           <Route
             path="/top_rated"
             element={
-              <CategoryFilms
+              <BoxToPickContent
                 categoryTitle={``}
                 searchCategory={`top_rated`}
                 serieOrMovie={`movie`}
@@ -50,11 +49,11 @@ const App = () => {
             }
           />
           <Route
-            path="/latest"
+            path="/topTv"
             element={
               <BoxToPickContent
                   categoryTitle={``}
-                  searchCategory={`latest`}
+                  searchCategory={`top_rated`}
                   serieOrMovie={`tv`} />
             }
           />
