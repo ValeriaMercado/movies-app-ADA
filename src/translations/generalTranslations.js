@@ -23,7 +23,25 @@ if (par.language === 'fr'){
     selectLanguage: "Langue de sélection",
     topRated: "Les mieux notés",
     popular: "Populaire",
-    trailer: "voir la bande-annonce"
+    trailer: "Voir la bande-annonce"
     }
 }
+
+if (par.language === 'it'){
+  return{
+    selectLanguage: "Lingua di selezione",
+    topRated: "Più votati",
+    popular: "Popolare",
+    trailer: "Guarda il trailer"
+    }
+}
+if (par.language === 'ru'){
+  return {
+    selectLanguage: "выберите язык",
+    popular: "Популярные фильмы",
+    topRated: "Лучший рейтинг",
+    trailer: "Смотреть трейлер"
+   }
+}
+
 }

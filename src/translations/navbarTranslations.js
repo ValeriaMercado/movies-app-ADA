@@ -3,7 +3,6 @@ export const navbarTranslations = (par) =>{
    
         if (par.language === 'en'){ return{
         home: "Home",
-        search: "Search",
         movies: "Movies",
         series: "Series",
         topRated: "Top Rated",
@@ -17,7 +16,6 @@ export const navbarTranslations = (par) =>{
     if (par.language === 'es'){
        return {
             home: "Inicio",
-            search: "Busqueda",
             movies: "Películas",
             series: "Series",
             topRated: "Mejor Puntuadas",
@@ -40,8 +38,36 @@ export const navbarTranslations = (par) =>{
             popular: "Populaire",
             latest: "Dernier",
             top: "Top Série",
-            search:"recherche"
+            
         }
     }
+    if (par.language === 'it'){
+        return{
+              home: "Inizio",
+              search: "Cercare",
+              movies: "Films",
+              series: "Serie",
+              topRated: "Miglior voto",
+              upcomimg: "Imminente",
+              popular: "Popolare",
+              latest: "L'ultimo",
+              top: "Massima serie",
+              
+          }
+      }
+      if (par.language === 'ru'){
+        return {
+             home: "Начинать",
+             movies: "Фильмы",
+             series: "сериал",
+             topRated: "Лучший рейтинг",
+             upcomimg: "Скоро",
+             popular: "популярный",
+             latest: "Последний",
+             top: "Топ серии",
+             search: "Ищет"
+         }
+     }
+ 
 }
 

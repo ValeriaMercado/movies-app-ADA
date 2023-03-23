@@ -1,10 +1,11 @@
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 import '@splidejs/splide/dist/css/themes/splide-default.min.css';
-import { Box, Text, Card, Image } from '@chakra-ui/react';
+import { Box, Text, Card, Image,IconButton } from '@chakra-ui/react';
 import { useFetch } from '../../hooks/useFetch';
 import { useContext } from 'react';
 import { Context } from '../../context/Context';
-
+import { FaPlay } from "react-icons/fa";
+import { Link } from 'react-router-dom';
 
 
 export const CategoryFilms = ({ searchCategory, serieOrMovie, categoryTitle}) => {
@@ -45,11 +46,14 @@ export const CategoryFilms = ({ searchCategory, serieOrMovie, categoryTitle}) =>
       <Splide options={options} style={{ width: '100%' }}>
         {movies?.map((movie) => (
           <SplideSlide key={movie.id} style={{ padding: 0, margin: 0 }}>
-            <Card margin="10px" borderRadius="5%" boxShadow="10px 10px 30px 0px">
+            <Card margin="10px" borderRadius="5%" boxShadow="10px 10px 30px 0px" transition="transform 0.3s ease-in-out" _hover={{ transform: 'scale(1.05)' }}>
               <Image 
               borderRadius="5%"
                 src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
               />
+              <Link to={`/details/movie/${movie.id}`}>
+                <IconButton icon={<FaPlay />} position="absolute" bottom="2" right="2" colorScheme="red" aria-label="Reproducir película" />
+              </Link>
             </Card>
           </SplideSlide>
         ))}

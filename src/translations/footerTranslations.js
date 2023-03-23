@@ -16,4 +16,15 @@ if (par.language === 'fr'){
     createdBy:"Créé par Macarena & Valeria. Tous les droits sont réservés."
     }
 }
+if (par.language === 'it'){
+  return{
+    createdBy:"Creato da Macarena & Valeria. Tutti i diritti riservati."
+    }
+}
+if (par.language === 'ru'){
+  return {
+   createdBy:"Создано Макареной и Валерией. Все права защищены."
+   }
+}
+
 }

@@ -16,11 +16,11 @@ export const Home = () => {
 
 
   return (
-    <Flex flexDirection={"column"} bg="">
+    <Flex flexDirection={"column"} w="100%">
       {/* <Portada/> */}
-      {/* <Box as="div">
+      <Box as="div">
         <MoviesCarousel searchCategory={`popular`} serieOrMovie={`movie`} />
-      </Box> */}
+      </Box>
 
       <Box
         as="section"
@@ -31,7 +31,7 @@ export const Home = () => {
         width="100%"
         // height="100vh"
       >
-        <Box w={{ base: '100%', md: '90%', lg: '90%' }} display="flex" flexDirection="column" justifyContent="center" alignItems="center">
+        <Box w="90%" display="flex" flexDirection="column" justifyContent="center" alignItems="center">
 
 
             <CategoryFilms
