@@ -29,7 +29,7 @@ export const Navbar = () => {
   const context = useContext(Context)
 
   const translations = useTranslate(navbarTranslations(context))
-  
+
 
   return (
     <Box bg={useColorModeValue("gray.100", "gray.900")} px={4}>

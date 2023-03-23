@@ -5,6 +5,7 @@ export const generalTranslations = (par) =>{
     selectLanguage: "Select Language",
     topRated: "Top Rated",
     popular: "Popular Movies",
+    trailer: "Watch Trailer"
 }}
 
 if (par.language === 'es'){
@@ -12,6 +13,7 @@ if (par.language === 'es'){
     selectLanguage: "Selecccione lenguaje",
     popular: "Películas Populares",
     topRated: "Mejor Puntuadas",
+    trailer: "Ver Trailer"
     
     }
 }
@@ -21,6 +23,7 @@ if (par.language === 'fr'){
     selectLanguage: "Langue de sélection",
     topRated: "Les mieux notés",
     popular: "Populaire",
+    trailer: "voir la bande-annonce"
     }
 }
 }

@@ -25,27 +25,14 @@ export const Footer = () => {
   };
 
   return (
-    <Container as="footer" role="contentinfo" py={{ base: "12", md: "16" }}>
-      <Box as="footer" height={18} ml="700px">
+    <Container as="footer" role="contentinfo" py={{ base: "12", md: "16" }} maxW="360px">
+      <Box height={18} ml="700px">
         <IconButton
           mt={5}
           _hover={{ background: "none" }}
           icon={context.clearTheme ? <FiMoon /> : <FiSun />}
           onClick={changeTheme}
         ></IconButton>
-        {/* 
-        <Select
-          onChange={handleChange}
-          placeholder="Language"
-          size="sm"
-          w={"20%"}
-          bg="brand.primary"
-          borderColor="brand.secondary"
-          color="brand.accent"
-        >
-          <option value="option1">Español</option>
-          <option value="option2">English</option>
-        </Select> */}
       </Box>
       <Stack spacing={{ base: "4", md: "5" }}>
         <Stack justify="space-between" direction="row" align="center">

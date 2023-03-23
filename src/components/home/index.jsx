@@ -16,11 +16,11 @@ export const Home = () => {
 
 
   return (
-    <Flex flexDirection={"column"} h="100vh">
-      <Portada/>
-      <Box as="div">
+    <Flex flexDirection={"column"} bg="">
+      {/* <Portada/> */}
+      {/* <Box as="div">
         <MoviesCarousel searchCategory={`popular`} serieOrMovie={`movie`} />
-      </Box>
+      </Box> */}
 
       <Box
         as="section"
@@ -29,9 +29,9 @@ export const Home = () => {
         alignItems="center"
         bg={context.clearTheme ? "brand.secondary" : "brand.accent"}
         width="100%"
-        height="100vh"
+        // height="100vh"
       >
-        <Box w={{ base: '100%', md: '90%', lg: '90%' }}  display="flex" flexDirection="column" justifyContent="center" alignItems="center" border="2px solid">
+        <Box w={{ base: '100%', md: '90%', lg: '90%' }} display="flex" flexDirection="column" justifyContent="center" alignItems="center">
 
 
             <CategoryFilms
