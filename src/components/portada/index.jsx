@@ -5,6 +5,7 @@ import { Card, Image,Text,Box,Button } from "@chakra-ui/react";
 import { generalTranslations } from "../../translations/generalTranslations";
 import { useTranslate } from "../../hooks/useTranslate";
 import { Spinner } from "@chakra-ui/react";
+import { MoviesCards } from "../moviesCard";
 
 
 
@@ -44,9 +45,9 @@ const [randomMovie, setRandomMovie] = useState(null);
        {isLoading ? (
       <Card
         position="relative"
-        // bg="black"
-        // h=""
-        // w="100%"
+        bg="black"
+        h="600px"
+        w="100%"
       >
         <Spinner
           thickness="4px"
@@ -66,7 +67,7 @@ const [randomMovie, setRandomMovie] = useState(null);
           src={`https://image.tmdb.org/t/p/w500${randomMovie.poster_path}`}
           alt={randomMovie.title}
         />
-        <Box
+        {/* <Box
           position="absolute"
           top="0"
           left="0"
@@ -79,7 +80,7 @@ const [randomMovie, setRandomMovie] = useState(null);
           textAlign="center"
         >
           <Text>{randomMovie.title}</Text>
-        </Box>
+        </Box> */}
         <Box position="absolute" bottom="3" left="50%" transform="translateX(-50%)">
           <Button colorScheme="yellow" border="white">
             {translations.trailer}
