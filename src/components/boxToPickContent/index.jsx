@@ -5,17 +5,23 @@ import { Box, Spinner, Flex } from "@chakra-ui/react";
 import { useFetch } from "../../hooks/useFetch";
 import { useContext } from "react";
 import ReactPaginate from "react-paginate";
+import { Footer } from "../footer";
 
 export const BoxToPickContent = ({ searchCategory, serieOrMovie }) => {
   const context = useContext(Context);
   const [page, setPage] = useState(1);
   const [movies, setMovies] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
-  const { isLoading } = useFetch(
-    `https://api.themoviedb.org/3/${serieOrMovie}/${searchCategory}?api_key=ae186e957330197b5106a6c66c8bd1df&language=${context.language}-US&page=${page}`,
-    page
-  );
-
+  useEffect(() => {
+    const fetchMovies = async () => {
+      const url = `https://api.themoviedb.org/3/${serieOrMovie}/${searchCategory}?api_key=ae186e957330197b5106a6c66c8bd1df&language=${context.language}-US&page=${page}`;
+      const response = await fetch(url);
+      const data = await response.json();
+      setMovies(data.results);
+    };
+    fetchMovies();
+  }, [page, searchCategory, serieOrMovie, context.language]);
 
   const handlePageChange = (selectedPage) => {
     setPage(selectedPage.selected + 1);
@@ -47,6 +53,9 @@ export const BoxToPickContent = ({ searchCategory, serieOrMovie }) => {
         justifyContent="center"
         flexWrap="wrap"
         position="relative"
+        bg={context.clearTheme ? "brand.secondary" : "brand.accent"}
+        color={context.clearTheme ? "black" : "white"}
+        pt="5%"
       >
         {movies?.map((movie) => {
           return (
@@ -62,25 +71,31 @@ export const BoxToPickContent = ({ searchCategory, serieOrMovie }) => {
             />
           );
         })}
-      </Flex>
-
-      <Flex display={"flex"}>
-        <ReactPaginate
-          display="flex"
-          breakClassName={"pagination__break"}
-          previousLabel={"Prev"}
-          nextLabel={"Next"}
-          pageCount={19}
-          marginPagesDisplayed={2}
-          pageRangeDisplayed={5}
-          onPageChange={handlePageChange}
-          containerClassName={"pagination"}
-          previousLinkClassName={"pagination__link"}
-          nextLinkClassName={"pagination__link"}
-          disabledClassName={"pagination__link--disabled"}
-          activeClassName={"pagination__link--active"}
-          breakLabel="..."
-        />
+        <Flex
+          display={"flex"}
+          color={context.clearTheme ? "black" : "white"}
+          mt="100px"
+          w={"70%"}
+          pos="relative"
+        >
+          <ReactPaginate
+            display="flex"
+            breakClassName={"pagination__break"}
+            previousLabel={"Prev"}
+            nextLabel={"Next"}
+            pageCount={19}
+            marginPagesDisplayed={2}
+            pageRangeDisplayed={5}
+            onPageChange={handlePageChange}
+            containerClassName={"pagination"}
+            previousLinkClassName={"pagination__link"}
+            nextLinkClassName={"pagination__link"}
+            disabledClassName={"pagination__link--disabled"}
+            activeClassName={"pagination__link--active"}
+            breakLabel="..."
+          />
+        </Flex>
+        <Footer />
       </Flex>
     </Box>
   );

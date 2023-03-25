@@ -51,25 +51,48 @@ export const MoviesCarousel = () => {
               {p.original_title ? p.original_title : p.name}
             </Text>
             <Text
-              w={"80%"}
               color={"white"}
+              maxW="95%"
               p="10px"
               textAlign={"center"}
               position="relative"
               margin={"auto"}
+              overflow={"hidden"}
+              textOverflow={"ellipsis"}
+              whiteSpace={"nowrap"}
             >
               {p.overview}
             </Text>
             {p.original_title ? (
               <Link to={`/details/movie/${p.id}`} ml={"50%"}>
-                <Button bg={"purple.600"} color="white" w={"10%"}>
-                  More
+                <Button bg={"brand.accent"} color="white" w={"10%"}>
+                  {context.language === "en"
+                    ? "More"
+                    : context.language === "es"
+                    ? "Más"
+                    : context.language === "fr"
+                    ? "Plus"
+                    : context.language === "it"
+                    ? "Di più"
+                    : context.language === "ru"
+                    ? "Больше"
+                    : null}
                 </Button>
               </Link>
             ) : (
-              <Link to={`/details/tv/${p.id}`}>
-                <Button bg={"purple.600"} color="white" w={"10%"}>
-                  More
+              <Link to={`/details/movie/${p.id}`} ml={"50%"}>
+                <Button bg={"brand.accent"} color="white" w={"10%"}>
+                  {context.language === "en"
+                    ? "More"
+                    : context.language === "es"
+                    ? "Más"
+                    : context.language === "fr"
+                    ? "Plus"
+                    : context.language === "it"
+                    ? "Di più"
+                    : context.language === "ru"
+                    ? "Больше"
+                    : null}
                 </Button>
               </Link>
             )}

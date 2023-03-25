@@ -6,8 +6,24 @@ export const theme = extendTheme({
   colors: {
     brand: {
       primary: "#ffd60a", //amarillo claro
-      secondary: "#ffc300", //amarillo oscuro
-      accent: "#003566", //azul
+      secondary: "#E3CCAE", //amarillo oscuro
+      accent:
+        "linear-gradient(to right top, #1d0537, #220025, #1f0018, #16000a, #000000)",
+
+      //azul
+    },
+  },
+  components: {
+    Button: {
+      variants: {
+        custom: {
+          bg: "purple.500",
+          color: "white",
+          _hover: {
+            bg: "purple.600",
+          },
+        },
+      },
     },
   },
 });

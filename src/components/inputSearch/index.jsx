@@ -1,5 +1,4 @@
-
-import { useState, useContext} from "react";
+import { useState, useContext } from "react";
 import { Input, Flex, InputGroup, InputLeftElement } from "@chakra-ui/react";
 import { SearchIcon } from "@chakra-ui/icons";
 import { useNavigate, useSearchParams } from "react-router-dom";
@@ -12,10 +11,8 @@ export const SearchButton = () => {
   const navigate = useNavigate();
   const [valorInput, setValorInput] = useState("");
 
-
-  const context = useContext(Context)
-  const translations = useTranslate(navbarTranslations(context))
-
+  const context = useContext(Context);
+  const translations = useTranslate(navbarTranslations(context));
 
   const [searchParams, setSearchParams] = useSearchParams({
     query: "",
@@ -44,11 +41,17 @@ export const SearchButton = () => {
   };
 
   return (
-    <Flex ml={"80px"} pl={"50px"}>
-      <InputGroup w={"80%"} mr="20px">
+    <Flex>
+      <InputGroup
+        w={"200px"}
+        mr="10%"
+        _focus={{ boxShadow: "none" }}
+        _focusVisible={{ boxShadow: "none", outline: "none" }}
+        _hover={{ border: "purple.500", color: "white" }}
+      >
         <InputLeftElement
           pointerEvents="none"
-          children={<SearchIcon color="gray.700" />}
+          children={<SearchIcon color="white" />}
         />
         <Input
           type="search"
@@ -57,6 +60,8 @@ export const SearchButton = () => {
           onChange={handleChange}
           value={valorInput}
           onKeyDown={handleKeyDown}
+          color="whiteAlpha.800"
+          fontWeight={"bold"}
         />
       </InputGroup>
     </Flex>

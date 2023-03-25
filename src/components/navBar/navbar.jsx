@@ -6,7 +6,7 @@ import {
   useColorModeValue,
   Stack,
   Collapse,
-  Link,
+  HStack,
   Button,
   Menu,
   MenuButton,
@@ -14,7 +14,6 @@ import {
   MenuItem,
   Container,
   Text,
-  Image,
 } from "@chakra-ui/react";
 import { HamburgerIcon, CloseIcon, ChevronDownIcon } from "@chakra-ui/icons";
 import { NavLink } from "../navItem";
@@ -24,25 +23,25 @@ import { SearchButton } from "../inputSearch";
 import { navbarTranslations } from "../../translations/navbarTranslations";
 import { SelectLanguage } from "../selectLanguage";
 import { useTranslate } from "../../hooks/useTranslate";
-import logo1 from "../../assets/logo1.png";
-import logo2 from "../../assets/logo2.png";
+import LOGO from "../../assets/LOGO.png";
 
 export const Navbar = () => {
   const { isOpen, onToggle } = useDisclosure();
   const context = useContext(Context);
+
   const translations = useTranslate(navbarTranslations(context));
 
   return (
     <Container
       as={Stack}
       maxW="100%"
-      h={"6rem"}
       py={4}
       direction={{ base: "column", md: "row" }}
       justify={{ base: "center", md: "space-between" }}
       align={{ base: "center", md: "center" }}
-      bg={context.clearTheme ? "brand.secondary" : "brand.accent"}
+      bg=" rgba(0,0,0,0.8);"
       color={context.clearTheme ? "black" : "white"}
+      pos="fixed"
     >
       <IconButton
         size={"md"}
@@ -52,7 +51,7 @@ export const Navbar = () => {
         onClick={onToggle}
       />
 
-      <Box textAlign="center" w={"25%"}>
+      <Box textAlign="center" justifyContent={"center"}>
         <NavLink sectionTitle={translations.home} link={"/"} />
         <Menu>
           <MenuButton
@@ -60,7 +59,7 @@ export const Navbar = () => {
             mx={"20px"}
             rightIcon={<ChevronDownIcon />}
             variant="unstyled"
-            ml={"100px"}
+            ml={"50px"}
           >
             {translations.movies}
           </MenuButton>
@@ -98,16 +97,12 @@ export const Navbar = () => {
           </MenuList>
         </Menu>
       </Box>
-      <Link to={`/home`}>
-        <Box>
-          {context.clearTheme ? (
-            <Image src={logo1} w="150px" />
-          ) : (
-            <Image src={logo2} w="150px" />
-          )}
-        </Box>
-      </Link>
 
+      <Box>
+        <Text fontFamily={"Passion One, cursive;"} fontSize={"4xl"}>
+          THE MOVIE APP
+        </Text>
+      </Box>
       <Box display="flex" pr={"2%"}>
         <SearchButton />
         <SelectLanguage />
