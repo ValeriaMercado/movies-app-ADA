@@ -3,20 +3,12 @@ import { Context } from "../../context/Context";
 import { useTranslate } from "../../hooks/useTranslate";
 import { footerTranslations } from "../../translations/footerTranslations";
 import { FiMoon, FiSun } from "react-icons/fi";
-import {
-  ButtonGroup,
-  Container,
-  IconButton,
-  Stack,
-  Text,
-  Box,
-} from "@chakra-ui/react";
-import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
-
+import { Container, IconButton, Stack, Text, Box } from "@chakra-ui/react";
+import { useColorModeValue } from "@chakra-ui/react";
 
 export const Footer = () => {
   const context = useContext(Context);
-  const translations = useTranslate(footerTranslations(context))
+  const translations = useTranslate(footerTranslations(context));
 
   const changeTheme = () => {
     context.clearTheme
@@ -25,43 +17,34 @@ export const Footer = () => {
   };
 
   return (
-    <Container as="footer" role="contentinfo" py={{ base: "12", md: "16" }} maxW="360px">
-      <Box height={18} ml="700px">
-        <IconButton
-          mt={5}
-          _hover={{ background: "none" }}
-          icon={context.clearTheme ? <FiMoon /> : <FiSun />}
-          onClick={changeTheme}
-        ></IconButton>
-      </Box>
-      <Stack spacing={{ base: "4", md: "5" }}>
-        <Stack justify="space-between" direction="row" align="center">
-          <Text>Logo</Text>
-          <ButtonGroup>
-            <IconButton
-              as="a"
-              href="#"
-              aria-label="LinkedIn"
-              icon={<FaLinkedin fontSize="1.25rem" />}
-            />
-            <IconButton
-              as="a"
-              href="#"
-              aria-label="GitHub"
-              icon={<FaGithub fontSize="1.25rem" />}
-            />
-            <IconButton
-              as="a"
-              href="#"
-              aria-label="Twitter"
-              icon={<FaTwitter fontSize="1.25rem" />}
-            />
-          </ButtonGroup>
+    <Box
+      // bg={context.clearTheme ? "brand.secondary" : "brand.accent"}
+      w={"100%"}
+      mt="10%"
+    >
+      <Container
+        as={Stack}
+        maxW={"6xl"}
+        py={4}
+        direction={{ base: "column", md: "row" }}
+        spacing={4}
+        justify={{ base: "center", md: "space-between" }}
+        align={{ base: "center", md: "center" }}
+      >
+        <Stack>
+          <IconButton
+            mt={5}
+            _hover={{ background: "none" }}
+            icon={context.clearTheme ? <FiMoon /> : <FiSun />}
+            onClick={changeTheme}
+            bg={"none"}
+            color={context.clearTheme ? "black" : "white"}
+          ></IconButton>
         </Stack>
-        <Text fontSize="sm" color="subtle">
+        <Text color={context.clearTheme ? "black" : "white"}>
           &copy; {new Date().getFullYear()} {translations.createdBy}
         </Text>
-      </Stack>
-    </Container>
+      </Container>
+    </Box>
   );
 };

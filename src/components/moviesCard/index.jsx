@@ -41,7 +41,7 @@ export const MoviesCards = ({ alt, movieTitle, img, id }) => {
             <Button
               variant={"unstyled"}
               fontSize={isSmallScreen ? "30px" : "45px"}
-              ml={isSmallScreen ? "150px" : "210px"}
+              ml={isSmallScreen ? "170px" : "210px"}
               mt={isSmallScreen ? "175px" : "345px"}
               position="relative"
               className="btn-card"
@@ -52,6 +52,5 @@ export const MoviesCards = ({ alt, movieTitle, img, id }) => {
         )}
       </Card>
     </>
-
   );
 };

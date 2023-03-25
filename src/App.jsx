@@ -1,12 +1,13 @@
 import { Footer } from "./components/footer";
 import { Home } from "./components/home";
-import { Navbar } from "./components/navbar";
+import { Navbar } from "./components/navBar/index";
 import { ContextProvider } from "./provider/ContextProvider";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import MovieDetails from "./components/moviesDetails";
 import TVDetails from "./components/tvDetails";
 import { BoxToPickContent } from "./components/boxToPickContent";
-import "./index.css"
+import "./index.css";
+import { CategoryFilms } from "./components/categoryFilm";
 import MoviesSearch from "./components/searchResults";
 import { NotFound } from "./components/404";
 
@@ -49,12 +50,15 @@ const App = () => {
             }
           />
           <Route
-            path="/topTv"
+            path="/topTV"
             element={
               <BoxToPickContent
-                  categoryTitle={``}
-                  searchCategory={`top_rated`}
-                  serieOrMovie={`tv`} />
+                categoryTitle={``}
+                searchCategory={`top_rated`}
+                serieOrMovie={`tv`}
+              />
+
+           
             }
           />
           <Route
@@ -66,8 +70,6 @@ const App = () => {
         </Routes>
       </ContextProvider>
     </BrowserRouter>
-
-
   );
 };
 

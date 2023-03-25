@@ -1,15 +1,18 @@
-import { Splide, SplideSlide } from '@splidejs/react-splide';
-import '@splidejs/splide/dist/css/themes/splide-default.min.css';
-import { Box, Text, Card, Image,IconButton } from '@chakra-ui/react';
-import { useFetch } from '../../hooks/useFetch';
-import { useContext } from 'react';
-import { Context } from '../../context/Context';
-import { FaPlay } from "react-icons/fa";
-import { Link } from 'react-router-dom';
-import { useTranslate } from '../../hooks/useTranslate';
-import { generalTranslations } from '../../translations/generalTranslations';
+import { Splide, SplideSlide } from "@splidejs/react-splide";
+import "@splidejs/splide/dist/css/themes/splide-default.min.css";
+import { Box, Text, Card, Image, Button } from "@chakra-ui/react";
+import { useFetch } from "../../hooks/useFetch";
+import { useContext } from "react";
+import { Context } from "../../context/Context";
+import { BsFillPlayCircleFill } from "react-icons/bs";
+import { Link } from "react-router-dom";
 
-export const CategoryFilms = ({ searchCategory, serieOrMovie, categoryTitle}) => {
+export const CategoryFilms = ({
+  searchCategory,
+  serieOrMovie,
+  categoryTitle,
+}) => {
+
   const context = useContext(Context);
   const translations= useTranslate (generalTranslations(context))
 
@@ -19,42 +22,70 @@ export const CategoryFilms = ({ searchCategory, serieOrMovie, categoryTitle}) =>
   );
 
   const options = {
-    type: 'slide',
+    type: "slide",
     perPage: 5,
     perMove: 5,
-    gap: '1rem',
+    gap: "1rem",
     breakpoints: {
       1024: {
         perPage: 4,
         perMove: 4,
-        gap: '0.5rem',
+        gap: "0.5rem",
       },
       600: {
         perPage: 3,
         perMove: 3,
-        gap: '0.5rem',
+        gap: "0.5rem",
       },
       480: {
         perPage: 2,
         perMove: 2,
-        gap: '0.5rem',
+        gap: "0.5rem",
       },
     },
   };
 
   return (
     <Box width="90%" margin="0 auto" marginTop="50px">
-     <Text display="flex" justifyContent="center" color="white" fontWeight="bold">{categoryTitle}</Text>
-      <Splide options={options} style={{ width: '100%' }}>
+      <Text
+        display="flex"
+        justifyContent="center"
+        fontWeight="bold"
+        color={context.clearTheme ? "black" : "white"}
+      >
+        {categoryTitle}
+      </Text>
+      <Splide
+        options={options}
+        style={{ width: "100%", paddingRight: 10, margin: 0 }}
+      >
         {movies?.map((movie) => (
-          <SplideSlide key={movie.id} style={{ padding: 0, margin: 0 }}>
-            <Card margin="10px" borderRadius="5%" boxShadow="10px 10px 30px 0px" transition="transform 0.3s ease-in-out" _hover={{ transform: 'scale(1.05)' }}>
-              <Image
-              borderRadius="5%"
-                src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-              />
+          <SplideSlide
+            key={movie.id}
+            style={{ padding: 0, marginRight: 4, margin: 0 }}
+          >
+            <Card
+              backgroundImage={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+              backgroundPosition="center"
+              backgroundSize="cover"
+              height="300px"
+              w={"90%"}
+              display="flex"
+              m={4}
+              ml={4}
+              className="card-background"
+            >
               <Link to={`/details/movie/${movie.id}`}>
-                <IconButton icon={<FaPlay />} position="absolute" bottom="2" right="2" colorScheme="red" variant={"unstyled"} aria-label={translations.play} />
+                <Button
+                  variant={"unstyled"}
+                  fontSize={"35px"}
+                  ml={"140px"}
+                  mt={"250px"}
+                  position="relative"
+                  className="btn-card"
+                >
+                  <BsFillPlayCircleFill />
+                </Button>
               </Link>
             </Card>
           </SplideSlide>
@@ -63,4 +94,3 @@ export const CategoryFilms = ({ searchCategory, serieOrMovie, categoryTitle}) =>
     </Box>
   );
 };
-

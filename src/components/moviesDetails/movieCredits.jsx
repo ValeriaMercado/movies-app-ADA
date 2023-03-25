@@ -1,13 +1,16 @@
 import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import "@splidejs/splide/dist/css/themes/splide-default.min.css";
+import { Splide, SplideSlide } from "@splidejs/react-splide";
 
 import {
-  Image,
+  Card,
   Box,
   Text,
+  ListItem,
   Flex,
   UnorderedList,
-  ListItem,
+  Link,
   List,
 } from "@chakra-ui/react";
 import { Context } from "../../context/Context";
@@ -27,61 +30,86 @@ const MovieCredits = () => {
       });
   }, [params.movieDetails]);
 
+  const options = {
+    type: "slide",
+    perPage: 5,
+    perMove: 5,
+
+    breakpoints: {
+      1024: {
+        perPage: 4,
+        perMove: 4,
+      },
+      600: {
+        perPage: 3,
+        perMove: 3,
+      },
+      480: {
+        perPage: 2,
+        perMove: 2,
+      },
+    },
+  };
+
   return (
-    <Box w="100vh overflow-y:visible;overflow-x:hidden">
+    <Box width="80%" margin="0 auto" marginTop="50px">
       <Text
         color={"white"}
         position="relative"
         fontWeight="extrabold"
-        mb="10px"
+        mb="20px"
       >
-        {context.language === "en" ? "CAST" : "ELENCO"}
+        {context.language === "en"
+          ? "CAST"
+          : context.language === "es"
+          ? "ELENCO"
+          : context.language === "fr"
+          ? "DISTRIBUTION"
+          : context.language === "it"
+          ? "CAST"
+          : context.language === "ru"
+          ? "Актерский состав"
+          : null}
       </Text>
-      <Flex w="100%" overflowX="scroll" pos={"relative"}>
-        <UnorderedList
-          position="relative"
-          display={"flex"}
-          pt={"10px"}
-          mb="30px"
-        >
-          {movie?.cast?.map((c, index) => (
-            <List
-              key={index}
-              mb={"10px"}
-              w="150px"
-              mr={"15px"}
-              border="1px solid gray"
-              borderRadius={"10px"}
+      <Splide options={options}>
+        {movie?.cast?.map((c, index) => (
+          <SplideSlide key={c.id}>
+            <Card
+              backgroundImage={`http://image.tmdb.org/t/p/original/${c.profile_path}`}
+              backgroundPosition="center"
+              backgroundSize="cover"
+              height="250px"
+              w={"70%"}
+              display="flex"
+              mb={"10%"}
+              h={"90%"}
+              id={index}
             >
-              <Image
-                src={
-                  c.profile_path
-                    ? `http://image.tmdb.org/t/p/original/${c.profile_path}`
-                    : " "
-                }
-                borderTopRadius="10px"
-              ></Image>
-              <ListItem
-                bg={"white"}
-                color="black"
-                fontWeight="bold"
-                fontSize={"13px"}
-              >
-                {c.name}
-              </ListItem>
-              <ListItem
-                bg={"white"}
-                color="black"
-                fontSize={"11px"}
-                borderBottomRadius="10px"
-                h={"15%"}
-              >
-                {c.character}
-              </ListItem>
-            </List>
-          ))}
-        </UnorderedList>
-      </Flex>
+              <List>
+                <ListItem
+                  color="black"
+                  fontWeight="bold"
+                  fontSize={"13px"}
+                  mt="230px"
+                  bg={"white"}
+                  pt="5%"
+                >
+                  {c.name}
+                </ListItem>
+                <ListItem
+                  color="black"
+                  fontSize={"11px"}
+                  borderBottomRadius="10px"
+                  h={"10%"}
+                  bg={"white"}
+                >
+                  {c.character}
+                </ListItem>
+              </List>
+            </Card>
+          </SplideSlide>
+        ))}
+      </Splide>
     </Box>
   );
 };
