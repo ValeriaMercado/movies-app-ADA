@@ -27,15 +27,15 @@ export const BoxToPickContent = ({ searchCategory, serieOrMovie }) => {
     setPage(selectedPage.selected + 1);
   };
 
-  useEffect(() => {
-    const fetchMovies = async () => {
-      const url = `https://api.themoviedb.org/3/${serieOrMovie}/${searchCategory}?api_key=ae186e957330197b5106a6c66c8bd1df&language=${context.language}-US&page=${page}`;
-      const response = await fetch(url);
-      const data = await response.json();
-      setMovies(data.results);
-    };
-    fetchMovies();
-  }, [page, searchCategory, serieOrMovie, context.language]);
+  // useEffect(() => {
+  //   const fetchMovies = async () => {
+  //     const url = `https://api.themoviedb.org/3/${serieOrMovie}/${searchCategory}?api_key=ae186e957330197b5106a6c66c8bd1df&language=${context.language}-US&page=${page}`;
+  //     const response = await fetch(url);
+  //     const data = await response.json();
+  //     setMovies(data.results);
+  //   };
+  //   fetchMovies();
+  // }, [page, searchCategory, serieOrMovie, context.language]);
 
   return (
     <Box>
@@ -55,7 +55,6 @@ export const BoxToPickContent = ({ searchCategory, serieOrMovie }) => {
         position="relative"
         bg={context.clearTheme ? "brand.secondary" : "brand.accent"}
         color={context.clearTheme ? "black" : "white"}
-        pt="5%"
       >
         {movies?.map((movie) => {
           return (

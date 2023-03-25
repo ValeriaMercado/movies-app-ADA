@@ -23,7 +23,7 @@ export const navbarTranslations = (par) => {
       popular: "Populares",
       latest: "Lo último",
       top: "Series Top",
-      search: "Busca",
+      search: "Búsqueda",
     };
   }
 
