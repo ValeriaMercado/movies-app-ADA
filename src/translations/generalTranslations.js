@@ -7,7 +7,6 @@ export const generalTranslations = (par) => {
       trailer: "Watch Trailer",
     };
   }
-
   if (par.language === "es") {
     return {
       selectLanguage: "Selecccione lenguaje",
@@ -43,3 +42,4 @@ export const generalTranslations = (par) => {
     };
   }
 };
+

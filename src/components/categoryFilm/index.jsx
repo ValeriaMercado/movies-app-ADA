@@ -12,7 +12,9 @@ export const CategoryFilms = ({
   serieOrMovie,
   categoryTitle,
 }) => {
+
   const context = useContext(Context);
+  const translations= useTranslate (generalTranslations(context))
 
   const { movies, isLoading } = useFetch(
     `https://api.themoviedb.org/3/${serieOrMovie}/${searchCategory}?api_key=ae186e957330197b5106a6c66c8bd1df&language=${context.language}-US&page=1`,

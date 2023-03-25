@@ -57,6 +57,8 @@ const App = () => {
                 searchCategory={`top_rated`}
                 serieOrMovie={`tv`}
               />
+
+           
             }
           />
           <Route

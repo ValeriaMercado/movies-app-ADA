@@ -26,7 +26,6 @@ export const navbarTranslations = (par) => {
       search: "Búsqueda",
     };
   }
-
   if (par.language === "fr") {
     return {
       home: "Maison",
