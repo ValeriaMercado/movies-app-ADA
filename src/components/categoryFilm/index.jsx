@@ -6,6 +6,7 @@ import { useContext } from "react";
 import { Context } from "../../context/Context";
 import { BsFillPlayCircleFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
+// import { useTranslate } from "../../hooks/useTranslate";
 
 export const CategoryFilms = ({
   searchCategory,
@@ -14,7 +15,7 @@ export const CategoryFilms = ({
 }) => {
 
   const context = useContext(Context);
-  const translations= useTranslate (generalTranslations(context))
+  // const translations= useTranslate (generalTranslations(context))
 
   const { movies, isLoading } = useFetch(
     `https://api.themoviedb.org/3/${serieOrMovie}/${searchCategory}?api_key=ae186e957330197b5106a6c66c8bd1df&language=${context.language}-US&page=1`,

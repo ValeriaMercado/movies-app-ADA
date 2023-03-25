@@ -1,18 +1,20 @@
 export const generalTranslations = (par) => {
   if (par.language === "en") {
     return {
-      selectLanguage: "language",
+      selectLanguage: "Select language",
       topRated: "Top Rated",
       popular: "Popular Movies",
       trailer: "Watch Trailer",
+      more: "More"
     };
   }
   if (par.language === "es") {
     return {
-      selectLanguage: "Selecccione lenguaje",
+      selectLanguage: "Seleccione lenguaje",
       popular: "Películas Populares",
       topRated: "Mejor Puntuadas",
       trailer: "Ver Trailer",
+      more: "More"
     };
   }
 
@@ -22,6 +24,7 @@ export const generalTranslations = (par) => {
       topRated: "Les mieux notés",
       popular: "Populaire",
       trailer: "Voir la bande-annonce",
+      more:"Plus"
     };
   }
 
@@ -31,6 +34,7 @@ export const generalTranslations = (par) => {
       topRated: "Più votati",
       popular: "Popolare",
       trailer: "Guarda il trailer",
+      more:"Di più"
     };
   }
   if (par.language === "ru") {
@@ -39,6 +43,16 @@ export const generalTranslations = (par) => {
       popular: "Популярные фильмы",
       topRated: "Лучший рейтинг",
       trailer: "Смотреть трейлер",
+      more:"дальше"
+    };
+  }
+  if (par.language === "zh") {
+    return {
+      selectLanguage: "語言",
+      topRated: "最高評價",
+      popular: "熱門電影",
+      trailer: "觀看預告",
+      more: "更遠"
     };
   }
 };

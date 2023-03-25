@@ -17,21 +17,26 @@ import {
 import MovieCredits from "./movieCredits";
 import { useFetchMovieDetails } from "../../hooks/useFetchMovieDetails";
 import { Context } from "../../context/Context";
+import { useFetch } from "../../hooks/useFetch";
 
 const MovieDetails = ({ id }) => {
   const [trailer, setTrailer] = useState(true);
   const [loading, setLoading] = useState(false);
   const context = useContext(Context);
+  const params = useParams();
 
   const { movie } = useFetchMovieDetails(
     `https://api.themoviedb.org/3/movie/${id}?api_key=ae186e957330197b5106a6c66c8bd1df&language=${context.language}`,
     context.language
   );
+  // const {movie} = useFetch(`https://api.themoviedb.org/3/movie/${params.id}?api_key=ae186e957330197b5106a6c66c8bd1df&language=${context.language}`,
+  // context.language)
 
   return (
     <Box
       w="100%"
       key={movie.id}
+      
       backgroundImage={
         movie?.backdrop_path
           ? `url(https://image.tmdb.org/t/p/original/${movie?.backdrop_path})`

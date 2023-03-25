@@ -6,11 +6,14 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 import { Link } from "react-router-dom";
 import { useFetch } from "../../hooks/useFetch";
+import { useTranslate } from "../../hooks/useTranslate";
+import { generalTranslations } from "../../translations/generalTranslations";
 
 import React from "react";
 
 export const MoviesCarousel = () => {
   const context = useContext(Context);
+  const translations = useTranslate(generalTranslations(context))
 
   const { movies } = useFetch(
     `https://api.themoviedb.org/3/trending/all/day?api_key=ae186e957330197b5106a6c66c8bd1df&language=${context.language}-US&page=1`,
@@ -66,33 +69,13 @@ export const MoviesCarousel = () => {
             {p.original_title ? (
               <Link to={`/details/movie/${p.id}`} ml={"50%"}>
                 <Button bg={"brand.accent"} color="white" w={"10%"}>
-                  {context.language === "en"
-                    ? "More"
-                    : context.language === "es"
-                    ? "Más"
-                    : context.language === "fr"
-                    ? "Plus"
-                    : context.language === "it"
-                    ? "Di più"
-                    : context.language === "ru"
-                    ? "Больше"
-                    : null}
+                  {translations.more}
                 </Button>
               </Link>
             ) : (
               <Link to={`/details/movie/${p.id}`} ml={"50%"}>
                 <Button bg={"brand.accent"} color="white" w={"10%"}>
-                  {context.language === "en"
-                    ? "More"
-                    : context.language === "es"
-                    ? "Más"
-                    : context.language === "fr"
-                    ? "Plus"
-                    : context.language === "it"
-                    ? "Di più"
-                    : context.language === "ru"
-                    ? "Больше"
-                    : null}
+                  {translations.more}
                 </Button>
               </Link>
             )}

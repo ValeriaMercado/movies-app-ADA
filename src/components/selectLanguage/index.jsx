@@ -1,15 +1,23 @@
 import { Select } from "@chakra-ui/react";
 import { useContext } from "react";
 import { Context } from "../../context/Context";
-import { generalTranslations } from "../../translations/generalTranslations";
-import { useTranslate } from "../../hooks/useTranslate";
+import { useEffect } from "react";
 
 export const SelectLanguage = () => {
   const context = useContext(Context);
-  const translations = useTranslate(generalTranslations(context));
+
+  useEffect(() => {
+    const selectedLanguage = localStorage.getItem("selectedLanguage");
+    if (selectedLanguage) {
+      context.setLanguage(selectedLanguage);
+    }
+  }, []);
+
 
   const handleChangeLanguage = (e) => {
-    context.setLanguage(e.target.value);
+    const selectedLanguage = e.target.value;
+    context.setLanguage(selectedLanguage);
+    localStorage.setItem("selectedLanguage", selectedLanguage);
   };
 
   return (
@@ -26,6 +34,8 @@ export const SelectLanguage = () => {
         <option value="fr">Français</option>
         <option value="it">Italiano</option>
         <option value="ru">Pусский</option>
+        <option value="zh">中國人</option>
+
       </Select>
     </>
   );
