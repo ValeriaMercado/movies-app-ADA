@@ -2,33 +2,19 @@ import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import "@splidejs/splide/dist/css/themes/splide-default.min.css";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
-
-import {
-  Card,
-  Box,
-  Text,
-  ListItem,
-  Flex,
-  UnorderedList,
-  Link,
-  List,
-} from "@chakra-ui/react";
+import { Card, Box, Text, ListItem, List } from "@chakra-ui/react";
 import { Context } from "../../context/Context";
+import { useFetchDetails } from "../../hooks/useFetchDetails";
+import noimage from "../../assets/noimage.png";
 
 const MovieCredits = () => {
   const context = useContext(Context);
   const params = useParams();
-  const [movie, setMovie] = useState([]);
 
-  useEffect(() => {
-    fetch(
-      `https://api.themoviedb.org/3/movie/${params.movieDetails}/credits?api_key=ae186e957330197b5106a6c66c8bd1df&language=${context.language}/`
-    )
-      .then((res) => res.json())
-      .then((data) => {
-        setMovie(data);
-      });
-  }, [params.movieDetails]);
+  const { data } = useFetchDetails(
+    `https://api.themoviedb.org/3/movie/${params.movieDetails}/credits?api_key=ae186e957330197b5106a6c66c8bd1df&language=${context.language}`,
+    context.language
+  );
 
   const options = {
     type: "slide",
@@ -41,8 +27,8 @@ const MovieCredits = () => {
         perMove: 4,
       },
       600: {
-        perPage: 3,
-        perMove: 3,
+        perPage: 2,
+        perMove: 2,
       },
       480: {
         perPage: 2,
@@ -72,18 +58,23 @@ const MovieCredits = () => {
           : null}
       </Text>
       <Splide options={options}>
-        {movie?.cast?.map((c, index) => (
+        {data?.cast?.map((c, index) => (
           <SplideSlide key={c.id}>
             <Card
-              backgroundImage={`http://image.tmdb.org/t/p/original/${c.profile_path}`}
+              backgroundImage={
+                c.profile_path
+                  ? `http://image.tmdb.org/t/p/original/${c.profile_path}`
+                  : `${noimage}`
+              }
               backgroundPosition="center"
               backgroundSize="cover"
               height="250px"
-              w={"70%"}
+              w={{ base: "90%", md: "70%" }}
               display="flex"
               mb={"10%"}
-              h={"90%"}
+              h={{ base: "80%", md: "90%" }}
               id={index}
+              textAlign="center"
             >
               <List>
                 <ListItem

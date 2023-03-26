@@ -8,11 +8,16 @@ export const NotFound = () => {
         display={"flex"}
         justifyContent="center"
         mt={"200px"}
-        fontSize="40px"
+        fontSize={{ base: "20px", md: "40px" }}
+        textAlign={{ base: "center" }}
       >
         Error 404 - PAGE NOT FOUND
       </Text>
-      <Image src={error404} ml="500px"></Image>
+      <Image
+        src={error404}
+        ml={{ md: "500px" }}
+        textAlign={{ base: "center" }}
+      ></Image>
     </Box>
   );
 };

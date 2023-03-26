@@ -2,7 +2,7 @@ import { useState, useContext } from "react";
 import { Input, Flex, InputGroup, InputLeftElement } from "@chakra-ui/react";
 import { SearchIcon } from "@chakra-ui/icons";
 import { useNavigate, useSearchParams } from "react-router-dom";
-import { useFetchSearch } from "../../hooks/useFetchSearch";
+import { useFetch } from "../../hooks/useFetch";
 import { navbarTranslations } from "../../translations/navbarTranslations";
 import { Context } from "../../context/Context";
 import { useTranslate } from "../../hooks/useTranslate";
@@ -18,7 +18,7 @@ export const SearchButton = () => {
     query: "",
   });
 
-  useFetchSearch(
+  useFetch(
     `https://api.themoviedb.org/3/trending/all/day?api_key=ae186e957330197b5106a6c66c8bd1df&page=1`
   );
   const handleChange = (e) => {

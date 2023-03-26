@@ -26,6 +26,7 @@ import { SelectLanguage } from "../selectLanguage";
 import { useTranslate } from "../../hooks/useTranslate";
 import logo1 from "../../assets/logo1.png";
 import logo2 from "../../assets/logo2.png";
+import { AiFillHome } from "react-icons/Ai";
 
 export const Navbar = () => {
   const { isOpen, onToggle } = useDisclosure();
@@ -36,7 +37,7 @@ export const Navbar = () => {
     <Container
       as={Stack}
       maxW="100%"
-      h={"6rem"}
+      h={"8rem"}
       py={4}
       direction={{ base: "column", md: "row" }}
       justify={{ base: "center", md: "space-between" }}
@@ -52,15 +53,27 @@ export const Navbar = () => {
         onClick={onToggle}
       />
 
-      <Box textAlign="center" w={"25%"}>
-        <NavLink sectionTitle={translations.home} link={"/"} />
+      <Box
+        textAlign="center"
+        w={"20%"}
+        display="flex"
+        alignItems="center"
+        ml={"20px"}
+      >
+        <NavLink
+          sectionTitle={
+            <AiFillHome fontSize="2em" mt="30px" display="inline-block" />
+          }
+          link={"/"}
+        />
+
         <Menu>
           <MenuButton
             as={Button}
-            mx={"20px"}
+            mx={"30px"}
+            mt={"10px"}
             rightIcon={<ChevronDownIcon />}
             variant="unstyled"
-            ml={"100px"}
           >
             {translations.movies}
           </MenuButton>
@@ -69,12 +82,16 @@ export const Navbar = () => {
               <NavLink
                 sectionTitle={translations.upcoming}
                 link={"/upcoming"}
+                fontSize="1em"
+                display="block"
               />
             </MenuItem>
             <MenuItem color="blackAlpha.900">
               <NavLink
                 sectionTitle={translations.topRated}
                 link={"/top_rated"}
+                fontSize="1em"
+                display="block"
               />
             </MenuItem>
           </MenuList>
@@ -85,19 +102,31 @@ export const Navbar = () => {
             as={Button}
             rightIcon={<ChevronDownIcon />}
             variant="unstyled"
+            mt={"10px"}
           >
             {translations.series}
           </MenuButton>
           <MenuList>
             <MenuItem color="blackAlpha.900">
-              <NavLink sectionTitle={translations.popular} link={"/popular"} />
+              <NavLink
+                sectionTitle={translations.popular}
+                link={"/popular"}
+                fontSize="1em"
+                display="block"
+              />
             </MenuItem>
             <MenuItem color="blackAlpha.900">
-              <NavLink sectionTitle={translations.top} link={"/topTv"} />
+              <NavLink
+                sectionTitle={translations.top}
+                link={"/topTv"}
+                fontSize="1em"
+                display="block"
+              />
             </MenuItem>
           </MenuList>
         </Menu>
       </Box>
+
       <Link to={`/home`}>
         <Box>
           {context.clearTheme ? (

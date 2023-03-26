@@ -4,7 +4,6 @@ import { useTranslate } from "../../hooks/useTranslate";
 import { footerTranslations } from "../../translations/footerTranslations";
 import { FiMoon, FiSun } from "react-icons/fi";
 import { Container, IconButton, Stack, Text, Box } from "@chakra-ui/react";
-import { useColorModeValue } from "@chakra-ui/react";
 
 export const Footer = () => {
   const context = useContext(Context);
@@ -17,11 +16,7 @@ export const Footer = () => {
   };
 
   return (
-    <Box
-      // bg={context.clearTheme ? "brand.secondary" : "brand.accent"}
-      w={"100%"}
-      mt="10%"
-    >
+    <Box w={"100%"} mt="10%">
       <Container
         as={Stack}
         maxW={"6xl"}
@@ -41,7 +36,7 @@ export const Footer = () => {
             color={context.clearTheme ? "black" : "white"}
           ></IconButton>
         </Stack>
-        <Text color={context.clearTheme ? "black" : "white"}>
+        <Text color={context.clearTheme ? "black" : "white"} textAlign="center">
           &copy; {new Date().getFullYear()} {translations.createdBy}
         </Text>
       </Container>

@@ -65,7 +65,11 @@ export const MoviesCarousel = () => {
             </Text>
             {p.original_title ? (
               <Link to={`/details/movie/${p.id}`} ml={"50%"}>
-                <Button bg={"brand.accent"} color="white" w={"10%"}>
+                <Button
+                  bg={context.clearTheme ? "brand.secondary" : "brand.accent"}
+                  color={context.clearTheme ? "black" : "white"}
+                  w={"10%"}
+                >
                   {context.language === "en"
                     ? "More"
                     : context.language === "es"
@@ -81,7 +85,11 @@ export const MoviesCarousel = () => {
               </Link>
             ) : (
               <Link to={`/details/movie/${p.id}`} ml={"50%"}>
-                <Button bg={"brand.accent"} color="white" w={"10%"}>
+                <Button
+                  bg={context.clearTheme ? "brand.secondary" : "brand.accent"}
+                  color={context.clearTheme ? "black" : "white"}
+                  w={"10%"}
+                >
                   {context.language === "en"
                     ? "More"
                     : context.language === "es"

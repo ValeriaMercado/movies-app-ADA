@@ -2,7 +2,6 @@ import { useContext, useEffect, useState } from "react";
 import { Flex, Image, Spinner } from "@chakra-ui/react";
 import { MoviesCards } from "../moviesCard";
 import ReactPaginate from "react-paginate";
-import { useFetchSearch } from "../../hooks/useFetchSearch";
 import { useSearchParams } from "react-router-dom";
 import { Context } from "../../context/Context";
 import { Footer } from "../footer";
@@ -16,12 +15,6 @@ export const MoviesSearch = () => {
     query: "",
   });
   const [movies, setMovies] = useState([]);
-
-  // const { movies } = useFetchSearch(
-  //   `https://api.themoviedb.org/3/search/multi?api_key=ae186e957330197b5106a6c66c8bd1df&language=${
-  //     context.language
-  //   }&query=${searchParams.get("query")}&page=${page}`
-  // );
 
   useEffect(() => {
     setLoading(true);
@@ -62,19 +55,21 @@ export const MoviesSearch = () => {
           />
         )}
         {movies.length === 0 && <Image src={noResults}></Image>}
-        {movies?.map((m) => (
-          <MoviesCards
-            key={m.id}
-            alt={m.title}
-            movieTitle={m.title}
-            TvTitle={m.name}
-            movieDetails={m.overview}
-            img={m.poster_path}
-            id={m.id}
-          />
-        ))}
+        {movies
+          ?.filter((m) => m.poster_path)
+          .map((m) => (
+            <MoviesCards
+              key={m.id}
+              alt={m.title}
+              movieTitle={m.title}
+              TvTitle={m.name}
+              movieDetails={m.overview}
+              img={m.poster_path}
+              id={m.id}
+            />
+          ))}
 
-        <Flex display={"flex"}>
+        <Flex display={"flex"} w={{ base: "100%" }} fontSize={{ base: "25px" }}>
           {movies.length === 0 ? (
             " "
           ) : (
