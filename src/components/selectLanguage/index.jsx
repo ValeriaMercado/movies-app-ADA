@@ -16,10 +16,33 @@ export const SelectLanguage = () => {
     <>
       <Select
         height={"40px"}
-        color={context.clearTheme ? "black" : "white"}
         onChange={handleChangeLanguage}
         variant="unstyled"
-        bg={"transparent"}
+        sx={{
+          backgroundColor: context.clearTheme
+            ? "brand.secondary"
+            : "brand.accent",
+          color: context.clearTheme ? "black" : "white",
+          border: context.clearTheme ? "1px solid black" : "1px solid white",
+          option: {
+            backgroundColor: context.clearTheme
+              ? "brand.secondary"
+              : "brand.accent",
+            color: context.clearTheme ? "black" : "black",
+            _hover: {
+              backgroundColor: context.clearTheme
+                ? "brand.accent"
+                : "brand.secondary",
+              color: context.clearTheme ? "white" : "black",
+            },
+            _selected: {
+              backgroundColor: context.clearTheme
+                ? "brand.accent"
+                : "brand.secondary",
+              color: context.clearTheme ? "white" : "black",
+            },
+          },
+        }}
       >
         <option value="en">English</option>
         <option value="es">Español</option>

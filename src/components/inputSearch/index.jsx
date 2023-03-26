@@ -6,13 +6,16 @@ import { useFetch } from "../../hooks/useFetch";
 import { navbarTranslations } from "../../translations/navbarTranslations";
 import { Context } from "../../context/Context";
 import { useTranslate } from "../../hooks/useTranslate";
+import { useMediaQuery } from "react-responsive";
 
 export const SearchButton = () => {
   const navigate = useNavigate();
   const [valorInput, setValorInput] = useState("");
-
   const context = useContext(Context);
   const translations = useTranslate(navbarTranslations(context));
+  const isSmallScreen = useMediaQuery({
+    query: "(max-width: 768px)",
+  });
 
   const [searchParams, setSearchParams] = useSearchParams({
     query: "",
@@ -43,11 +46,10 @@ export const SearchButton = () => {
   return (
     <Flex>
       <InputGroup
-        w={"200px"}
-        mr="10%"
+        ml={isSmallScreen ? " " : "300px"}
         _focus={{ boxShadow: "none" }}
         _focusVisible={{ boxShadow: "none", outline: "none" }}
-        _hover={{ border: "purple.500", color: "white" }}
+        _hover={{ border: "purple.500", color: "black" }}
       >
         <InputLeftElement
           pointerEvents="none"
@@ -61,7 +63,7 @@ export const SearchButton = () => {
           value={valorInput}
           onKeyDown={handleKeyDown}
           color="whiteAlpha.800"
-          fontWeight={"bold"}
+          fontSize={"13px"}
         />
       </InputGroup>
     </Flex>

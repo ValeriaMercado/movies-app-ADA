@@ -43,14 +43,14 @@ export const Home = () => {
           alignItems="center"
         >
           <CategoryFilms
-            categoryTitle={translations.popular}
+            categoryTitle={translations.popularMovies}
             searchCategory="popular"
             serieOrMovie={`movie`}
           />
           <CategoryFilms
-            categoryTitle={translations.topRated}
-            searchCategory="top_rated"
-            serieOrMovie={`movie`}
+            categoryTitle={translations.popularSeries}
+            searchCategory="popular"
+            serieOrMovie={`tv`}
           />
           <Footer />
         </Box>
