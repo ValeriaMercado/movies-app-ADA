@@ -5,9 +5,17 @@ import { useEffect } from "react";
 
 export const SelectLanguage = () => {
   const context = useContext(Context);
+  const selectedLanguage = localStorage.getItem("selectedLanguage");
+  const languages={
+    english: selectedLanguage == "en" && "English",
+    spanish: selectedLanguage == "es" && "Español",
+    french: selectedLanguage == "fr" && "Français",
+    italian: selectedLanguage === "it" && "Italiano",
+    russian: selectedLanguage === "ru" && "Pусский",
+    chinesse: selectedLanguage =="zh"&& "中國人"
+  }
 
   useEffect(() => {
-    const selectedLanguage = localStorage.getItem("selectedLanguage");
     if (selectedLanguage) {
       context.setLanguage(selectedLanguage);
     }
@@ -28,13 +36,14 @@ export const SelectLanguage = () => {
         onChange={handleChangeLanguage}
         variant="unstyled"
         bg={"transparent"}
+        placeholder={selectedLanguage?selectedLanguage:"Seleccione un lenguaje"}
       >
-        <option value="en">English</option>
-        <option value="es">Español</option>
-        <option value="fr">Français</option>
-        <option value="it">Italiano</option>
-        <option value="ru">Pусский</option>
-        <option value="zh">中國人</option>
+        <option value="en">{languages.english}</option>
+        <option value="es">{languages.spanish}</option>
+        <option value="fr">{languages.french}</option>
+        <option value="it">{languages.italian}</option>
+        <option value="ru">{languages.russian}</option>
+        <option value="zh">{languages.chinesse}</option>
 
       </Select>
     </>

@@ -1,6 +1,6 @@
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/splide/dist/css/themes/splide-default.min.css";
-import { Box, Text, Card, Image, Button } from "@chakra-ui/react";
+import { Box, Text, Card, Button } from "@chakra-ui/react";
 import { useFetch } from "../../hooks/useFetch";
 import { useContext } from "react";
 import { Context } from "../../context/Context";

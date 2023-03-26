@@ -32,6 +32,17 @@ export const Navbar = () => {
   const context = useContext(Context);
   const translations = useTranslate(navbarTranslations(context));
 
+  const [isSmallerScreen, setIsSmallerScreen] = useState(false);
+
+useEffect(() => {
+  const handleResize = () => {
+    setIsSmallerScreen(window.innerWidth <= 768);
+  };
+  window.addEventListener("resize", handleResize);
+  return () => window.removeEventListener("resize", handleResize);
+}, []);
+
+
   return (
     <Container
       as={Stack}
@@ -48,7 +59,7 @@ export const Navbar = () => {
         size={"md"}
         icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
         aria-label={"Open Menu"}
-        display={{ md: "none" }}
+        display={{ base: "inherit", md: "none" }}
         onClick={onToggle}
       />
 
