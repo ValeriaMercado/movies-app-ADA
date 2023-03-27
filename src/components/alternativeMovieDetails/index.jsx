@@ -2,7 +2,7 @@
 import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import moment from "moment";
-import MovieTrailer from "./indexTrailer";
+import MovieTrailer from "../moviesDetails/indexTrailer";
 import { BsPlayCircle } from "react-icons/bs";
 import {
   Image,
@@ -15,7 +15,7 @@ import {
   ListItem,
   Spinner,
 } from "@chakra-ui/react";
-import MovieCredits from "./MovieCredits";
+import MovieCredits from "../moviesDetails/MovieCredits";
 import { useFetchDetails } from "../../hooks/useFetchDetails";
 import { Context } from "../../context/Context";
 import { ViewOffIcon } from "@chakra-ui/icons";
@@ -33,50 +33,36 @@ const AlternativeMovieDetails = () => {
   const { data } = useFetchDetails(
     `https://api.themoviedb.org/3/movie/${params.movieDetails}?api_key=ae186e957330197b5106a6c66c8bd1df&language=${context.language}`
   );
-  // const {movie} = useFetch(`https://api.themoviedb.org/3/movie/${params.id}?api_key=ae186e957330197b5106a6c66c8bd1df&language=${context.language}`,
-  // context.language)
-
+ 
   return (
     <Box
-      key={data.id}
-      bgImage={
+        zkey={data.id}
+        bgImage={
         data.backdrop_path
-          ? `https://image.tmdb.org/t/p/original/${data.backdrop_path}`
-          : " "
-      }
-      height={{ base: "100%", md: "100%" }}
-      backgroundSize={"cover"}
-      backgroundPosition="center"
-      className="background"
+            ? `https://image.tmdb.org/t/p/original/${data.backdrop_path}`
+            : " "
+        }
+        height={{ base: "100%", md: "100%" }}
+        backgroundSize={"cover"}
+        backgroundPosition="center"
+        className="background"
     >
-      {isLoading && (
-        <Spinner
-          thickness="4px"
-          speed="0.65s"
-          emptyColor="gray.200"
-          color="blue.500"
-          size="xl"
-          mb={"500px"}
-          mt={"300px"}
-          ml="50%"
-        />
-      )}
 
-      <Flex>
-        {!isSmallScreen && (
-          <Image
-            width="300px"
-            ml={"200px"}
-            mb="50px"
-            pt="200px"
-            src={
-              data.poster_path
+        <Flex>
+            {!isSmallScreen && (
+            <Image
+                width="300px"
+                ml={"200px"}
+                mb="50px"
+                pt="200px"
+                src={
+                data.poster_path
                 ? `http://image.tmdb.org/t/p/w500/${data.poster_path} `
                 : " "
-            }
-            alt={data.title}
-            key={data.id}
-          />
+                }
+                alt={data.title}
+                key={data.id}
+            />
         )}
         <Flex direction={"column"}>
           <Button
@@ -176,6 +162,7 @@ const AlternativeMovieDetails = () => {
         </Flex>
       </Flex>
       <MovieCredits />
+
     </Box>
   );
 };

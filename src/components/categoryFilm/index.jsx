@@ -4,8 +4,8 @@ import { Box, Text, Card, Button } from "@chakra-ui/react";
 import { useFetch } from "../../hooks/useFetch";
 import { useContext } from "react";
 import { Context } from "../../context/Context";
-import { BsFillPlayCircleFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
+import {AiOutlineEye} from "react-icons/ai"
 
 export const CategoryFilms = ({
   searchCategory,
@@ -79,7 +79,7 @@ export const CategoryFilms = ({
                   position="relative"
                   className="btn-card"
                 >
-                  <BsFillPlayCircleFill />
+                  <AiOutlineEye />
                 </Button>
               </Link>
             </Card>
