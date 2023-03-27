@@ -1,152 +1,296 @@
 import {
   Box,
   Flex,
-  IconButton,
-  useDisclosure,
-  useColorModeValue,
-  Stack,
-  Collapse,
+  Avatar,
   HStack,
+  Link,
+  IconButton,
   Button,
   Menu,
   MenuButton,
   MenuList,
   MenuItem,
+  MenuDivider,
+  useDisclosure,
+  useColorModeValue,
+  Stack,
+  Image,
 } from "@chakra-ui/react";
-import { HamburgerIcon, CloseIcon, ChevronDownIcon } from "@chakra-ui/icons";
-import { NavLink } from "../navItem";
-import { useContext, useState, useEffect } from "react"
-import { Context } from "../../context/Context"
-import { SearchButton } from "../inputSearch";
-import { navbarTranslations } from "../../translations/navbarTranslations";
-import { SelectLanguage } from "../selectLanguage";
+import {
+  HamburgerIcon,
+  CloseIcon,
+  AddIcon,
+  ChevronDownIcon,
+} from "@chakra-ui/icons";
+import { useContext } from "react";
+import { NavLink } from "react-router-dom";
+const Links = ["Dashboard", "Projects", "Team"];
 import { useTranslate } from "../../hooks/useTranslate";
-
-
+import { Context } from "../../context/Context";
+import { navbarTranslations } from "../../translations/navbarTranslations";
+import logo1 from "../../assets/logo1.png";
+import logo2 from "../../assets/logo2.png";
+import { AiFillHome } from "react-icons/Ai";
+import { BiCameraMovie } from "react-icons/Bi";
+import { FiTv } from "react-icons/Fi";
+import { SearchButton } from "../inputSearch";
+import { SelectLanguage } from "../selectLanguage";
+import { useMediaQuery } from "react-responsive";
+import { FiMoon, FiSun } from "react-icons/fi";
 
 export const Navbar = () => {
-  const { isOpen, onToggle } = useDisclosure();
-  const context = useContext(Context)
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const context = useContext(Context);
+  const translations = useTranslate(navbarTranslations(context));
+  const isSmallScreen = useMediaQuery({
+    query: "(max-width: 768px)",
+  });
+  const isMScreen = useMediaQuery({
+    query: "(max-width: 1200px)",
+  });
 
-  const translations = useTranslate(navbarTranslations(context))
-
+  const changeTheme = () => {
+    context.clearTheme
+      ? context.setClearTheme(false)
+      : context.setClearTheme(true);
+  };
 
   return (
-    <Box bg={useColorModeValue("gray.100", "gray.900")} px={4}>
-      <Flex h={16} w={"100%"}>
-        <IconButton
-          size={"md"}
-          icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
-          aria-label={"Open Menu"}
-          display={{ md: "none" }}
-          onClick={onToggle}
-        />
-        <HStack spacing={8} alignItems={"center"}>
-          <Box>LOGO</Box>
-          <SearchButton />
+    <>
+      <Box
+        bg={context.clearTheme ? "brand.secondary" : "brand.accent"}
+        color={context.clearTheme ? "black" : "white"}
+        px={4}
+      >
+        <Flex h={"100px"} alignItems="center" justifyContent="space-between">
+          <IconButton
+            size="md"
+            icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
+            aria-label="Open Menu"
+            display={{ md: "none" }}
+            onClick={isOpen ? onClose : onOpen}
+            bg={context.clearTheme ? "brand.secondary" : "brand.accent"}
+            color={context.clearTheme ? "black" : "white"}
+          />
+          <HStack spacing={8} alignItems="center">
+            <NavLink to="/">
+              <Box ml={isSmallScreen ? "100px " : "10px"}>
+                <Image src={context.clearTheme ? logo1 : logo2} w="150px" />
+              </Box>
+            </NavLink>
 
-          <HStack as={"nav"} spacing={4} display={{ base: "none", md: "flex" }}>
-            <NavLink sectionTitle={translations.home} link={"/"} />
-            <Box>
+            <HStack
+              as={"nav"}
+              spacing={4}
+              display={{ base: "none", md: "flex" }}
+            >
               <Menu>
-                <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
-                  {translations.movies}
+                <NavLink to="/">
+                  <MenuButton fontSize="40px">
+                    <AiFillHome />
+                  </MenuButton>
+                </NavLink>
+              </Menu>
+              <Menu>
+                <MenuButton fontSize={"40px"}>
+                  <BiCameraMovie />
                 </MenuButton>
-                <MenuList>
-                  <MenuItem>
-                    <NavLink
-                      sectionTitle={translations.upcoming}
-                      link={"/upcoming"}
-                    />
+                <MenuList
+                  bg={context.clearTheme ? "brand.secondary" : "brand.accent"}
+                  color={context.clearTheme ? "black" : "white"}
+                  border={
+                    context.clearTheme ? "1px solid black" : "1px solid white"
+                  }
+                >
+                  <MenuItem
+                    bg={context.clearTheme ? "brand.secondary" : "brand.accent"}
+                    color={context.clearTheme ? "black" : "white"}
+                    borderBottom={
+                      context.clearTheme ? "1px solid black" : "1px solid white"
+                    }
+                  >
+                    <NavLink to="/upcoming">{translations.upcoming}</NavLink>
                   </MenuItem>
-                  <MenuItem>
-                    <NavLink
-                      sectionTitle={translations.topRated}
-                      link={"/top_rated"}
-                    />
+                  <MenuItem
+                    bg={context.clearTheme ? "brand.secondary" : "brand.accent"}
+                    color={context.clearTheme ? "black" : "white"}
+                  >
+                    <NavLink to="/top_rated">{translations.topRated}</NavLink>
                   </MenuItem>
                 </MenuList>
               </Menu>
-            </Box>
-            <Box>
               <Menu>
-                <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
-                  {translations.series}
+                <MenuButton fontSize={"40px"}>
+                  <FiTv />
                 </MenuButton>
-                <MenuList>
-                  <MenuItem>
-                    <NavLink
-                      sectionTitle={translations.popular}
-                      link={"/popular"}
-                    />
+                <MenuList
+                  bg={context.clearTheme ? "brand.secondary" : "brand.accent"}
+                  border={
+                    context.clearTheme ? "1px solid black" : "1px solid white"
+                  }
+                >
+                  <MenuItem
+                    bg={context.clearTheme ? "brand.secondary" : "brand.accent"}
+                    color={context.clearTheme ? "black" : "white"}
+                    borderBottom={
+                      context.clearTheme ? "1px solid black" : "1px solid white"
+                    }
+                  >
+                    <NavLink to="/popular">{translations.popular}</NavLink>
                   </MenuItem>
-                  <MenuItem>
-                    <NavLink
-                      sectionTitle={translations.top}
-                      link={"/topTv"}
-                    />
+                  <MenuItem
+                    bg={context.clearTheme ? "brand.secondary" : "brand.accent"}
+                    color={context.clearTheme ? "black" : "white"}
+                  >
+                    <NavLink to="/topTv">{translations.top}</NavLink>
                   </MenuItem>
                 </MenuList>
               </Menu>
-            </Box>
+            </HStack>
           </HStack>
-        </HStack>
-        <Box ml={"400px"} mt={"10px"}>
-          <SelectLanguage />
-        </Box>
-      </Flex>
-      <Collapse in={isOpen} animateOpacity>
-        <Box pb={4} display="flex" justifyContent="center">
-          <Stack as={"nav"} spacing={4}>
-            <Box display="flex" justifyContent="flex-start" marginLeft={4}>
-              <NavLink sectionTitle={translations.home} link={"/"} />
+
+          <Flex ml={isMScreen ? "10px" : "10px"} alignItems={"center"}>
+            <Box display={isSmallScreen ? "none" : "flex"}>
+              <SearchButton />
             </Box>
-            <Box>
+          </Flex>
+          <Box display={"flex"}>
+            <Box display={isSmallScreen ? "none" : "flex"}>
+              <SelectLanguage />
+            </Box>
+
+            <IconButton
+              _hover={{ background: "none" }}
+              icon={context.clearTheme ? <FiMoon /> : <FiSun />}
+              onClick={changeTheme}
+              bg={"none"}
+              color={context.clearTheme ? "black" : "white"}
+            ></IconButton>
+          </Box>
+        </Flex>
+
+        {isOpen ? (
+          <Box pb={4} display={{ md: "none" }}>
+            <Stack as={"nav"} spacing={4}>
               <Menu>
-                <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
-                  {translations.movies}
+                <NavLink to="/">
+                  <MenuButton
+                    as={Button}
+                    w="100%"
+                    mx="auto"
+                    bg={context.clearTheme ? "brand.secondary" : "brand.accent"}
+                    color={context.clearTheme ? "black" : "white"}
+                    border={
+                      context.clearTheme ? "1px solid black" : "1px solid white"
+                    }
+                    fontSize="25px"
+                  >
+                    <AiFillHome />
+                  </MenuButton>
+                </NavLink>
+              </Menu>
+              <Menu display="flex">
+                <MenuButton
+                  as={Button}
+                  bg={context.clearTheme ? "brand.secondary" : "brand.accent"}
+                  color={context.clearTheme ? "black" : "white"}
+                  border={
+                    context.clearTheme ? "1px solid black" : "1px solid white"
+                  }
+                  rightIcon={<ChevronDownIcon />}
+                  fontSize="25px"
+                >
+                  <BiCameraMovie />
                 </MenuButton>
-                <MenuList>
-                   <MenuItem>
-                    <NavLink
-                      sectionTitle={translations.upcoming}
-                      link={"/upcoming"}
-                    />
+                <MenuList
+                  bg={context.clearTheme ? "brand.secondary" : "brand.accent"}
+                  color={context.clearTheme ? "black" : "white"}
+                  border={
+                    context.clearTheme ? "1px solid black" : "1px solid white"
+                  }
+                >
+                  <MenuItem
+                    bg={context.clearTheme ? "brand.secondary" : "brand.accent"}
+                    color={context.clearTheme ? "black" : "white"}
+                    borderBottom={
+                      context.clearTheme ? "1px solid black" : "1px solid white"
+                    }
+                  >
+                    <NavLink to="/upcoming">{translations.upcoming}</NavLink>
                   </MenuItem>
-                  <MenuItem>
-                    <NavLink
-                      sectionTitle={translations.topRated}
-                      link={"/top_rated"}
-                    />
+                  <MenuItem
+                    bg={context.clearTheme ? "brand.secondary" : "brand.accent"}
+                    color={context.clearTheme ? "black" : "white"}
+                  >
+                    <NavLink to="/top_rated">{translations.topRated}</NavLink>
                   </MenuItem>
-                 
                 </MenuList>
               </Menu>
-            </Box>
-            <Box>
               <Menu>
-                <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
-                  {translations.series}
+                <MenuButton
+                  as={Button}
+                  rightIcon={<ChevronDownIcon />}
+                  bg={context.clearTheme ? "brand.secondary" : "brand.accent"}
+                  color={context.clearTheme ? "black" : "white"}
+                  border={
+                    context.clearTheme ? "1px solid black" : "1px solid white"
+                  }
+                  fontSize="25px"
+                >
+                  <FiTv />
                 </MenuButton>
-                <MenuList>
-                  <MenuItem>
-                    <NavLink
-                      sectionTitle={translations.popular}
-                      link={"/popular"}
-                    />
+                <MenuList
+                  bg={context.clearTheme ? "brand.secondary" : "brand.accent"}
+                  color={context.clearTheme ? "black" : "white"}
+                  border={
+                    context.clearTheme ? "1px solid black" : "1px solid white"
+                  }
+                >
+                  <MenuItem
+                    bg={context.clearTheme ? "brand.secondary" : "brand.accent"}
+                    color={context.clearTheme ? "black" : "white"}
+                    borderBottom={
+                      context.clearTheme ? "1px solid black" : "1px solid white"
+                    }
+                  >
+                    <NavLink to="/popular">{translations.popular}</NavLink>
                   </MenuItem>
-                  <MenuItem>
-                    <NavLink
-                      sectionTitle={translations.top}
-                      link={"/topTv"}
-                    />
+                  <MenuItem
+                    bg={context.clearTheme ? "brand.secondary" : "brand.accent"}
+                    color={context.clearTheme ? "black" : "white"}
+                  >
+                    <NavLink to="/topTv">{translations.top}</NavLink>
                   </MenuItem>
                 </MenuList>
               </Menu>
-            </Box>
-          </Stack>
-        </Box>
-      </Collapse>
-    </Box>
+              <Menu>
+                <SearchButton />
+              </Menu>
+              <Menu>
+                <SelectLanguage />
+              </Menu>
+            </Stack>
+          </Box>
+        ) : null}
+      </Box>
+    </>
   );
 };
+
+{
+  /* <Box
+  display="flex"
+  mt={isSmallScreen ? "10%" : " "}
+  justifyContent={isSmallScreen ? "center" : ""}
+>
+  <SearchButton />
+  <SelectLanguage />
+  <IconButton
+    _hover={{ background: "none" }}
+    icon={context.clearTheme ? <FiMoon /> : <FiSun />}
+    onClick={changeTheme}
+    bg={"none"}
+    color={context.clearTheme ? "black" : "white"}
+  ></IconButton>
+</Box>; */
+}

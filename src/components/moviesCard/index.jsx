@@ -2,6 +2,7 @@ import { Card, Button } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import { BsFillPlayCircleFill } from "react-icons/bs";
 import { useMediaQuery } from "react-responsive";
+import noimage from "../../assets/noimage.png";
 
 export const MoviesCards = ({ alt, movieTitle, img, id }) => {
   const isSmallScreen = useMediaQuery({
@@ -16,10 +17,12 @@ export const MoviesCards = ({ alt, movieTitle, img, id }) => {
         display="flex"
         m={4}
         ml={isSmallScreen ? 4 : ""}
-        backgroundImage={img ? `https://image.tmdb.org/t/p/w500/${img}` : " "}
+        backgroundImage={
+          img ? `https://image.tmdb.org/t/p/w500/${img}` : `${noimage}`
+        }
         backgroundPosition="center"
         width={"100%"}
-        backgroundSize="100%"
+        backgroundSize="cover"
         alt={movieTitle}
         className="card-background"
       >
@@ -41,7 +44,7 @@ export const MoviesCards = ({ alt, movieTitle, img, id }) => {
             <Button
               variant={"unstyled"}
               fontSize={isSmallScreen ? "30px" : "45px"}
-              ml={isSmallScreen ? "150px" : "210px"}
+              ml={isSmallScreen ? "170px" : "210px"}
               mt={isSmallScreen ? "175px" : "345px"}
               position="relative"
               className="btn-card"
@@ -52,6 +55,5 @@ export const MoviesCards = ({ alt, movieTitle, img, id }) => {
         )}
       </Card>
     </>
-
   );
 };
