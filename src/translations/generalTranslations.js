@@ -5,7 +5,9 @@ export const generalTranslations = (par) => {
       topRated: "Top Rated",
       popular: "Popular Movies",
       trailer: "Watch Trailer",
-      more: "More"
+      more: "More",
+      onAir: "Currently on the air",
+      latest:"The most newly created TV show"
     };
   }
   if (par.language === "es") {
@@ -14,7 +16,9 @@ export const generalTranslations = (par) => {
       popular: "Películas Populares",
       topRated: "Mejor Puntuadas",
       trailer: "Ver Trailer",
-      more: "More"
+      more: "More",
+      onAir: "Actualmente al aire",
+      latest: "Lo último en programas télevisivos"
     };
   }
 
@@ -24,7 +28,9 @@ export const generalTranslations = (par) => {
       topRated: "Les mieux notés",
       popular: "Populaire",
       trailer: "Voir la bande-annonce",
-      more:"Plus"
+      more:"Plus",
+      onAir:"Actuellement à l'antenne",
+      latest:"l'émission télévisée la plus récente."
     };
   }
 
@@ -34,7 +40,9 @@ export const generalTranslations = (par) => {
       topRated: "Più votati",
       popular: "Popolare",
       trailer: "Guarda il trailer",
-      more:"Di più"
+      more:"Di più",
+      onAir:"Attualmente in onda",
+      latest:"Il programma televisivo più recente."
     };
   }
   if (par.language === "ru") {
@@ -43,7 +51,9 @@ export const generalTranslations = (par) => {
       popular: "Популярные фильмы",
       topRated: "Лучший рейтинг",
       trailer: "Смотреть трейлер",
-      more:"дальше"
+      more:"дальше",
+      onAir:"сейчас в эфире",
+      latest:"самое недавно созданное телешоу."
     };
   }
   if (par.language === "zh") {
@@ -52,7 +62,9 @@ export const generalTranslations = (par) => {
       topRated: "最高評價",
       popular: "熱門電影",
       trailer: "觀看預告",
-      more: "更遠"
+      more: "更遠",
+      onAir:"目前正在播出",
+      latest: "最新制作的电视节目。"
     };
   }
 };

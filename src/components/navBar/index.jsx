@@ -18,7 +18,7 @@ import {
 } from "@chakra-ui/react";
 import { HamburgerIcon, CloseIcon, ChevronDownIcon } from "@chakra-ui/icons";
 import { NavLink } from "../navItem";
-import { useContext, useState, useEffect } from "react";
+import { useContext} from "react";
 import { Context } from "../../context/Context";
 import { SearchButton } from "../inputSearch";
 import { navbarTranslations } from "../../translations/navbarTranslations";
@@ -32,21 +32,21 @@ export const Navbar = () => {
   const context = useContext(Context);
   const translations = useTranslate(navbarTranslations(context));
 
-  const [isSmallerScreen, setIsSmallerScreen] = useState(false);
+//   const [isSmallerScreen, setIsSmallerScreen] = useState(false);
 
-useEffect(() => {
-  const handleResize = () => {
-    setIsSmallerScreen(window.innerWidth <= 768);
-  };
-  window.addEventListener("resize", handleResize);
-  return () => window.removeEventListener("resize", handleResize);
-}, []);
+// useEffect(() => {
+//   const handleResize = () => {
+//     setIsSmallerScreen(window.innerWidth <= 768);
+//   };
+//   window.addEventListener("resize", handleResize);
+//   return () => window.removeEventListener("resize", handleResize);
+// }, []);
 
 
   return (
     <Container
       as={Stack}
-      maxW="100%"
+      maxW="100%"s
       h={"6rem"}
       py={4}
       direction={{ base: "column", md: "row" }}
@@ -109,8 +109,8 @@ useEffect(() => {
           </MenuList>
         </Menu>
       </Box>
-      <Link to={`/home`}>
-        <Box>
+      <Link to={`/home`} display={{ base: "none", md: "inherit" }}>
+        <Box  display={{ base: "none", md: "inherit" }}>
           {context.clearTheme ? (
             <Image src={logo1} w="150px" />
           ) : (

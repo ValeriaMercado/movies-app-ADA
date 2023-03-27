@@ -43,6 +43,7 @@ export const SearchButton = () => {
   return (
     <Flex>
       <InputGroup
+        border="white"
         w={"200px"}
         mr="10%"
         _focus={{ boxShadow: "none" }}
@@ -55,7 +56,7 @@ export const SearchButton = () => {
         />
         <Input
           type="search"
-          placeholder={translations.search}
+          //placeholder={translations.search}
           onSubmit={handleClick}
           onChange={handleChange}
           value={valorInput}

@@ -47,6 +47,11 @@ export const Home = () => {
             searchCategory="top_rated"
             serieOrMovie={`movie`}
           />
+          <CategoryFilms
+            categoryTitle={translations.onAir}
+            searchCategory="on_the_air"
+            serieOrMovie={`tv`}
+            />
           <Footer />
         </Box>
       </Box>

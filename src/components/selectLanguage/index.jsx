@@ -2,18 +2,12 @@ import { Select } from "@chakra-ui/react";
 import { useContext } from "react";
 import { Context } from "../../context/Context";
 import { useEffect } from "react";
+import { FlagIcon } from 'react-flag-kit';
+
 
 export const SelectLanguage = () => {
   const context = useContext(Context);
   const selectedLanguage = localStorage.getItem("selectedLanguage");
-  const languages={
-    english: selectedLanguage == "en" && "English",
-    spanish: selectedLanguage == "es" && "Español",
-    french: selectedLanguage == "fr" && "Français",
-    italian: selectedLanguage === "it" && "Italiano",
-    russian: selectedLanguage === "ru" && "Pусский",
-    chinesse: selectedLanguage =="zh"&& "中國人"
-  }
 
   useEffect(() => {
     if (selectedLanguage) {
@@ -30,22 +24,83 @@ export const SelectLanguage = () => {
 
   return (
     <>
-      <Select
+      {/* <Select
         height={"40px"}
         color={context.clearTheme ? "black" : "white"}
         onChange={handleChangeLanguage}
         variant="unstyled"
+        colorScheme="red"
         bg={"transparent"}
-        placeholder={selectedLanguage?selectedLanguage:"Seleccione un lenguaje"}
+        //placeholder={selectedLanguage?selectedLanguage:"Seleccione un lenguaje"}//necesito que aqu'í me aparezca el contenido del label option
       >
-        <option value="en">{languages.english}</option>
-        <option value="es">{languages.spanish}</option>
-        <option value="fr">{languages.french}</option>
-        <option value="it">{languages.italian}</option>
-        <option value="ru">{languages.russian}</option>
-        <option value="zh">{languages.chinesse}</option>
+        {/* <option value="en" label={languages.english}>{languages.english}</option>
+        <option value="es" label={languages.spanish}>{languages.spanish}</option>
+        <option value="fr" label={languages.french}>{languages.french}</option>
+        <option value="it" label={languages.italian}>{languages.italian}</option>
+        <option value="ru" label={languages.russian}>{languages.russian}</option>
+        <option value="zh" label={languages.chinesse}>{languages.chinesse}</option> */}
 
-      </Select>
+        {/* <option value="en" >English</option>
+        <option value="es">Español</option>
+        <option value="fr">Français</option>
+        <option value="it">Italiano</option>
+        <option value="ru">Pусский</option>
+        <option value="zh">中國人</option>
+
+      </Select> */} 
+
+
+<Select
+  height={"40px"}
+  color={context.clearTheme ? "black" : "white"}
+  onChange={handleChangeLanguage}
+  variant="unstyled"
+  colorScheme="red"
+  bg={"transparent"}
+  //placeholder={selectedLanguage?selectedLanguage:"Seleccione un lenguaje"}//necesito que aqu'í me aparezca el contenido del label option
+  sx={{
+    select: {
+      _focus: {
+        boxShadow: "none",
+        bg: "transparent"
+      }
+    },
+    option: {
+      bg: "black",
+      color: "white",
+      _hover: {
+        bg: "purple.500"
+      },
+      _selected: {
+        bg: "purple.500"
+      }
+    },
+    select: {
+      _menu: {
+        bg: "black",
+        color: "white",
+        boxShadow: "none",
+        borderRadius: "none",
+        borderWidth: "1px",
+        borderColor: "white",
+        fontSize: "md",
+        fontWeight: "normal",
+        _focus: {
+          bg: "transparent",
+          boxShadow: "none"
+        }
+      }
+    }
+  }}
+>
+  <option value="en">English</option>
+  <option value="es">Español</option>
+  <option value="fr">Français</option>
+  <option value="it">Italiano</option>
+  <option value="ru">Pусский</option>
+  <option value="zh">中國人</option>
+</Select>
+
     </>
   );
 };
