@@ -36,7 +36,7 @@ import { FiTv } from "react-icons/Fi";
 import { SearchButton } from "../inputSearch";
 import { SelectLanguage } from "../selectLanguage";
 import { useMediaQuery } from "react-responsive";
-import { FiMoon, FiSun } from "react-icons/fi";
+import { FiMoon, FiSun } from "react-icons/Fi";
 
 export const Navbar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -314,4 +314,3 @@ export const Navbar = () => {
   ></IconButton>
 </Box>; */
 }
-ssss
