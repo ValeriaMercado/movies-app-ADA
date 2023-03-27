@@ -26,12 +26,33 @@ export const SelectLanguage = () => {
     <>
       {/* <Select
         height={"40px"}
-        color={context.clearTheme ? "black" : "white"}
         onChange={handleChangeLanguage}
         variant="unstyled"
-        colorScheme="red"
-        bg={"transparent"}
-        //placeholder={selectedLanguage?selectedLanguage:"Seleccione un lenguaje"}//necesito que aqu'í me aparezca el contenido del label option
+        sx={{
+          backgroundColor: context.clearTheme
+            ? "brand.secondary"
+            : "brand.accent",
+          color: context.clearTheme ? "black" : "white",
+          border: context.clearTheme ? "1px solid black" : "1px solid white",
+          option: {
+            backgroundColor: context.clearTheme
+              ? "brand.secondary"
+              : "brand.accent",
+            color: context.clearTheme ? "black" : "black",
+            _hover: {
+              backgroundColor: context.clearTheme
+                ? "brand.accent"
+                : "brand.secondary",
+              color: context.clearTheme ? "white" : "black",
+            },
+            _selected: {
+              backgroundColor: context.clearTheme
+                ? "brand.accent"
+                : "brand.secondary",
+              color: context.clearTheme ? "white" : "black",
+            },
+          },
+        }}
       >
         {/* <option value="en" label={languages.english}>{languages.english}</option>
         <option value="es" label={languages.spanish}>{languages.spanish}</option>

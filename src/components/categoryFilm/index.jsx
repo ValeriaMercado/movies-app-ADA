@@ -12,7 +12,6 @@ export const CategoryFilms = ({
   serieOrMovie,
   categoryTitle,
 }) => {
-
   const context = useContext(Context);
 
   const { movies, isLoading } = useFetch(
@@ -59,10 +58,7 @@ export const CategoryFilms = ({
         style={{ width: "100%", paddingRight: 10, margin: 0 }}
       >
         {movies?.map((movie) => (
-          <SplideSlide
-            key={movie.id}
-            style={{ padding: 0, marginRight: 4, margin: 0 }}
-          >
+          <SplideSlide key={movie.id} style={{ padding: 0, margin: 0 }}>
             <Card
               backgroundImage={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
               backgroundPosition="center"
@@ -71,14 +67,14 @@ export const CategoryFilms = ({
               w={"90%"}
               display="flex"
               m={4}
-              ml={4}
+              mx={{ sm: 4, md: 4, lg: 4 }}
               className="card-background"
             >
               <Link to={`/details/movie/${movie.id}`}>
                 <Button
                   variant={"unstyled"}
                   fontSize={"35px"}
-                  ml={"140px"}
+                  ml={{ sm: "80px", md: "130px", lg: "155px" }}
                   mt={"250px"}
                   position="relative"
                   className="btn-card"

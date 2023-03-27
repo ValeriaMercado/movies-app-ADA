@@ -3,7 +3,8 @@ export const generalTranslations = (par) => {
     return {
       selectLanguage: "Select language",
       topRated: "Top Rated",
-      popular: "Popular Movies",
+      popularMovies: "Popular Movies",
+      popularSeries: "Popular Series",
       trailer: "Watch Trailer",
       more: "More",
       onAir: "Currently on the air",
@@ -12,8 +13,9 @@ export const generalTranslations = (par) => {
   }
   if (par.language === "es") {
     return {
-      selectLanguage: "Seleccione lenguaje",
-      popular: "Películas Populares",
+      selectLanguage: "Selecccione lenguaje",
+      popularMovies: "Películas Populares",
+      popularSeries: "Series Populares",
       topRated: "Mejor Puntuadas",
       trailer: "Ver Trailer",
       more: "More",
@@ -26,7 +28,8 @@ export const generalTranslations = (par) => {
     return {
       selectLanguage: "Langue de sélection",
       topRated: "Les mieux notés",
-      popular: "Populaire",
+      popularMovies: "Films Populaires",
+      popularSeries: "Émissions Populaires",
       trailer: "Voir la bande-annonce",
       more:"Plus",
       onAir:"Actuellement à l'antenne",
@@ -38,7 +41,8 @@ export const generalTranslations = (par) => {
     return {
       selectLanguage: "Lingua di selezione",
       topRated: "Più votati",
-      popular: "Popolare",
+      popularMovies: "Film Popolari",
+      popularSeries: "Spettacoli Popolari",
       trailer: "Guarda il trailer",
       more:"Di più",
       onAir:"Attualmente in onda",
@@ -48,7 +52,8 @@ export const generalTranslations = (par) => {
   if (par.language === "ru") {
     return {
       selectLanguage: "выберите язык",
-      popular: "Популярные фильмы",
+      popularMovies: "популярные фильмы",
+      popularSeries: "популярный сериал",
       topRated: "Лучший рейтинг",
       trailer: "Смотреть трейлер",
       more:"дальше",
@@ -68,4 +73,3 @@ export const generalTranslations = (par) => {
     };
   }
 };
-

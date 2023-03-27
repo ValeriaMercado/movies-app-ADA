@@ -8,19 +8,24 @@ import { MoviesCarousel } from "../carousel";
 import { useTranslate } from "../../hooks/useTranslate";
 import { generalTranslations } from "../../translations/generalTranslations";
 import { Portada } from "../portada";
+import { useMediaQuery } from "react-responsive";
 
 export const Home = () => {
+  const isSmallScreen = useMediaQuery({
+    query: "(max-width: 768px)",
+  });
   const context = useContext(Context);
   const translations = useTranslate(generalTranslations(context));
 
   return (
     <Flex flexDirection={"column"}>
-      {/* <Portada/> */}
-
-      <Box as="div">
-        <MoviesCarousel searchCategory={`popular`} serieOrMovie={`movie`} />
-      </Box>
-
+      {isSmallScreen ? (
+        <Portada />
+      ) : (
+        <Box as="div">
+          <MoviesCarousel searchCategory={`popular`} serieOrMovie={`movie`} />
+        </Box>
+      )}
       <Box
         as="section"
         display="flex"
@@ -38,14 +43,14 @@ export const Home = () => {
           alignItems="center"
         >
           <CategoryFilms
-            categoryTitle={translations.popular}
+            categoryTitle={translations.popularMovies}
             searchCategory="popular"
             serieOrMovie={`movie`}
           />
           <CategoryFilms
-            categoryTitle={translations.topRated}
-            searchCategory="top_rated"
-            serieOrMovie={`movie`}
+            categoryTitle={translations.popularSeries}
+            searchCategory="popular"
+            serieOrMovie={`tv`}
           />
           <CategoryFilms
             categoryTitle={translations.onAir}
