@@ -14,34 +14,39 @@ import {
   ListItem,
   Spinner,
 } from "@chakra-ui/react";
-import MovieCredits from "./movieCredits";
-import { useFetchMovieDetails } from "../../hooks/useFetchMovieDetails";
+import MovieCredits from "./MovieCredits";
+import { useFetchDetails } from "../../hooks/useFetchDetails";
 import { Context } from "../../context/Context";
+import { ViewOffIcon } from "@chakra-ui/icons";
+import { useMediaQuery } from "react-responsive";
 
-const MovieDetails = ({ id }) => {
+const MovieDetails = () => {
+  const params = useParams();
   const [trailer, setTrailer] = useState(true);
-  const [loading, setLoading] = useState(false);
+  const [isLoading, setLoading] = useState(false);
   const context = useContext(Context);
+  const isSmallScreen = useMediaQuery({
+    query: "(max-width: 768px)",
+  });
 
-  const { movie } = useFetchMovieDetails(
-    `https://api.themoviedb.org/3/movie/${id}?api_key=ae186e957330197b5106a6c66c8bd1df&language=${context.language}`,
-    context.language
+  const { data } = useFetchDetails(
+    `https://api.themoviedb.org/3/movie/${params.movieDetails}?api_key=ae186e957330197b5106a6c66c8bd1df&language=${context.language}`
   );
 
   return (
     <Box
-      w="100%"
-      key={movie.id}
-      backgroundImage={
-        movie?.backdrop_path
-          ? `url(https://image.tmdb.org/t/p/original/${movie?.backdrop_path})`
+      key={data.id}
+      bgImage={
+        data.backdrop_path
+          ? `https://image.tmdb.org/t/p/original/${data.backdrop_path}`
           : " "
       }
-      height="100%"
-      backgroundSize="cover"
-      className="backdrop"
+      height={{ base: "100%", md: "100%" }}
+      backgroundSize={"cover"}
+      backgroundPosition="center"
+      className="background"
     >
-      {loading && (
+      {isLoading && (
         <Spinner
           thickness="4px"
           speed="0.65s"
@@ -55,92 +60,108 @@ const MovieDetails = ({ id }) => {
       )}
 
       <Flex>
-        <Image
-          width="300px"
-          ml={"200px"}
-          mb="50px"
-          pt="200px"
-          src={
-            movie.poster_path
-              ? `http://image.tmdb.org/t/p/w500/${movie.poster_path} `
-              : " "
-          }
-          alt={movie.original_title}
-          key={movie.id}
-        />
+        {!isSmallScreen && (
+          <Image
+            width="300px"
+            ml={"200px"}
+            mb="50px"
+            pt="200px"
+            src={
+              data.poster_path
+                ? `http://image.tmdb.org/t/p/w500/${data.poster_path} `
+                : " "
+            }
+            alt={data.title}
+            key={data.id}
+          />
+        )}
         <Flex direction={"column"}>
           <Button
             colorScheme="blackAlpha"
             size="md"
-            w={"150px"}
-            ml={"500px"}
-            mb="10px"
-            mt="200px"
+            w={{ base: "80%", md: "150px" }}
+            mx={{ base: "auto", md: "0" }}
+            mt={{ base: "20px", md: "150px" }}
+            ml={{ base: " ", md: "500px" }}
+            mb={{ md: "10px" }}
             onClick={() => setTrailer(!trailer)}
           >
-            {trailer ? <Icon as={BsPlayCircle} /> : " "}
-
-            {trailer ? "   Trailer" : "Hide trailer"}
+            {trailer ? <Icon mr={"10px"} as={BsPlayCircle} /> : " "}
+            {trailer ? "Trailer" : <ViewOffIcon />}
           </Button>
           {!trailer && (
-            <Box as="div" ml={"100px"}>
+            <Box
+              as="div"
+              ml={{ base: "10%", md: "100px" }}
+              textAlign={{ base: "center", md: "left" }}
+              mb={{ base: "400px" }}
+              mr={{ base: "50px" }}
+            >
               <MovieTrailer />
             </Box>
           )}
-
           {trailer ? (
-            <Box as="div">
-              <Flex flexDirection={"row"} ml="50px">
+            <Box as="div" textAlign="center">
+              <Flex
+                flexDirection={{ base: "column", md: "row" }}
+                ml={{ md: "50px" }}
+                mt={{ md: "10px" }}
+              >
                 <Text
-                  fontSize={"45px"}
+                  fontSize={{ base: "35px", md: "45px" }}
                   position="relative"
                   color="white"
                   fontWeight="extrabold"
-                  key={movie.id}
-                  ml="10%"
-                  w={"70%"}
+                  key={data.id}
                 >
-                  {movie.title}
+                  {data.original_title}
                 </Text>
                 <Text
-                  fontSize={"24px"}
-                  fontWeight="bold"
+                  fontSize={{ base: "20px", md: "24px" }}
+                  fontWeight="extrabold"
                   position="relative"
                   color="white"
-                  ml={"40px"}
+                  ml={{ base: "0", md: "20px" }}
+                  mt={{ base: "10px", md: "20px" }}
                 >
-                  {moment(movie.release_date, "YYYY-MM-DD").format("YYYY")}
+                  {moment(data.release_date, "YYYY-MM-DD").format("YYYY")}
                 </Text>
               </Flex>
 
               <Text
-                ml={"100px"}
-                mr={"100px"}
+                mt={{ base: "10px", md: "20px" }}
+                mb={{ base: "10px", md: "20px" }}
+                mx={{ md: "30px" }}
                 position="relative"
                 color="white"
-                key={movie.id}
+                key={data.id}
+                className="text-center"
               >
-                {movie.overview}
+                {data.overview}
               </Text>
               <Text
-                ml={"50px"}
-                mr={"700px"}
-                mt="60px"
+                mt={{ base: "10px", md: "20px" }}
+                mb={{ base: "10px", md: "20px" }}
+                ml={{ base: "0", md: "50px" }}
+                mr={{ base: "0", md: "700px" }}
                 position="relative"
                 color="white"
                 fontWeight="extrabold"
               >
-                {context.language === "en" ? "GENRES" : "GÉNEROS"}
+                {context.language === "en" ? "GENRES" : ""}
+                {context.language === "es" ? "GÉNEROS" : ""}
+                {context.language === "fr" ? "GENRES" : ""}
+                {context.language === "it" ? "GENERI" : ""}
+                {context.language === "ru" ? "ЖАНРЫ" : ""}
               </Text>
-              <Flex alignItems="center">
+              <Flex alignItems="center" justifyContent="center">
                 <UnorderedList
-                  ml={"50px"}
-                  mr={"700px"}
+                  ml={{ base: "0", md: "50px" }}
+                  mr={{ base: "0", md: "700px" }}
                   position="relative"
                   color="white"
-                  mb={"5%"}
                 >
-                  {movie?.genres?.map((g) => (
+                  {data?.genres?.map((g) => (
                     <ListItem key={g.id}>{g.name}</ListItem>
                   ))}
                 </UnorderedList>

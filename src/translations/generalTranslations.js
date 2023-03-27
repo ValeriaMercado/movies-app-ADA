@@ -3,14 +3,16 @@ export const generalTranslations = (par) => {
     return {
       selectLanguage: "language",
       topRated: "Top Rated",
-      popular: "Popular Movies",
+      popularMovies: "Popular Movies",
+      popularSeries: "Popular Series",
       trailer: "Watch Trailer",
     };
   }
   if (par.language === "es") {
     return {
       selectLanguage: "Selecccione lenguaje",
-      popular: "Películas Populares",
+      popularMovies: "Películas Populares",
+      popularSeries: "Series Populares",
       topRated: "Mejor Puntuadas",
       trailer: "Ver Trailer",
     };
@@ -20,7 +22,8 @@ export const generalTranslations = (par) => {
     return {
       selectLanguage: "Langue de sélection",
       topRated: "Les mieux notés",
-      popular: "Populaire",
+      popularMovies: "Films Populaires",
+      popularSeries: "Émissions Populaires",
       trailer: "Voir la bande-annonce",
     };
   }
@@ -29,17 +32,18 @@ export const generalTranslations = (par) => {
     return {
       selectLanguage: "Lingua di selezione",
       topRated: "Più votati",
-      popular: "Popolare",
+      popularMovies: "Film Popolari",
+      popularSeries: "Spettacoli Popolari",
       trailer: "Guarda il trailer",
     };
   }
   if (par.language === "ru") {
     return {
       selectLanguage: "выберите язык",
-      popular: "Популярные фильмы",
+      popularMovies: "популярные фильмы",
+      popularSeries: "популярный сериал",
       topRated: "Лучший рейтинг",
       trailer: "Смотреть трейлер",
     };
   }
 };
-
