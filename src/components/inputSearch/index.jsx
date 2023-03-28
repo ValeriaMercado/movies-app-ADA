@@ -3,16 +3,13 @@ import { Input, Flex, InputGroup, InputLeftElement } from "@chakra-ui/react";
 import { SearchIcon } from "@chakra-ui/icons";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { useFetch } from "../../hooks/useFetch";
-import { navbarTranslations } from "../../translations/navbarTranslations";
 import { Context } from "../../context/Context";
-import { useTranslate } from "../../hooks/useTranslate";
 import { useMediaQuery } from "react-responsive";
 
 export const SearchButton = () => {
   const navigate = useNavigate();
   const [valorInput, setValorInput] = useState("");
   const context = useContext(Context);
-  const translations = useTranslate(navbarTranslations(context));
   const isSmallScreen = useMediaQuery({
     query: "(max-width: 768px)",
   });
@@ -49,15 +46,14 @@ export const SearchButton = () => {
         ml={isSmallScreen ? " " : "300px"}
         _focus={{ boxShadow: "none" }}
         _focusVisible={{ boxShadow: "none", outline: "none" }}
-        _hover={{ border: "purple.500", color: "black" }}
       >
         <InputLeftElement
           pointerEvents="none"
           children={<SearchIcon color="white" />}
         />
         <Input
+          focusBorderColor={context.clearTheme?"brand.accent" : "brand.secondary"}
           type="search"
-          placeholder={translations.search}
           onSubmit={handleClick}
           onChange={handleChange}
           value={valorInput}
