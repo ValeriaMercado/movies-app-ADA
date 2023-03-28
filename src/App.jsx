@@ -10,6 +10,7 @@ import "./index.css";
 import { CategoryFilms } from "./components/categoryFilm";
 import MoviesSearch from "./components/searchResults";
 import { NotFound } from "./components/404";
+import AlternativeMovieDetails from "./components/alternativeMovieDetails";
 
 const App = () => {
   return (
@@ -57,13 +58,12 @@ const App = () => {
                 searchCategory={`top_rated`}
                 serieOrMovie={`tv`}
               />
-
-           
             }
           />
           <Route
             path="/details/movie/:movieDetails"
-            element={<MovieDetails />}
+            // element={<MovieDetails />}
+            element={<AlternativeMovieDetails/>}
           />
           <Route path="/details/tv/:TVDetails" element={<TVDetails />} />
           <Route path="*" element={<NotFound />} />

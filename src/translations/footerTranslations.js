@@ -26,5 +26,10 @@ if (par.language === 'ru'){
    createdBy:"Создано Макареной и Валерией. Все права защищены."
    }
 }
+if (par.language === 'zh'){
+  return {
+   createdBy:"由 Macarena 和 Valeria 創建。 版權所有。"
+   }
+}
 
 }

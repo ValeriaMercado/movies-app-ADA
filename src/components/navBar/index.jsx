@@ -30,13 +30,14 @@ import { Context } from "../../context/Context";
 import { navbarTranslations } from "../../translations/navbarTranslations";
 import logo1 from "../../assets/logo1.png";
 import logo2 from "../../assets/logo2.png";
-import { AiFillHome } from "react-icons/Ai";
+import { AiFillHome } from "react-icons/ai";
 import { BiCameraMovie } from "react-icons/Bi";
 import { FiTv } from "react-icons/Fi";
 import { SearchButton } from "../inputSearch";
-import { SelectLanguage } from "../selectLanguage";
+//import { SelectLanguage } from "../selectLanguage";
 import { useMediaQuery } from "react-responsive";
-import { FiMoon, FiSun } from "react-icons/fi";
+import { FiMoon, FiSun } from "react-icons/Fi";
+import { AlternativeSelectLanguage } from "../alternativeSelect";
 
 export const Navbar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -54,6 +55,17 @@ export const Navbar = () => {
       ? context.setClearTheme(false)
       : context.setClearTheme(true);
   };
+
+//   const [isSmallerScreen, setIsSmallerScreen] = useState(false);
+
+// useEffect(() => {
+//   const handleResize = () => {
+//     setIsSmallerScreen(window.innerWidth <= 768);
+//   };
+//   window.addEventListener("resize", handleResize);
+//   return () => window.removeEventListener("resize", handleResize);
+// }, []);
+
 
   return (
     <>
@@ -156,7 +168,8 @@ export const Navbar = () => {
           </Flex>
           <Box display={"flex"}>
             <Box display={isSmallScreen ? "none" : "flex"}>
-              <SelectLanguage />
+              {/* <SelectLanguage /> */}
+              <AlternativeSelectLanguage/>
             </Box>
 
             <IconButton
@@ -267,7 +280,8 @@ export const Navbar = () => {
                 <SearchButton />
               </Menu>
               <Menu>
-                <SelectLanguage />
+                {/* <SelectLanguage /> */}
+                <AlternativeSelectLanguage/>
               </Menu>
             </Stack>
           </Box>

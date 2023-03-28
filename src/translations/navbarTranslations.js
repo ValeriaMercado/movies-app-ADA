@@ -65,4 +65,17 @@ export const navbarTranslations = (par) => {
       search: "Ищет",
     };
   }
+  if (par.language === "zh") {
+    return {
+      home: "開始",
+      movies: "電影",
+      series: "電視劇",
+      topRated: "最高評價",
+      upcoming: "很快",
+      popular: "受歡迎的",
+      latest: "最後",
+      top: "頂級系列",
+      search: "尋求",
+    };
+  }
 };

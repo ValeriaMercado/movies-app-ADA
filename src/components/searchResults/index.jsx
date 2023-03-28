@@ -6,6 +6,8 @@ import { useSearchParams } from "react-router-dom";
 import { Context } from "../../context/Context";
 import { Footer } from "../footer";
 import noResults from "../../assets/noResults.png";
+import { ChevronLeftIcon, ChevronRightIcon } from "@chakra-ui/icons";
+
 
 export const MoviesSearch = () => {
   const [isLoading, setLoading] = useState(false);
@@ -15,9 +17,16 @@ export const MoviesSearch = () => {
     query: "",
   });
   const [movies, setMovies] = useState([]);
+  const [searched, setSearched] = useState(false); 
+  
 
   useEffect(() => {
     setLoading(true);
+    
+    setMovies([]);
+
+    setSearched(false);
+
     fetch(
       `https://api.themoviedb.org/3/search/multi?api_key=ae186e957330197b5106a6c66c8bd1df&language=${
         context.language
@@ -28,6 +37,7 @@ export const MoviesSearch = () => {
         setMovies(data.results);
         console.log(data.results);
         setLoading(false);
+        setSearched(true);
       }, 3000);
   }, [searchParams, page, context.language]);
 
@@ -48,13 +58,15 @@ export const MoviesSearch = () => {
             thickness="4px"
             speed="0.65s"
             emptyColor="gray.200"
-            color="blue.500"
+            color={context.clearTheme?"brand.accent" : "brand.secondary"}
             size="xl"
             mb={"500px"}
             mt={"300px"}
           />
         )}
-        {movies.length === 0 && <Image src={noResults}></Image>}
+        {searched && movies.length === 0 && (
+          <Image src={noResults}></Image>
+        )}
         {movies
           ?.filter((m) => m.poster_path)
           .map((m) => (
@@ -76,8 +88,8 @@ export const MoviesSearch = () => {
             <ReactPaginate
               display="flex"
               breakClassName={"pagination__break"}
-              previousLabel={"Prev"}
-              nextLabel={"Next"}
+              previousLabel={<ChevronLeftIcon/>}
+              nextLabel={<ChevronRightIcon/>}
               pageCount={20}
               marginPagesDisplayed={2}
               pageRangeDisplayed={5}

@@ -52,6 +52,16 @@ export const Home = () => {
             searchCategory="popular"
             serieOrMovie={`tv`}
           />
+          <CategoryFilms
+            categoryTitle={translations.now}
+            searchCategory="now_playing"
+            serieOrMovie={`movie`}
+          />
+          <CategoryFilms
+            categoryTitle={translations.onAir}
+            searchCategory="on_the_air"
+            serieOrMovie={`tv`}
+            />
           <Footer />
         </Box>
       </Box>

@@ -1,11 +1,11 @@
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/splide/dist/css/themes/splide-default.min.css";
-import { Box, Text, Card, Image, Button } from "@chakra-ui/react";
+import { Box, Text, Card, Button } from "@chakra-ui/react";
 import { useFetch } from "../../hooks/useFetch";
 import { useContext } from "react";
 import { Context } from "../../context/Context";
-import { BsFillPlayCircleFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
+import {AiOutlineEye} from "react-icons/ai"
 
 export const CategoryFilms = ({
   searchCategory,
@@ -13,9 +13,11 @@ export const CategoryFilms = ({
   categoryTitle,
 }) => {
   const context = useContext(Context);
+  const api_key= import.meta.env.VITE_API_KEY
+  console.log(import.meta.env.VITE_API_KEY)
 
   const { movies, isLoading } = useFetch(
-    `https://api.themoviedb.org/3/${serieOrMovie}/${searchCategory}?api_key=ae186e957330197b5106a6c66c8bd1df&language=${context.language}-US&page=1`,
+    `https://api.themoviedb.org/3/${serieOrMovie}/${searchCategory}?api_key=${api_key}&language=${context.language}-US&page=1`,
     context.language
   );
 
@@ -48,6 +50,7 @@ export const CategoryFilms = ({
       <Text
         display="flex"
         justifyContent="center"
+        fontSize="2xl"
         fontWeight="bold"
         color={context.clearTheme ? "black" : "white"}
       >
@@ -79,7 +82,7 @@ export const CategoryFilms = ({
                   position="relative"
                   className="btn-card"
                 >
-                  <BsFillPlayCircleFill />
+                  <AiOutlineEye />
                 </Button>
               </Link>
             </Card>
