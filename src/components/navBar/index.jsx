@@ -60,9 +60,9 @@ export const Navbar = () => {
       <Box
         bg={context.clearTheme ? "brand.secondary" : "brand.accent"}
         color={context.clearTheme ? "black" : "white"}
-        justifyContent="center"
+        px={4}
       >
-        <Flex h={24} alignItems="center" justifyContent="space-around">
+        <Flex h={"100px"} alignItems="center" justifyContent="space-between">
           <IconButton
             size="md"
             icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
@@ -72,21 +72,21 @@ export const Navbar = () => {
             bg={context.clearTheme ? "brand.secondary" : "brand.accent"}
             color={context.clearTheme ? "black" : "white"}
           />
-          <HStack
-            spacing={8}
-            alignItems="center"
-            ml={isSmallScreen ? "50px" : "30px"}
-          >
+          <HStack spacing={8} alignItems="center">
+            <NavLink to="/">
+              <Box ml={isSmallScreen ? "100px " : "10px"}>
+                <Image src={context.clearTheme ? logo1 : logo2} w="150px" />
+              </Box>
+            </NavLink>
+
             <HStack
-              spacing={8}
-              justifyContent={{ base: "center", md: "center" }}
-              display={isSmallScreen ? "none" : "flex"}
-              pl={isSmallScreen ? "20%" : "10px"}
-              ml={isMScreen ? "100px" : "10px"}
+              as={"nav"}
+              spacing={4}
+              display={{ base: "none", md: "flex" }}
             >
               <Menu>
                 <NavLink to="/">
-                  <MenuButton fontSize="30px">
+                  <MenuButton fontSize="40px">
                     <AiFillHome />
                   </MenuButton>
                 </NavLink>
@@ -148,17 +148,8 @@ export const Navbar = () => {
               </Menu>
             </HStack>
           </HStack>
-          <NavLink to="/">
-            <Box
-              w={isSmallScreen ? "150px" : "150px"}
-              mr={isMScreen ? "20px" : " "}
-              ml={isSmallScreen ? "2%" : "200px"}
-            >
-              <Image src={context.clearTheme ? logo1 : logo2} />
-            </Box>
-          </NavLink>
 
-          <Flex ml={isMScreen ? "10px" : "10px"}>
+          <Flex ml={isMScreen ? "10px" : "10px"} alignItems={"center"}>
             <Box display={isSmallScreen ? "none" : "flex"}>
               <SearchButton />
             </Box>
