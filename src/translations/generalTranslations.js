@@ -8,7 +8,8 @@ export const generalTranslations = (par) => {
       trailer: "Watch Trailer",
       more: "More",
       onAir: "Currently on the air",
-      latest:"The most newly created TV show"
+      latest:"The most newly created TV show",
+      now: "Movies in theatres"
     };
   }
   if (par.language === "es") {
@@ -20,7 +21,8 @@ export const generalTranslations = (par) => {
       trailer: "Ver Trailer",
       more: "More",
       onAir: "Actualmente al aire",
-      latest: "Lo último en programas télevisivos"
+      latest: "Lo último en programas télevisivos",
+      now:"Péliculas en cines"
     };
   }
 
@@ -33,7 +35,8 @@ export const generalTranslations = (par) => {
       trailer: "Voir la bande-annonce",
       more:"Plus",
       onAir:"Actuellement à l'antenne",
-      latest:"l'émission télévisée la plus récente."
+      latest:"l'émission télévisée la plus récente.",
+      now:"Péliculas en cinés"
     };
   }
 
@@ -46,7 +49,8 @@ export const generalTranslations = (par) => {
       trailer: "Guarda il trailer",
       more:"Di più",
       onAir:"Attualmente in onda",
-      latest:"Il programma televisivo più recente."
+      latest:"Il programma televisivo più recente.",
+      now:"Péliculas en cines"
     };
   }
   if (par.language === "ru") {
@@ -58,7 +62,8 @@ export const generalTranslations = (par) => {
       trailer: "Смотреть трейлер",
       more:"дальше",
       onAir:"сейчас в эфире",
-      latest:"самое недавно созданное телешоу."
+      latest:"самое недавно созданное телешоу.",
+      now:"Пеликулас в кино"
     };
   }
   if (par.language === "zh") {
@@ -69,7 +74,8 @@ export const generalTranslations = (par) => {
       trailer: "觀看預告",
       more: "更遠",
       onAir:"目前正在播出",
-      latest: "最新制作的电视节目。"
+      latest: "最新制作的电视节目。",
+      now:"電影院裡的電影"
     };
   }
 };

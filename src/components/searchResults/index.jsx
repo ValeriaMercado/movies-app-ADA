@@ -6,6 +6,8 @@ import { useSearchParams } from "react-router-dom";
 import { Context } from "../../context/Context";
 import { Footer } from "../footer";
 import noResults from "../../assets/noResults.png";
+import { ChevronLeftIcon, ChevronRightIcon } from "@chakra-ui/icons";
+
 
 export const MoviesSearch = () => {
   const [isLoading, setLoading] = useState(false);
@@ -16,6 +18,7 @@ export const MoviesSearch = () => {
   });
   const [movies, setMovies] = useState([]);
   const [searched, setSearched] = useState(false); 
+  
 
   useEffect(() => {
     setLoading(true);
@@ -61,7 +64,6 @@ export const MoviesSearch = () => {
             mt={"300px"}
           />
         )}
-        {/* {movies.length === 0 && <Image src={noResults}></Image>} */}
         {searched && movies.length === 0 && (
           <Image src={noResults}></Image>
         )}
@@ -86,8 +88,8 @@ export const MoviesSearch = () => {
             <ReactPaginate
               display="flex"
               breakClassName={"pagination__break"}
-              previousLabel={"Prev"}
-              nextLabel={"Next"}
+              previousLabel={<ChevronLeftIcon/>}
+              nextLabel={<ChevronRightIcon/>}
               pageCount={20}
               marginPagesDisplayed={2}
               pageRangeDisplayed={5}
