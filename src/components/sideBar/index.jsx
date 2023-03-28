@@ -14,7 +14,7 @@ import {
   FiTrendingUp,
   FiAlignJustify,
   FiSearch,
-} from "react-icons/fi";
+} from "react-icons/Fi";
 import { useState } from "react";
 import { NavItem } from "../navItem";
 

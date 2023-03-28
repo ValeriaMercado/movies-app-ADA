@@ -49,7 +49,7 @@ export const SearchButton = () => {
         ml={isSmallScreen ? " " : "300px"}
         _focus={{ boxShadow: "none" }}
         _focusVisible={{ boxShadow: "none", outline: "none" }}
-        _hover={{ border: "purple.500", color: "black" }}
+        // _hover={{ border: "purple.500", color: "black" }}
       >
         <InputLeftElement
           pointerEvents="none"
@@ -62,8 +62,9 @@ export const SearchButton = () => {
           onChange={handleChange}
           value={valorInput}
           onKeyDown={handleKeyDown}
-          color="whiteAlpha.800"
+          // color="whiteAlpha.800"
           fontSize={"13px"}
+          _hover={{ borderColor: "black" }}
         />
       </InputGroup>
     </Flex>

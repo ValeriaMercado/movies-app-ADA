@@ -60,7 +60,11 @@ export const CategoryFilms = ({
         {movies?.map((movie) => (
           <SplideSlide key={movie.id} style={{ padding: 0, margin: 0 }}>
             <Card
-              backgroundImage={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+              backgroundImage={
+                movie.poster_path
+                  ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
+                  : " "
+              }
               backgroundPosition="center"
               backgroundSize="cover"
               height="300px"

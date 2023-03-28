@@ -60,116 +60,119 @@ const MovieDetails = () => {
       )}
 
       <Flex>
-        {!isSmallScreen && (
-          <Image
-            width="300px"
-            ml={"200px"}
-            mb="50px"
-            pt="200px"
-            src={
-              data.poster_path
-                ? `http://image.tmdb.org/t/p/w500/${data.poster_path} `
-                : " "
-            }
-            alt={data.title}
-            key={data.id}
-          />
-        )}
-        <Flex direction={"column"}>
-          <Button
-            colorScheme="blackAlpha"
-            size="md"
-            w={{ base: "80%", md: "150px" }}
-            mx={{ base: "auto", md: "0" }}
-            mt={{ base: "20px", md: "150px" }}
-            ml={{ base: " ", md: "500px" }}
-            mb={{ md: "10px" }}
-            onClick={() => setTrailer(!trailer)}
-          >
-            {trailer ? <Icon mr={"10px"} as={BsPlayCircle} /> : " "}
-            {trailer ? "Trailer" : <ViewOffIcon />}
-          </Button>
-          {!trailer && (
-            <Box
-              as="div"
-              ml={{ base: "10%", md: "100px" }}
-              textAlign={{ base: "center", md: "left" }}
-              mb={{ base: "400px" }}
-              mr={{ base: "50px" }}
-            >
-              <MovieTrailer />
-            </Box>
+        <Flex className="background" mx={"2%"} my="2%">
+          {!isSmallScreen && (
+            <Image
+              width="300px"
+              ml={"200px"}
+              mb="50px"
+              pt="200px"
+              src={
+                data.poster_path
+                  ? `http://image.tmdb.org/t/p/w500/${data.poster_path} `
+                  : " "
+              }
+              alt={data.title}
+              key={data.id}
+              pos="relative"
+            />
           )}
-          {trailer ? (
-            <Box as="div" textAlign="center">
-              <Flex
-                flexDirection={{ base: "column", md: "row" }}
-                ml={{ md: "50px" }}
-                mt={{ md: "10px" }}
+          <Flex direction={"column"}>
+            <Button
+              colorScheme="blackAlpha"
+              size="md"
+              w={{ base: "80%", md: "150px" }}
+              mx={{ base: "auto", md: "0" }}
+              mt={{ base: "20px", md: "150px" }}
+              ml={{ base: " ", md: "500px" }}
+              mb={{ md: "10px" }}
+              onClick={() => setTrailer(!trailer)}
+            >
+              {trailer ? <Icon mr={"10px"} as={BsPlayCircle} /> : " "}
+              {trailer ? "Trailer" : <ViewOffIcon />}
+            </Button>
+            {!trailer && (
+              <Box
+                as="div"
+                ml={{ base: "10%", md: "100px" }}
+                textAlign={{ base: "center", md: "left" }}
+                mb={{ base: "400px" }}
+                mr={{ base: "50px" }}
               >
-                <Text
-                  fontSize={{ base: "35px", md: "45px" }}
-                  position="relative"
-                  color="white"
-                  fontWeight="extrabold"
-                  key={data.id}
+                <MovieTrailer />
+              </Box>
+            )}
+            {trailer ? (
+              <Box as="div" textAlign="center">
+                <Flex
+                  flexDirection={{ base: "column", md: "row" }}
+                  ml={{ md: "50px" }}
+                  mt={{ md: "10px" }}
                 >
-                  {data.original_title}
-                </Text>
-                <Text
-                  fontSize={{ base: "20px", md: "24px" }}
-                  fontWeight="extrabold"
-                  position="relative"
-                  color="white"
-                  ml={{ base: "0", md: "20px" }}
-                  mt={{ base: "10px", md: "20px" }}
-                >
-                  {moment(data.release_date, "YYYY-MM-DD").format("YYYY")}
-                </Text>
-              </Flex>
+                  <Text
+                    fontSize={{ base: "35px", md: "45px" }}
+                    position="relative"
+                    color="white"
+                    fontWeight="extrabold"
+                    key={data.id}
+                  >
+                    {data.original_title}
+                  </Text>
+                  <Text
+                    fontSize={{ base: "20px", md: "24px" }}
+                    fontWeight="extrabold"
+                    position="relative"
+                    color="white"
+                    ml={{ base: "0", md: "20px" }}
+                    mt={{ base: "10px", md: "20px" }}
+                  >
+                    {moment(data.release_date, "YYYY-MM-DD").format("YYYY")}
+                  </Text>
+                </Flex>
 
-              <Text
-                mt={{ base: "10px", md: "20px" }}
-                mb={{ base: "10px", md: "20px" }}
-                mx={{ md: "30px" }}
-                position="relative"
-                color="white"
-                key={data.id}
-                className="text-center"
-              >
-                {data.overview}
-              </Text>
-              <Text
-                mt={{ base: "10px", md: "20px" }}
-                mb={{ base: "10px", md: "20px" }}
-                ml={{ base: "0", md: "50px" }}
-                mr={{ base: "0", md: "700px" }}
-                position="relative"
-                color="white"
-                fontWeight="extrabold"
-              >
-                {context.language === "en" ? "GENRES" : ""}
-                {context.language === "es" ? "GÉNEROS" : ""}
-                {context.language === "fr" ? "GENRES" : ""}
-                {context.language === "it" ? "GENERI" : ""}
-                {context.language === "ru" ? "ЖАНРЫ" : ""}
-              </Text>
-              <Flex alignItems="center" justifyContent="center">
-                <UnorderedList
+                <Text
+                  mt={{ base: "10px", md: "20px" }}
+                  mb={{ base: "10px", md: "20px" }}
+                  mx={{ md: "30px" }}
+                  position="relative"
+                  color="white"
+                  key={data.id}
+                  className="text-center"
+                >
+                  {data.overview}
+                </Text>
+                <Text
+                  mt={{ base: "10px", md: "20px" }}
+                  mb={{ base: "10px", md: "20px" }}
                   ml={{ base: "0", md: "50px" }}
                   mr={{ base: "0", md: "700px" }}
                   position="relative"
                   color="white"
+                  fontWeight="extrabold"
                 >
-                  {data?.genres?.map((g) => (
-                    <ListItem key={g.id}>{g.name}</ListItem>
-                  ))}
-                </UnorderedList>
-              </Flex>
-            </Box>
-          ) : (
-            ""
-          )}
+                  {context.language === "en" ? "GENRES" : ""}
+                  {context.language === "es" ? "GÉNEROS" : ""}
+                  {context.language === "fr" ? "GENRES" : ""}
+                  {context.language === "it" ? "GENERI" : ""}
+                  {context.language === "ru" ? "ЖАНРЫ" : ""}
+                </Text>
+                <Flex alignItems="center" justifyContent="center">
+                  <UnorderedList
+                    ml={{ base: "0", md: "50px" }}
+                    mr={{ base: "0", md: "700px" }}
+                    position="relative"
+                    color="white"
+                  >
+                    {data?.genres?.map((g) => (
+                      <ListItem key={g.id}>{g.name}</ListItem>
+                    ))}
+                  </UnorderedList>
+                </Flex>
+              </Box>
+            ) : (
+              ""
+            )}
+          </Flex>
         </Flex>
       </Flex>
       <MovieCredits />
