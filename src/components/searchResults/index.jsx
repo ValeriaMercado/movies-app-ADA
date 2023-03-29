@@ -16,11 +16,12 @@ export const MoviesSearch = () => {
     query: "",
   });
   const [movies, setMovies] = useState([]);
-  const [totalPages, setTotalPages] = useState(0);
   const [searched, setSearched] = useState(false);
 
   useEffect(() => {
     setLoading(true);
+    setSearched(false);
+
     fetch(
       `https://api.themoviedb.org/3/search/multi?api_key=ae186e957330197b5106a6c66c8bd1df&language=${
         context.language
@@ -28,42 +29,18 @@ export const MoviesSearch = () => {
     )
       .then((res) => res.json())
       .then((data) => {
-        setLoading(false);
         setMovies(data.results);
-        setTotalPages(data.total_pages);
+        console.log(data.results);
+        setLoading(false);
+        setSearched(true);
       }, 3000);
   }, [searchParams, page, context.language]);
 
-  const handlePageChange = (selectedPage) => {
-    setPage(selectedPage.selected + 1);
+  const handlePageChange = ({ selected }) => {
+    setPage(selected + 1);
   };
-
   return (
     <>
-      <Flex
-        flexWrap={"wrap"}
-        justifyContent={"center"}
-        bg={context.clearTheme ? "brand.secondary" : "brand.accent"}
-      >
-        <Flex>
-          {isLoading && (
-            <Spinner
-              thickness="4px"
-              speed="0.65s"
-              emptyColor="gray.200"
-              color="blue.500"
-              size="xl"
-              position="fixed"
-              top="50%"
-              left="50%"
-              transform="translate(-50%, -50%)"
-              zIndex="overlay"
-              backgroundColor="rgba(0, 0, 0, 0.3)"
-            />
-          )}
-        </Flex>
-      </Flex>
-
       <Flex
         flexWrap={"wrap"}
         justifyContent={"center"}
@@ -94,7 +71,7 @@ export const MoviesSearch = () => {
               breakClassName={"pagination__break"}
               previousLabel={<ChevronLeftIcon />}
               nextLabel={<ChevronRightIcon />}
-              pageCount={totalPages}
+              pageCount={20}
               marginPagesDisplayed={2}
               pageRangeDisplayed={5}
               onPageChange={handlePageChange}
