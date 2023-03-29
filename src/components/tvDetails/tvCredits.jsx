@@ -10,9 +10,11 @@ import noimage from "../../assets/noimage.png";
 const MovieCredits = () => {
   const context = useContext(Context);
   const params = useParams();
+  const api_key= import.meta.env.VITE_API_KEY
+
 
   const { data } = useFetchDetails(
-    `https://api.themoviedb.org/3/tv/${params.TVDetails}/credits?api_key=ae186e957330197b5106a6c66c8bd1df&language=${context.language}`,
+    `https://api.themoviedb.org/3/tv/${params.TVDetails}/credits?api_key=${api_key}&language=${context.language}`,
     context.language
   );
 

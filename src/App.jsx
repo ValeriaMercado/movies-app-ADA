@@ -7,10 +7,8 @@ import MovieDetails from "./components/moviesDetails";
 import TVDetails from "./components/tvDetails";
 import { BoxToPickContent } from "./components/boxToPickContent";
 import "./index.css";
-import { CategoryFilms } from "./components/categoryFilm";
 import MoviesSearch from "./components/searchResults";
 import { NotFound } from "./components/404";
-import AlternativeMovieDetails from "./components/alternativeMovieDetails";
 
 const App = () => {
   return (
@@ -62,8 +60,7 @@ const App = () => {
           />
           <Route
             path="/details/movie/:movieDetails"
-            // element={<MovieDetails />}
-            element={<AlternativeMovieDetails/>}
+            element={<MovieDetails />}
           />
           <Route path="/details/tv/:TVDetails" element={<TVDetails />} />
           <Route path="*" element={<NotFound />} />

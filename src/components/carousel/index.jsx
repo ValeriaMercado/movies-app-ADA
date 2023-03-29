@@ -14,9 +14,11 @@ import React from "react";
 export const MoviesCarousel = () => {
   const context = useContext(Context);
   const translations = useTranslate(generalTranslations(context))
+  const api_key= import.meta.env.VITE_API_KEY
+
 
   const { movies } = useFetch(
-    `https://api.themoviedb.org/3/trending/all/day?api_key=ae186e957330197b5106a6c66c8bd1df&language=${context.language}-US&page=1`,
+    `https://api.themoviedb.org/3/trending/all/day?api_key=${api_key}&language=${context.language}-US&page=1`,
     context.language
   );
 
