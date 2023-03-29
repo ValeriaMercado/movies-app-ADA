@@ -10,6 +10,7 @@ export const SearchButton = () => {
   const navigate = useNavigate();
   const [valorInput, setValorInput] = useState("");
   const context = useContext(Context);
+  const api_key= import.meta.env.VITE_API_KEY
   const isSmallScreen = useMediaQuery({
     query: "(max-width: 768px)",
   });
@@ -19,7 +20,7 @@ export const SearchButton = () => {
   });
 
   useFetch(
-    `https://api.themoviedb.org/3/trending/all/day?api_key=ae186e957330197b5106a6c66c8bd1df&page=1`
+    `https://api.themoviedb.org/3/trending/all/day?api_key=${api_key}&page=1`
   );
   const handleChange = (e) => {
     setValorInput(e.target.value);

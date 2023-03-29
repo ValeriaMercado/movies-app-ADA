@@ -34,10 +34,10 @@ import { AiFillHome } from "react-icons/ai";
 import { BiCameraMovie } from "react-icons/Bi";
 import { FiTv } from "react-icons/Fi";
 import { SearchButton } from "../inputSearch";
-//import { SelectLanguage } from "../selectLanguage";
+import { SelectLanguage } from "../selectLanguage";
 import { useMediaQuery } from "react-responsive";
 import { FiMoon, FiSun } from "react-icons/Fi";
-import { AlternativeSelectLanguage } from "../alternativeSelect";
+//import { AlternativeSelectLanguage } from "../alternativeSelect";
 
 export const Navbar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -168,8 +168,7 @@ export const Navbar = () => {
           </Flex>
           <Box display={"flex"}>
             <Box display={isSmallScreen ? "none" : "flex"}>
-              {/* <SelectLanguage /> */}
-              <AlternativeSelectLanguage/>
+              <SelectLanguage/>
             </Box>
 
             <IconButton
@@ -280,8 +279,7 @@ export const Navbar = () => {
                 <SearchButton />
               </Menu>
               <Menu>
-                {/* <SelectLanguage /> */}
-                <AlternativeSelectLanguage/>
+                <SelectLanguage />
               </Menu>
             </Stack>
           </Box>

@@ -24,16 +24,16 @@ const MovieDetails = () => {
   const params = useParams();
   const [trailer, setTrailer] = useState(true);
   const [isLoading, setLoading] = useState(false);
+  const api_key= import.meta.env.VITE_API_KEY
   const context = useContext(Context);
   const isSmallScreen = useMediaQuery({
     query: "(max-width: 768px)",
   });
 
   const { data } = useFetchDetails(
-    `https://api.themoviedb.org/3/movie/${params.movieDetails}?api_key=ae186e957330197b5106a6c66c8bd1df&language=${context.language}`
+    `https://api.themoviedb.org/3/movie/${params.movieDetails}?api_key=${api_key}&language=${context.language}`
   );
-  // const {movie} = useFetch(`https://api.themoviedb.org/3/movie/${params.id}?api_key=ae186e957330197b5106a6c66c8bd1df&language=${context.language}`,
-  // context.language)
+
 
   return (
     <Box

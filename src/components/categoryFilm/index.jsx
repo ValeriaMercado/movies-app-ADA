@@ -14,7 +14,6 @@ export const CategoryFilms = ({
 }) => {
   const context = useContext(Context);
   const api_key= import.meta.env.VITE_API_KEY
-  console.log(import.meta.env.VITE_API_KEY)
 
   const { movies, isLoading } = useFetch(
     `https://api.themoviedb.org/3/${serieOrMovie}/${searchCategory}?api_key=${api_key}&language=${context.language}-US&page=1`,
