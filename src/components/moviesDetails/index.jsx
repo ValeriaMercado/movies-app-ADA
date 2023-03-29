@@ -19,6 +19,8 @@ import { useFetchDetails } from "../../hooks/useFetchDetails";
 import { Context } from "../../context/Context";
 import { ViewOffIcon } from "@chakra-ui/icons";
 import { useMediaQuery } from "react-responsive";
+import { useTranslate } from "../../hooks/useTranslate";
+import { generalTranslations } from "../../translations/generalTranslations";
 
 const MovieDetails = () => {
   const params = useParams();
@@ -33,7 +35,7 @@ const MovieDetails = () => {
   const { data } = useFetchDetails(
     `https://api.themoviedb.org/3/movie/${params.movieDetails}?api_key=${api_key}&language=${context.language}`
   );
-
+  const translations = useTranslate(generalTranslations(context))
 
   return (
     <Box
@@ -150,11 +152,7 @@ const MovieDetails = () => {
                 color="white"
                 fontWeight="extrabold"
               >
-                {context.language === "en" ? "GENRES" : ""}
-                {context.language === "es" ? "GÉNEROS" : ""}
-                {context.language === "fr" ? "GENRES" : ""}
-                {context.language === "it" ? "GENERI" : ""}
-                {context.language === "ru" ? "ЖАНРЫ" : ""}
+                {translations.genre}
               </Text>
               <Flex alignItems="center" justifyContent="center">
                 <UnorderedList
