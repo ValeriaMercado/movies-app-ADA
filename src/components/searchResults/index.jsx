@@ -8,7 +8,6 @@ import { Footer } from "../footer";
 import noResults from "../../assets/noResults.png";
 import { ChevronLeftIcon, ChevronRightIcon } from "@chakra-ui/icons";
 
-
 export const MoviesSearch = () => {
   const [isLoading, setLoading] = useState(false);
   const context = useContext(Context);
@@ -17,14 +16,10 @@ export const MoviesSearch = () => {
     query: "",
   });
   const [movies, setMovies] = useState([]);
-  const [searched, setSearched] = useState(false); 
-  
+  const [searched, setSearched] = useState(false);
 
   useEffect(() => {
     setLoading(true);
-    
-    setMovies([]);
-
     setSearched(false);
 
     fetch(
@@ -41,10 +36,9 @@ export const MoviesSearch = () => {
       }, 3000);
   }, [searchParams, page, context.language]);
 
-  const handlePageChange = (selectedPage) => {
-    setPage(selectedPage.selected + 1);
+  const handlePageChange = ({ selected }) => {
+    setPage(selected + 1);
   };
-
   return (
     <>
       <Flex
@@ -53,20 +47,7 @@ export const MoviesSearch = () => {
         bg={context.clearTheme ? "brand.secondary" : "brand.accent"}
         pt="5%"
       >
-        {isLoading && (
-          <Spinner
-            thickness="4px"
-            speed="0.65s"
-            emptyColor="gray.200"
-            color={context.clearTheme?"brand.accent" : "brand.secondary"}
-            size="xl"
-            mb={"500px"}
-            mt={"300px"}
-          />
-        )}
-        {searched && movies.length === 0 && (
-          <Image src={noResults}></Image>
-        )}
+        {searched && movies.length === 0 && <Image src={noResults}></Image>}
         {movies
           ?.filter((m) => m.poster_path)
           .map((m) => (
@@ -88,8 +69,8 @@ export const MoviesSearch = () => {
             <ReactPaginate
               display="flex"
               breakClassName={"pagination__break"}
-              previousLabel={<ChevronLeftIcon/>}
-              nextLabel={<ChevronRightIcon/>}
+              previousLabel={<ChevronLeftIcon />}
+              nextLabel={<ChevronRightIcon />}
               pageCount={20}
               marginPagesDisplayed={2}
               pageRangeDisplayed={5}

@@ -4,6 +4,7 @@ import { useTranslate } from "../../hooks/useTranslate";
 import { footerTranslations } from "../../translations/footerTranslations";
 import QRCode from "qrcode.react";
 import { Container, IconButton, Stack, Text, Box } from "@chakra-ui/react";
+import { NavLink } from "react-router-dom";
 
 export const Footer = () => {
   const context = useContext(Context);
@@ -23,11 +24,10 @@ export const Footer = () => {
         <Text color={context.clearTheme ? "black" : "white"} textAlign="center">
           &copy; {new Date().getFullYear()} {translations.createdBy}
         </Text>
-
-      <QRCode value={"https://github.com/MacaAC/movies-app"} size={80} />
-
+        <NavLink to="https://linktr.ee/aboutusthemovieapp" target="_blank">
+          <QRCode value={"https://linktr.ee/aboutusthemovieapp"} size={80} />
+        </NavLink>
       </Container>
-
     </Box>
   );
 };
