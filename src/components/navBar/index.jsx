@@ -34,10 +34,10 @@ import { AiFillHome } from "react-icons/ai";
 import { BiCameraMovie } from "react-icons/Bi";
 import { FiTv } from "react-icons/Fi";
 import { SearchButton } from "../inputSearch";
-//import { SelectLanguage } from "../selectLanguage";
+import { SelectLanguage } from "../selectLanguage";
 import { useMediaQuery } from "react-responsive";
 import { FiMoon, FiSun } from "react-icons/Fi";
-import { AlternativeSelectLanguage } from "../alternativeSelect";
+//import { AlternativeSelectLanguage } from "../alternativeSelect";
 
 export const Navbar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -85,7 +85,7 @@ export const Navbar = () => {
           />
           <HStack spacing={8} alignItems="center">
             <NavLink to="/">
-              <Box ml={isSmallScreen ? "100px " : "10px"}>
+              <Box ml={isSmallScreen ? "100px " : "20px"}>
                 <Image src={context.clearTheme ? logo1 : logo2} w="150px" />
               </Box>
             </NavLink>
@@ -167,8 +167,7 @@ export const Navbar = () => {
           </Flex>
           <Box display={"flex"}>
             <Box display={isSmallScreen ? "none" : "flex"}>
-              {/* <SelectLanguage /> */}
-              <AlternativeSelectLanguage />
+              <SelectLanguage />
             </Box>
 
             <IconButton
@@ -279,8 +278,7 @@ export const Navbar = () => {
                 <SearchButton />
               </Menu>
               <Menu>
-                {/* <SelectLanguage /> */}
-                <AlternativeSelectLanguage />
+                <SelectLanguage />
               </Menu>
             </Stack>
           </Box>
@@ -289,21 +287,3 @@ export const Navbar = () => {
     </>
   );
 };
-
-{
-  /* <Box
-  display="flex"
-  mt={isSmallScreen ? "10%" : " "}
-  justifyContent={isSmallScreen ? "center" : ""}
->
-  <SearchButton />
-  <SelectLanguage />
-  <IconButton
-    _hover={{ background: "none" }}
-    icon={context.clearTheme ? <FiMoon /> : <FiSun />}
-    onClick={changeTheme}
-    bg={"none"}
-    color={context.clearTheme ? "black" : "white"}
-  ></IconButton>
-</Box>; */
-}

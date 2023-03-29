@@ -5,7 +5,7 @@ import { useFetch } from "../../hooks/useFetch";
 import { useContext } from "react";
 import { Context } from "../../context/Context";
 import { Link } from "react-router-dom";
-import {AiOutlineEye} from "react-icons/ai"
+import { AiOutlineEye } from "react-icons/ai";
 
 export const CategoryFilms = ({
   searchCategory,
@@ -13,8 +13,7 @@ export const CategoryFilms = ({
   categoryTitle,
 }) => {
   const context = useContext(Context);
-  const api_key= import.meta.env.VITE_API_KEY
-  console.log(import.meta.env.VITE_API_KEY)
+  const api_key = import.meta.env.VITE_API_KEY;
 
   const { movies, isLoading } = useFetch(
     `https://api.themoviedb.org/3/${serieOrMovie}/${searchCategory}?api_key=${api_key}&language=${context.language}-US&page=1`,
@@ -77,7 +76,7 @@ export const CategoryFilms = ({
               mx={{ sm: 4, md: 4, lg: 4 }}
               className="card-background"
             >
-              <Link to={`/details/movie/${movie.id}`}>
+              <Link to={`/details/${serieOrMovie}/${movie.id}`}>
                 <Button
                   variant={"unstyled"}
                   fontSize={"35px"}

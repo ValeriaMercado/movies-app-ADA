@@ -1,7 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { Context } from "../../context/Context";
 import { Box, Button, Flex, Text } from "@chakra-ui/react";
-import { CategoryFilms } from "../categoryFilm";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 import { Link } from "react-router-dom";
@@ -14,9 +13,10 @@ import React from "react";
 export const MoviesCarousel = () => {
   const context = useContext(Context);
   const translations = useTranslate(generalTranslations(context));
+  const api_key = import.meta.env.VITE_API_KEY;
 
   const { movies } = useFetch(
-    `https://api.themoviedb.org/3/trending/all/day?api_key=ae186e957330197b5106a6c66c8bd1df&language=${context.language}-US&page=1`,
+    `https://api.themoviedb.org/3/trending/all/day?api_key=${api_key}&language=${context.language}-US&page=1`,
     context.language
   );
 
@@ -72,12 +72,15 @@ export const MoviesCarousel = () => {
                   bg={context.clearTheme ? "brand.secondary" : "brand.accent"}
                   color={context.clearTheme ? "black" : "white"}
                   shadow={"0px 0px 5px 2px black"}
+                  _hover={{
+                    bg: context.clearTheme ? "brand.secondary" : "brand.accent",
+                  }}
                 >
                   {translations.more}
                 </Button>
               </Link>
             ) : (
-              <Link to={`/details/movie/${p.id}`} ml={"50%"}>
+              <Link to={`/details/tv/${p.id}`} ml={"50%"}>
                 <Button
                   bg={context.clearTheme ? "brand.secondary" : "brand.accent"}
                   color={context.clearTheme ? "black" : "white"}

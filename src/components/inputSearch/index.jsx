@@ -43,13 +43,18 @@ export const SearchButton = () => {
   return (
     <Flex>
       <InputGroup
-        ml={isSmallScreen ? " " : "300px"}
+        ml={isSmallScreen ? " " : "500px"}
+        w={{ base: "100%", md: "300px" }}
         _focus={{ boxShadow: "none" }}
         _focusVisible={{ boxShadow: "none", outline: "none" }}
       >
         <InputLeftElement
           pointerEvents="none"
-          children={<SearchIcon color="white" />}
+          children={
+            <SearchIcon
+              color={context.clearTheme ? "brand.accent" : "brand.secondary"}
+            />
+          }
         />
         <Input
           focusBorderColor={
@@ -60,7 +65,7 @@ export const SearchButton = () => {
           onChange={handleChange}
           value={valorInput}
           onKeyDown={handleKeyDown}
-          // color="whiteAlpha.800"
+          borderColor={context.clearTheme ? "brand.accent" : "brand.secondary"}
           fontSize={"13px"}
           _hover={{ borderColor: "black" }}
         />

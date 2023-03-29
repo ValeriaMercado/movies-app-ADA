@@ -8,6 +8,7 @@ import { useMediaQuery } from "react-responsive";
 const MovieTrailer = () => {
   const params = useParams();
   const [movie, setMovie] = useState([]);
+  const api_key= import.meta.env.VITE_API_KEY
   const context = useContext(Context);
   const isSmallScreen = useMediaQuery({
     query: "(max-width: 768px)",
@@ -15,7 +16,7 @@ const MovieTrailer = () => {
 
   useEffect(() => {
     fetch(
-      `https://api.themoviedb.org/3/movie/${params.movieDetails}}/videos?api_key=ae186e957330197b5106a6c66c8bd1df&language=${context.language}-US/`
+      `https://api.themoviedb.org/3/movie/${params.movieDetails}}/videos?api_key=${api_key}&language=${context.language}-US/`
     )
       .then((res) => res.json())
       .then((data) => {

@@ -28,9 +28,8 @@ export const BoxToPickContent = ({ searchCategory, serieOrMovie }) => {
     setPage(selectedPage.selected + 1);
   };
 
- 
   return (
-    <Box >
+    <Box>
       {isLoading && (
         <Spinner
           thickness="4px"
@@ -46,7 +45,6 @@ export const BoxToPickContent = ({ searchCategory, serieOrMovie }) => {
         flexWrap="wrap"
         position="relative"
         bg={context.clearTheme ? "brand.secondary" : "brand.accent"}
-        color={context.clearTheme ? "black" : "white"}
       >
         {movies?.map((movie) => {
           return (
@@ -72,8 +70,8 @@ export const BoxToPickContent = ({ searchCategory, serieOrMovie }) => {
           <ReactPaginate
             display="flex"
             breakClassName={"pagination__break"}
-            previousLabel={"Prev"}
-            nextLabel={"Next"}
+            previousLabel={"<"}
+            nextLabel={">"}
             pageCount={19}
             marginPagesDisplayed={2}
             pageRangeDisplayed={5}

@@ -24,16 +24,15 @@ const MovieDetails = () => {
   const params = useParams();
   const [trailer, setTrailer] = useState(true);
   const [isLoading, setLoading] = useState(false);
+  const api_key = import.meta.env.VITE_API_KEY;
   const context = useContext(Context);
   const isSmallScreen = useMediaQuery({
     query: "(max-width: 768px)",
   });
 
   const { data } = useFetchDetails(
-    `https://api.themoviedb.org/3/movie/${params.movieDetails}?api_key=ae186e957330197b5106a6c66c8bd1df&language=${context.language}`
+    `https://api.themoviedb.org/3/movie/${params.movieDetails}?api_key=${api_key}&language=${context.language}`
   );
-  // const {movie} = useFetch(`https://api.themoviedb.org/3/movie/${params.id}?api_key=ae186e957330197b5106a6c66c8bd1df&language=${context.language}`,
-  // context.language)
 
   return (
     <Box
@@ -152,7 +151,6 @@ const MovieDetails = () => {
                       mt={{ base: "10px", md: "20px" }}
                       mb={{ base: "10px", md: "10px" }}
                       ml={{ base: "0", md: "40px" }}
-                      // mr={{ base: "0", md: "700px" }}
                       position="relative"
                       color="white"
                       fontWeight="extrabold"
@@ -172,7 +170,6 @@ const MovieDetails = () => {
                         justifyContent="flex-start"
                         alignItems="flex-start"
                         ml={{ base: "0", md: "40px" }}
-                        // mr={{ base: "0", md: "700px" }}
                         position="relative"
                         color="white"
                       >
@@ -187,15 +184,11 @@ const MovieDetails = () => {
                     mt={{ base: "10px", md: "20px" }}
                     mb={{ base: "10px", md: "20px" }}
                     mr={{ base: "10px", md: "10%" }}
-                    // mx={{ md: "30px" }}
                     position="relative"
                     color="white"
                     key={data.id}
-                    // className="text-center"
                     display={"flex"}
-                    // justifyContent="flex-start"
                     textAlign="start"
-                    // mr={{ base: "0", md: "10%" }}
                   >
                     {data.overview}
                   </Text>
