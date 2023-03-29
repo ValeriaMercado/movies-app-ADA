@@ -42,7 +42,7 @@ const MovieTrailer = () => {
           url={`https://www.youtube.com/watch?v=${movie.key}`}
           playing={true}
           controls={true}
-          width={isSmallScreen ? "100vw" : "100vh"}
+          width={isSmallScreen ? "90vw" : "90vh"}
         />
       ) : (
         <Text color={"white"} mt="150px">

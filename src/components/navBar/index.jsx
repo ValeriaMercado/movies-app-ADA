@@ -56,16 +56,15 @@ export const Navbar = () => {
       : context.setClearTheme(true);
   };
 
-//   const [isSmallerScreen, setIsSmallerScreen] = useState(false);
+  //   const [isSmallerScreen, setIsSmallerScreen] = useState(false);
 
-// useEffect(() => {
-//   const handleResize = () => {
-//     setIsSmallerScreen(window.innerWidth <= 768);
-//   };
-//   window.addEventListener("resize", handleResize);
-//   return () => window.removeEventListener("resize", handleResize);
-// }, []);
-
+  // useEffect(() => {
+  //   const handleResize = () => {
+  //     setIsSmallerScreen(window.innerWidth <= 768);
+  //   };
+  //   window.addEventListener("resize", handleResize);
+  //   return () => window.removeEventListener("resize", handleResize);
+  // }, []);
 
   return (
     <>
@@ -86,7 +85,7 @@ export const Navbar = () => {
           />
           <HStack spacing={8} alignItems="center">
             <NavLink to="/">
-              <Box ml={isSmallScreen ? "100px " : "10px"}>
+              <Box ml={isSmallScreen ? "100px " : "20px"}>
                 <Image src={context.clearTheme ? logo1 : logo2} w="150px" />
               </Box>
             </NavLink>
@@ -168,7 +167,7 @@ export const Navbar = () => {
           </Flex>
           <Box display={"flex"}>
             <Box display={isSmallScreen ? "none" : "flex"}>
-              <SelectLanguage/>
+              <SelectLanguage />
             </Box>
 
             <IconButton
@@ -288,21 +287,3 @@ export const Navbar = () => {
     </>
   );
 };
-
-{
-  /* <Box
-  display="flex"
-  mt={isSmallScreen ? "10%" : " "}
-  justifyContent={isSmallScreen ? "center" : ""}
->
-  <SearchButton />
-  <SelectLanguage />
-  <IconButton
-    _hover={{ background: "none" }}
-    icon={context.clearTheme ? <FiMoon /> : <FiSun />}
-    onClick={changeTheme}
-    bg={"none"}
-    color={context.clearTheme ? "black" : "white"}
-  ></IconButton>
-</Box>; */
-}

@@ -8,27 +8,27 @@ import ReactPaginate from "react-paginate";
 import { Footer } from "../footer";
 
 export const BoxToPickContent = ({ searchCategory, serieOrMovie }) => {
-  const api_key= import.meta.env.VITE_API_KEY
   const context = useContext(Context);
   const [page, setPage] = useState(1);
+  const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
-  const url = `https://api.themoviedb.org/3/${serieOrMovie}/${searchCategory}?api_key=${api_key}&language=${context.language}-US&page=${page}`;
-
-  const { movies , isLoading: fetchIsLoading} = useFetch(url, [page, context.language, serieOrMovie, searchCategory]);
-
   useEffect(() => {
-    setIsLoading(false);
-  }, [fetchIsLoading]);
-
+    const fetchMovies = async () => {
+      const url = `https://api.themoviedb.org/3/${serieOrMovie}/${searchCategory}?api_key=ae186e957330197b5106a6c66c8bd1df&language=${context.language}-US&page=${page}`;
+      const response = await fetch(url);
+      const data = await response.json();
+      setMovies(data.results);
+      setIsLoading(false);
+    };
+    fetchMovies();
+  }, [page, searchCategory, serieOrMovie, context.language]);
 
   const handlePageChange = (selectedPage) => {
     setPage(selectedPage.selected + 1);
   };
 
-
   return (
-
     <Box>
       {isLoading && (
         <Spinner
@@ -45,7 +45,6 @@ export const BoxToPickContent = ({ searchCategory, serieOrMovie }) => {
         flexWrap="wrap"
         position="relative"
         bg={context.clearTheme ? "brand.secondary" : "brand.accent"}
-        color={context.clearTheme ? "black" : "white"}
       >
         {movies?.map((movie) => {
           return (
@@ -71,8 +70,8 @@ export const BoxToPickContent = ({ searchCategory, serieOrMovie }) => {
           <ReactPaginate
             display="flex"
             breakClassName={"pagination__break"}
-            previousLabel={"Prev"}
-            nextLabel={"Next"}
+            previousLabel={"<"}
+            nextLabel={">"}
             pageCount={19}
             marginPagesDisplayed={2}
             pageRangeDisplayed={5}
@@ -85,10 +84,8 @@ export const BoxToPickContent = ({ searchCategory, serieOrMovie }) => {
             breakLabel="..."
           />
         </Flex>
-      <Footer />
-
+        <Footer />
       </Flex>
-
     </Box>
   );
 };

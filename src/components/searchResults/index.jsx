@@ -8,7 +8,6 @@ import { Footer } from "../footer";
 import noResults from "../../assets/noResults.png";
 import { ChevronLeftIcon, ChevronRightIcon } from "@chakra-ui/icons";
 
-
 export const MoviesSearch = () => {
   const [isLoading, setLoading] = useState(false);
   const context = useContext(Context);
@@ -17,8 +16,7 @@ export const MoviesSearch = () => {
     query: "",
   });
   const [movies, setMovies] = useState([]);
-  const [searched, setSearched] = useState(false); 
-  
+  const [searched, setSearched] = useState(false);
 
   useEffect(() => {
     setLoading(true);
@@ -38,7 +36,6 @@ export const MoviesSearch = () => {
       }, 3000);
   }, [searchParams, page, context.language]);
 
-  
   const handlePageChange = ({ selected }) => {
     setPage(selected + 1);
   };
@@ -50,9 +47,7 @@ export const MoviesSearch = () => {
         bg={context.clearTheme ? "brand.secondary" : "brand.accent"}
         pt="5%"
       >
-        {searched && movies.length === 0 && (
-          <Image src={noResults}></Image>
-        )}
+        {searched && movies.length === 0 && <Image src={noResults}></Image>}
         {movies
           ?.filter((m) => m.poster_path)
           .map((m) => (
@@ -74,8 +69,8 @@ export const MoviesSearch = () => {
             <ReactPaginate
               display="flex"
               breakClassName={"pagination__break"}
-              previousLabel={<ChevronLeftIcon/>}
-              nextLabel={<ChevronRightIcon/>}
+              previousLabel={<ChevronLeftIcon />}
+              nextLabel={<ChevronRightIcon />}
               pageCount={20}
               marginPagesDisplayed={2}
               pageRangeDisplayed={5}
@@ -89,13 +84,10 @@ export const MoviesSearch = () => {
             />
           )}
         </Flex>
-      <Footer/>
-
+        <Footer />
       </Flex>
-
     </>
   );
 };
 
 export default MoviesSearch;
-

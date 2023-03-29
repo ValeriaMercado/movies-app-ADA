@@ -10,7 +10,6 @@ export const SearchButton = () => {
   const navigate = useNavigate();
   const [valorInput, setValorInput] = useState("");
   const context = useContext(Context);
-  const api_key= import.meta.env.VITE_API_KEY
   const isSmallScreen = useMediaQuery({
     query: "(max-width: 768px)",
   });
@@ -20,7 +19,7 @@ export const SearchButton = () => {
   });
 
   useFetch(
-    `https://api.themoviedb.org/3/trending/all/day?api_key=${api_key}&page=1`
+    `https://api.themoviedb.org/3/trending/all/day?api_key=ae186e957330197b5106a6c66c8bd1df&page=1`
   );
   const handleChange = (e) => {
     setValorInput(e.target.value);
@@ -44,23 +43,32 @@ export const SearchButton = () => {
   return (
     <Flex>
       <InputGroup
-        ml={isSmallScreen ? " " : "300px"}
+        ml={isSmallScreen ? "20px" : "400px"}
+        mr={isSmallScreen ? "30px" : "30px"}
+        w={{ base: "100%", md: "300px" }}
         _focus={{ boxShadow: "none" }}
         _focusVisible={{ boxShadow: "none", outline: "none" }}
       >
         <InputLeftElement
           pointerEvents="none"
-          children={<SearchIcon color="white" />}
+          children={
+            <SearchIcon
+              color={context.clearTheme ? "brand.accent" : "brand.secondary"}
+            />
+          }
         />
         <Input
-          focusBorderColor={context.clearTheme?"brand.accent" : "brand.secondary"}
+          focusBorderColor={
+            context.clearTheme ? "brand.accent" : "brand.secondary"
+          }
           type="search"
           onSubmit={handleClick}
           onChange={handleChange}
           value={valorInput}
           onKeyDown={handleKeyDown}
-          color="whiteAlpha.800"
+          borderColor={context.clearTheme ? "brand.accent" : "brand.secondary"}
           fontSize={"13px"}
+          _hover={{ borderColor: "black" }}
         />
       </InputGroup>
     </Flex>
