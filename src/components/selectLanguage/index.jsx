@@ -53,7 +53,6 @@ export const SelectLanguage = () => {
             <Box
               display="flex"
               justifyContent="center"
-              //borderRadius="5px"
               key={lang}
               px={2}
               py={1}

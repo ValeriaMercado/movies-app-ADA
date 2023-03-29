@@ -9,7 +9,8 @@ export const generalTranslations = (par) => {
       more: "More",
       onAir: "Currently on the air",
       latest:"The most newly created TV show",
-      now: "Movies in theatres"
+      now: "Movies in theatres",
+      genre: "GENRES"
     };
   }
   if (par.language === "es") {
@@ -22,7 +23,8 @@ export const generalTranslations = (par) => {
       more: "More",
       onAir: "Actualmente al aire",
       latest: "Lo último en programas télevisivos",
-      now:"Péliculas en cines"
+      now:"Péliculas en cines",
+      genre:"GÉNEROS"
     };
   }
 
@@ -36,7 +38,8 @@ export const generalTranslations = (par) => {
       more:"Plus",
       onAir:"Actuellement à l'antenne",
       latest:"l'émission télévisée la plus récente.",
-      now:"Péliculas en cinés"
+      now:"Péliculas en cinés",
+      genre:"GENRES"
     };
   }
 
@@ -50,7 +53,8 @@ export const generalTranslations = (par) => {
       more:"Di più",
       onAir:"Attualmente in onda",
       latest:"Il programma televisivo più recente.",
-      now:"Péliculas en cines"
+      now:"Péliculas en cines",
+      genre:"GENERI"
     };
   }
   if (par.language === "ru") {
@@ -63,7 +67,8 @@ export const generalTranslations = (par) => {
       more:"дальше",
       onAir:"сейчас в эфире",
       latest:"самое недавно созданное телешоу.",
-      now:"Пеликулас в кино"
+      now:"Пеликулас в кино",
+      genre:"ЖАНРЫ"
     };
   }
   if (par.language === "zh") {
@@ -75,7 +80,8 @@ export const generalTranslations = (par) => {
       more: "更遠",
       onAir:"目前正在播出",
       latest: "最新制作的电视节目。",
-      now:"電影院裡的電影"
+      now:"電影院裡的電影",
+      genre:"性別"
     };
   }
 };
