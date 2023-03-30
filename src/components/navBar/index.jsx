@@ -37,7 +37,6 @@ import { SearchButton } from "../inputSearch";
 import { SelectLanguage } from "../selectLanguage";
 import { useMediaQuery } from "react-responsive";
 import { FiMoon, FiSun } from "react-icons/Fi";
-//import { AlternativeSelectLanguage } from "../alternativeSelect";
 
 export const Navbar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
