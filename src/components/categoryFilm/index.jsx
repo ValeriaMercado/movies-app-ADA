@@ -5,7 +5,7 @@ import { useFetch } from "../../hooks/useFetch";
 import { useContext } from "react";
 import { Context } from "../../context/Context";
 import { Link } from "react-router-dom";
-import { AiOutlineEye } from "react-icons/ai";
+import { AiOutlineEye } from "react-icons/./ai";
 
 export const CategoryFilms = ({
   searchCategory,
