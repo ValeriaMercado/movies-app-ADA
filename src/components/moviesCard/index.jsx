@@ -2,7 +2,8 @@ import { Card, Button } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
 import noimage from "../../assets/noimage.png";
-import { AiOutlineEye } from "/node_modules/react-icons/ai";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye } from "@fortawesome/free-solid-svg-icons";
 
 export const MoviesCards = ({ alt, movieTitle, img, id }) => {
   const isSmallScreen = useMediaQuery({
@@ -44,12 +45,12 @@ export const MoviesCards = ({ alt, movieTitle, img, id }) => {
             <Button
               variant={"unstyled"}
               fontSize={isSmallScreen ? "30px" : "45px"}
-              ml={isSmallScreen ? "170px" : "210px"}
-              mt={isSmallScreen ? "175px" : "345px"}
+              ml={isSmallScreen ? "130px" : "210px"}
+              mt={isSmallScreen ? "145px" : "340px"}
               position="relative"
               className="btn-card"
             >
-              <AiOutlineEye />
+              <FontAwesomeIcon icon={faEye} />
             </Button>
           </Link>
         )}

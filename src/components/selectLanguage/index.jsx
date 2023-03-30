@@ -12,6 +12,7 @@ const LANGUAGES = {
   it: "IT",
   ru: "RU",
   zh: "CN",
+  pt: "PT"
 };
 
 export const SelectLanguage = () => {

@@ -5,7 +5,8 @@ import { useFetch } from "../../hooks/useFetch";
 import { useContext } from "react";
 import { Context } from "../../context/Context";
 import { Link } from "react-router-dom";
-import { AiOutlineEye } from "react-icons/./ai";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye } from "@fortawesome/free-solid-svg-icons";
 
 export const CategoryFilms = ({
   searchCategory,
@@ -85,7 +86,7 @@ export const CategoryFilms = ({
                   position="relative"
                   className="btn-card"
                 >
-                  <AiOutlineEye />
+                  <FontAwesomeIcon icon={faEye} />
                 </Button>
               </Link>
             </Card>
