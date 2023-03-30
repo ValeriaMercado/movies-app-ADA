@@ -6,7 +6,12 @@ export default defineConfig({
   plugins: [react()],
   build: {
     rollupOptions: {
-      external: ["react-icons/Bi"],
+      external: [
+        "react-icons/Bi",
+        "react-icons/Fi",
+        "react-icons/ai",
+        "react-icons/bs",
+      ],
     },
   },
 });
