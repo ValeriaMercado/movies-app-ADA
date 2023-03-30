@@ -5,7 +5,7 @@ import noimage from "../../assets/noimage.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye } from "@fortawesome/free-solid-svg-icons";
 
-export const MoviesCards = ({ alt, movieTitle, img, id }) => {
+export const MoviesCards = ({ movieTitle, img, id }) => {
   const isSmallScreen = useMediaQuery({
     query: "(max-width: 768px)",
   });
@@ -37,7 +37,7 @@ export const MoviesCards = ({ alt, movieTitle, img, id }) => {
               position="relative"
               className="btn-card"
             >
-              <AiOutlineEye />
+              <FontAwesomeIcon icon={faEye} />
             </Button>
           </Link>
         ) : (

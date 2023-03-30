@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { useParams } from "react-router-dom";
 import moment from "moment";
 import MovieTrailer from "./indexTrailer";
@@ -9,7 +9,6 @@ import {
   Box,
   Text,
   Button,
-  Icon,
   Flex,
   UnorderedList,
   ListItem,
