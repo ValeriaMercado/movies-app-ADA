@@ -28,8 +28,14 @@ if (par.language === 'ru'){
 }
 if (par.language === 'zh'){
   return {
-   createdBy:"由 Macarena 和 Valeria 創建。 版權所有。"
+    createdBy:"由 Macarena 和 Valeria 創建。 版權所有。"
    }
+  }
+
+if (par.language === 'pt'){
+    return {
+      createdBy:"Criado por Macarena & Valéria. Todos os direitos reservados."
+}
 }
 
 }
