@@ -12,7 +12,7 @@ const LANGUAGES = {
   it: "IT",
   ru: "RU",
   zh: "CN",
-  pt: "PT"
+  pt: "PT",
 };
 
 export const SelectLanguage = () => {
@@ -64,7 +64,6 @@ export const SelectLanguage = () => {
               <Box
                 display="flex"
                 justifyContent="center"
-                //borderRadius="5px"
                 key={lang}
                 px={2}
                 py={1}
