@@ -16,7 +16,6 @@ export const useFetch = (url, dependence) => {
     fetch(url)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data.results);
         setMovies(data.results);
         setIsLoading(false);
       });
