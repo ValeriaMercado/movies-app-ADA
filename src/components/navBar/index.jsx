@@ -1,30 +1,20 @@
 import {
   Box,
   Flex,
-  Avatar,
   HStack,
-  Link,
   IconButton,
   Button,
   Menu,
   MenuButton,
   MenuList,
   MenuItem,
-  MenuDivider,
   useDisclosure,
-  useColorModeValue,
   Stack,
   Image,
 } from "@chakra-ui/react";
-import {
-  HamburgerIcon,
-  CloseIcon,
-  AddIcon,
-  ChevronDownIcon,
-} from "@chakra-ui/icons";
+import { HamburgerIcon, CloseIcon, ChevronDownIcon } from "@chakra-ui/icons";
 import { useContext } from "react";
 import { NavLink } from "react-router-dom";
-const Links = ["Dashboard", "Projects", "Team"];
 import { useTranslate } from "../../hooks/useTranslate";
 import { Context } from "../../context/Context";
 import { navbarTranslations } from "../../translations/navbarTranslations";
@@ -54,16 +44,6 @@ export const Navbar = () => {
       ? context.setClearTheme(false)
       : context.setClearTheme(true);
   };
-
-  //   const [isSmallerScreen, setIsSmallerScreen] = useState(false);
-
-  // useEffect(() => {
-  //   const handleResize = () => {
-  //     setIsSmallerScreen(window.innerWidth <= 768);
-  //   };
-  //   window.addEventListener("resize", handleResize);
-  //   return () => window.removeEventListener("resize", handleResize);
-  // }, []);
 
   return (
     <>
