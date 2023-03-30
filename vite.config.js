@@ -9,8 +9,8 @@ export default defineConfig({
       external: [
         "react-icons/Bi",
         "react-icons/Fi",
-        "react-icons/ai",
-        "react-icons/bs",
+        "react-icons/Ai",
+        "react-icons/Bs",
       ],
     },
   },
