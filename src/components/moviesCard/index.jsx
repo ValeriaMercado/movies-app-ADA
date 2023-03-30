@@ -2,7 +2,7 @@ import { Card, Button } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
 import noimage from "../../assets/noimage.png";
-import { AiOutlineEye } from "react-icons/ai";
+import { AiOutlineEye } from "react-icons/Ai";
 
 export const MoviesCards = ({ alt, movieTitle, img, id }) => {
   const isSmallScreen = useMediaQuery({

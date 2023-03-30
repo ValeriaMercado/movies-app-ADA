@@ -10,7 +10,8 @@ export const generalTranslations = (par) => {
       onAir: "Currently on the air",
       latest:"The most newly created TV show",
       now: "Movies in theatres",
-      genre: "GENRES"
+      genre: "GENRES",
+      noTrailer:"No trailer was found for this movie or series"
     };
   }
   if (par.language === "es") {
@@ -20,11 +21,28 @@ export const generalTranslations = (par) => {
       popularSeries: "Series Populares",
       topRated: "Mejor Puntuadas",
       trailer: "Ver Trailer",
-      more: "More",
+      more: "Más",
       onAir: "Actualmente al aire",
       latest: "Lo último en programas télevisivos",
       now:"Péliculas en cines",
-      genre:"GÉNEROS"
+      genre:"GÉNEROS",
+      noTrailer:"No se encontró ningún trailer para esta pelúla o serie"
+    };
+  }
+
+  if (par.language === "pt") {
+    return {
+      selectLanguage: "Selecione o idioma",
+      popularMovies: "Filmes populares",
+      popularSeries: "Shows Populares",
+      topRated: "Melhor avaliado",
+      trailer: "Assista o trailer",
+      more: "Avançar",
+      onAir: "atualmente no ar",
+      latest: "O mais recente em programas de TV",
+      now:"Filmes nos cinemas",
+      genre:"GÊNEROS",
+      noTrailer: "Nenhum trailer encontrado para este filme ou série",
     };
   }
 
@@ -39,7 +57,8 @@ export const generalTranslations = (par) => {
       onAir:"Actuellement à l'antenne",
       latest:"l'émission télévisée la plus récente.",
       now:"Péliculas en cinés",
-      genre:"GENRES"
+      genre:"GENRES",
+      noTrailer:"Aucune bande-annonce trouvée pour ce film ou cette série"
     };
   }
 
@@ -54,7 +73,8 @@ export const generalTranslations = (par) => {
       onAir:"Attualmente in onda",
       latest:"Il programma televisivo più recente.",
       now:"Péliculas en cines",
-      genre:"GENERI"
+      genre:"GENERI",
+      noTrailer:"Nessun trailer trovato per questo film o serie",
     };
   }
   if (par.language === "ru") {
@@ -68,7 +88,8 @@ export const generalTranslations = (par) => {
       onAir:"сейчас в эфире",
       latest:"самое недавно созданное телешоу.",
       now:"Пеликулас в кино",
-      genre:"ЖАНРЫ"
+      genre:"ЖАНРЫ",
+      noTrailer:"Трейлер к этому фильму или сериалу не найден",
     };
   }
   if (par.language === "zh") {
@@ -81,7 +102,8 @@ export const generalTranslations = (par) => {
       onAir:"目前正在播出",
       latest: "最新制作的电视节目。",
       now:"電影院裡的電影",
-      genre:"性別"
+      genre:"性別",
+      noTrailer:"找不到這部電影或系列的預告片",
     };
   }
 };

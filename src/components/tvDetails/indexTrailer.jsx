@@ -4,26 +4,22 @@ import { useParams } from "react-router-dom";
 import { Box, Text } from "@chakra-ui/react";
 import { Context } from "../../context/Context";
 import { useMediaQuery } from "react-responsive";
+import { generalTranslations } from "../../translations/generalTranslations";
+import { useTranslate } from "../../hooks/useTranslate"
 
 const MovieTrailer = () => {
   const params = useParams();
   const [movie, setMovie] = useState([]);
   const context = useContext(Context);
   const api_key= import.meta.env.VITE_API_KEY
+  const translations = useTranslate(generalTranslations(context))
 
 
   const isSmallScreen = useMediaQuery({
     query: "(max-width: 768px)",
   });
 
-  const messages = {
-    en: "No trailer was found for this movie or series",
-    es: "No se encontró ningún tráiler para esta película o serie",
-    fr: "Aucune bande-annonce n'a été trouvée pour ce film ou cette série",
-    it: "Nessun trailer è stato trovato per questo film o questa serie",
-    ru: "Для этого фильма или сериала не найдено трейлеров",
-  };
-
+  
   useEffect(() => {
     fetch(
       `https://api.themoviedb.org/3/tv/${params.TVDetails}}/videos?api_key=${api_key}&language=${context.language}-US/`
@@ -46,7 +42,7 @@ const MovieTrailer = () => {
         />
       ) : (
         <Text color={"white"} mt="150px">
-          {messages[context.language]}
+          {translations.NoTrailer}
         </Text>
       )}
     </Box>

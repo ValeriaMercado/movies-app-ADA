@@ -26,6 +26,21 @@ export const navbarTranslations = (par) => {
       search: "Búsqueda",
     };
   }
+
+  if (par.language === "pt") {
+    return {
+      home: "Começar",
+      movies: "Filmes",
+      series: "Series",
+      topRated: "Melhor avaliado",
+      upcoming: "Breve",
+      popular: "Popular",
+      latest: "O último",
+      top: "Melhor série",
+      search: "Procurar",
+    };
+  }
+
   if (par.language === "fr") {
     return {
       home: "Maison",
