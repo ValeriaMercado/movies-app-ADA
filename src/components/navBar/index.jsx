@@ -20,13 +20,13 @@ import { Context } from "../../context/Context";
 import { navbarTranslations } from "../../translations/navbarTranslations";
 import logo1 from "../../assets/logo1.png";
 import logo2 from "../../assets/logo2.png";
-import { AiFillHome } from "react-icons/./ai";
-import { BiCameraMovie } from "react-icons/./Bi";
-import { FiTv } from "react-icons/./Fi";
+import { AiFillHome } from "/node_modules/react-icons/ai";
+import { BiCameraMovie } from "/node_modules/react-icons/Bi";
+import { FiTv } from "/node_modules/react-icons/Fi";
 import { SearchButton } from "../inputSearch";
 import { SelectLanguage } from "../selectLanguage";
 import { useMediaQuery } from "react-responsive";
-import { FiMoon, FiSun } from "react-icons/./Fi";
+import { FiMoon, FiSun } from "/node_modules/react-icons/Fi";
 
 export const Navbar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
