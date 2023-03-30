@@ -31,9 +31,9 @@ export const MoviesCards = ({ movieTitle, img, id }) => {
           <Link to={`/details/movie/${id}`}>
             <Button
               variant={"unstyled"}
-              fontSize={isSmallScreen ? "45px" : "45px"}
-              ml={isSmallScreen ? "170px" : "210px"}
-              mt={isSmallScreen ? "140px" : "345px"}
+              fontSize={isSmallScreen ? "35px" : "45px"}
+              ml={isSmallScreen ? "80px" : "210px"}
+              mt={isSmallScreen ? "140px" : "330px"}
               position="relative"
               className="btn-card"
             >
@@ -44,9 +44,9 @@ export const MoviesCards = ({ movieTitle, img, id }) => {
           <Link to={`/details/tv/${id}`}>
             <Button
               variant={"unstyled"}
-              fontSize={isSmallScreen ? "30px" : "45px"}
-              ml={isSmallScreen ? "130px" : "210px"}
-              mt={isSmallScreen ? "145px" : "340px"}
+              fontSize={isSmallScreen ? "35px" : "45px"}
+              ml={isSmallScreen ? "80px" : "210px"}
+              mt={isSmallScreen ? "130px" : "335px"}
               position="relative"
               className="btn-card"
             >

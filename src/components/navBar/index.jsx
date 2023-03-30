@@ -65,7 +65,7 @@ export const Navbar = () => {
           />
           <HStack spacing={8} alignItems="center">
             <NavLink to="/">
-              <Box ml={isSmallScreen ? "100px " : "20px"}>
+              <Box ml={isSmallScreen ? "30px " : "20px"}>
                 <Image src={context.clearTheme ? logo1 : logo2} w="150px" />
               </Box>
             </NavLink>
@@ -141,6 +141,7 @@ export const Navbar = () => {
           </HStack>
 
           <Flex ml={isMScreen ? "10px" : "10px"} alignItems={"center"}>
+            <Flex></Flex>
             <Box display={isSmallScreen ? "none" : "flex"}>
               <SearchButton />
             </Box>
@@ -262,12 +263,14 @@ export const Navbar = () => {
                   </MenuItem>
                 </MenuList>
               </Menu>
-              <Menu>
-                <SearchButton />
-              </Menu>
-              <Menu>
-                <SelectLanguage />
-              </Menu>
+              <Flex flexDir={"row"}>
+                <Menu>
+                  <SearchButton />
+                </Menu>
+                <Menu>
+                  <SelectLanguage />
+                </Menu>
+              </Flex>
             </Stack>
           </Box>
         ) : null}

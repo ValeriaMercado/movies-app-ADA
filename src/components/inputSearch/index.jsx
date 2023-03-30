@@ -43,7 +43,7 @@ export const SearchButton = () => {
   return (
     <Flex>
       <InputGroup
-        ml={isSmallScreen ? "20px" : "400px"}
+        ml={isSmallScreen ? "" : "400px"}
         mr={isSmallScreen ? "30px" : "30px"}
         w={{ base: "100%", md: "300px" }}
         _focus={{ boxShadow: "none" }}
