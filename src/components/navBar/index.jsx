@@ -1,25 +1,20 @@
 import {
   Box,
   Flex,
-  Avatar,
   HStack,
-  Link,
   IconButton,
   Button,
   Menu,
   MenuButton,
   MenuList,
   MenuItem,
-  MenuDivider,
   useDisclosure,
-  useColorModeValue,
   Stack,
   Image,
 } from "@chakra-ui/react";
 import {
   HamburgerIcon,
   CloseIcon,
-  AddIcon,
   ChevronDownIcon,
 } from "@chakra-ui/icons";
 import { useContext } from "react";
@@ -30,14 +25,14 @@ import { Context } from "../../context/Context";
 import { navbarTranslations } from "../../translations/navbarTranslations";
 import logo1 from "../../assets/logo1.png";
 import logo2 from "../../assets/logo2.png";
-import { AiFillHome } from "react-icons/ai";
-import { BiCameraMovie } from "react-icons/Bi";
+import { AiFillHome } from "react-icons/Ai";
+import { BiCameraMovie } from "react-icons/bi";
 import { FiTv } from "react-icons/Fi";
 import { SearchButton } from "../inputSearch";
 import { SelectLanguage } from "../selectLanguage";
 import { useMediaQuery } from "react-responsive";
-import { FiMoon, FiSun } from "react-icons/Fi";
-//import { AlternativeSelectLanguage } from "../alternativeSelect";
+import { FiMoon , FiSun} from "react-icons/Fi";
+
 
 export const Navbar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -56,15 +51,7 @@ export const Navbar = () => {
       : context.setClearTheme(true);
   };
 
-  //   const [isSmallerScreen, setIsSmallerScreen] = useState(false);
 
-  // useEffect(() => {
-  //   const handleResize = () => {
-  //     setIsSmallerScreen(window.innerWidth <= 768);
-  //   };
-  //   window.addEventListener("resize", handleResize);
-  //   return () => window.removeEventListener("resize", handleResize);
-  // }, []);
 
   return (
     <>

@@ -4,6 +4,8 @@ import { useParams } from "react-router-dom";
 import { Box, Text } from "@chakra-ui/react";
 import { Context } from "../../context/Context";
 import { useMediaQuery } from "react-responsive";
+import { useTranslate } from "../../hooks/useTranslate";
+import { generalTranslations } from "../../translations/generalTranslations";
 
 const MovieTrailer = () => {
   const params = useParams();
@@ -13,6 +15,7 @@ const MovieTrailer = () => {
   const isSmallScreen = useMediaQuery({
     query: "(max-width: 768px)",
   });
+  const translations = useTranslate(generalTranslations(context))
 
   useEffect(() => {
     fetch(
@@ -25,13 +28,7 @@ const MovieTrailer = () => {
       });
   }, [params.movieDetails]);
 
-  const messages = {
-    en: "No trailer was found for this movie or series",
-    es: "No se encontró ningún tráiler para esta película o serie",
-    fr: "Aucune bande-annonce n'a été trouvée pour ce film ou cette série",
-    it: "Nessun trailer è stato trovato per questo film o questa serie",
-    ru: "Для этого фильма или сериала не найдено трейлеров",
-  };
+
 
   return (
     <Box pos={"absolute"}>
@@ -44,7 +41,7 @@ const MovieTrailer = () => {
         />
       ) : (
         <Text color={"white"} mt="150px">
-          {messages[context.language]}
+          {translations.noTrailer}
         </Text>
       )}
     </Box>
