@@ -7,10 +7,10 @@ export default defineConfig({
   build: {
     rollupOptions: {
       external: [
-        "/node_modules/react-icons/Bi",
-        "/node_modules/react-icons/Fi",
-        "/node_modules/react-icons/ai",
-        "/node_modules/react-icons/bs",
+        "react-icons/Bi",
+        "react-icons/Fi",
+        "react-icons/ai",
+        "react-icons/bs",
       ],
     },
   },

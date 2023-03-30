@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import moment from "moment";
 import MovieTrailer from "./indexTrailer";
-import { BsFillPlayFill } from "/node_modules/react-icons/bs";
+import { BsFillPlayFill } from "react-icons/bs";
 import {
   Image,
   Box,
