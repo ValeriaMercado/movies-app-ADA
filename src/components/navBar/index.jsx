@@ -31,7 +31,7 @@ import { navbarTranslations } from "../../translations/navbarTranslations";
 import logo1 from "../../assets/logo1.png";
 import logo2 from "../../assets/logo2.png";
 import { AiFillHome } from "react-icons/./ai";
-import { BiCameraMovie } from "react-icons/././Bi";
+import { BiCameraMovie } from "react-icons/./Bi";
 import { FiTv } from "react-icons/./Fi";
 import { SearchButton } from "../inputSearch";
 import { SelectLanguage } from "../selectLanguage";
