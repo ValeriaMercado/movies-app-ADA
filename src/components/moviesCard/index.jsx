@@ -4,7 +4,6 @@ import { useMediaQuery } from "react-responsive";
 import noimage from "../../assets/noimage.png";
 import { AiOutlineEye } from "react-icons/Ai";
 
-
 export const MoviesCards = ({ alt, movieTitle, img, id }) => {
   const isSmallScreen = useMediaQuery({
     query: "(max-width: 768px)",

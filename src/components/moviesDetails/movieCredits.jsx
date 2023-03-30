@@ -10,7 +10,7 @@ import noimage from "../../assets/noimage.png";
 const MovieCredits = () => {
   const context = useContext(Context);
   const params = useParams();
-  const api_key= import.meta.env.VITE_API_KEY
+  const api_key = import.meta.env.VITE_API_KEY;
 
   const { data } = useFetchDetails(
     `https://api.themoviedb.org/3/movie/${params.movieDetails}/credits?api_key=${api_key}&language=${context.language}`,
@@ -56,6 +56,8 @@ const MovieCredits = () => {
           ? "CAST"
           : context.language === "ru"
           ? "Актерский состав"
+          : context.language === "ch"
+          ? "投掷"
           : null}
       </Text>
       <Splide options={options}>

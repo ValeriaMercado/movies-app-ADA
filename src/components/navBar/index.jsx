@@ -12,14 +12,9 @@ import {
   Stack,
   Image,
 } from "@chakra-ui/react";
-import {
-  HamburgerIcon,
-  CloseIcon,
-  ChevronDownIcon,
-} from "@chakra-ui/icons";
+import { HamburgerIcon, CloseIcon, ChevronDownIcon } from "@chakra-ui/icons";
 import { useContext } from "react";
 import { NavLink } from "react-router-dom";
-const Links = ["Dashboard", "Projects", "Team"];
 import { useTranslate } from "../../hooks/useTranslate";
 import { Context } from "../../context/Context";
 import { navbarTranslations } from "../../translations/navbarTranslations";
@@ -31,8 +26,8 @@ import { FiTv } from "react-icons/Fi";
 import { SearchButton } from "../inputSearch";
 import { SelectLanguage } from "../selectLanguage";
 import { useMediaQuery } from "react-responsive";
-import { FiMoon , FiSun} from "react-icons/Fi";
 
+import { FiMoon, FiSun } from "react-icons/Fi";
 
 export const Navbar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -50,9 +45,6 @@ export const Navbar = () => {
       ? context.setClearTheme(false)
       : context.setClearTheme(true);
   };
-
-
-
   return (
     <>
       <Box
