@@ -49,6 +49,7 @@ const MovieDetails = () => {
       backgroundSize={"cover"}
       backgroundPosition="center"
       className={"background"}
+      px={isSmallScreen ? "10px" : " "}
     >
       {isLoading && (
         <Spinner

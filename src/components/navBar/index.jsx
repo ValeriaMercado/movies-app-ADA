@@ -65,7 +65,7 @@ export const Navbar = () => {
           />
           <HStack spacing={8} alignItems="center">
             <NavLink to="/">
-              <Box ml={isSmallScreen ? "60px " : "20px"}>
+              <Box ml={isSmallScreen ? "30px " : "20px"}>
                 <Image src={context.clearTheme ? logo1 : logo2} w="150px" />
               </Box>
             </NavLink>

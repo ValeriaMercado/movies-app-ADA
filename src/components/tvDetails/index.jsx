@@ -49,6 +49,7 @@ const TVDetails = () => {
       height={{ base: "100%", md: "100%" }}
       backgroundSize={"cover"}
       backgroundPosition="center"
+      px={isSmallScreen ? "10px" : " "}
       className={"background"}
     >
       {isLoading && (
