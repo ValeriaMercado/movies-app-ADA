@@ -14,7 +14,7 @@ import {
   ListItem,
   Spinner,
 } from "@chakra-ui/react";
-import MovieCredits from "./MovieCredits";
+import MovieCredits from "./movieCredits";
 import { useFetchDetails } from "../../hooks/useFetchDetails";
 import { Context } from "../../context/Context";
 import { ViewOffIcon } from "@chakra-ui/icons";
