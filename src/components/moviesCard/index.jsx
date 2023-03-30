@@ -1,10 +1,8 @@
 import { Card, Button } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
-import { BsFillPlayCircleFill } from "react-icons/bs";
 import { useMediaQuery } from "react-responsive";
 import noimage from "../../assets/noimage.png";
-import { AiOutlineEye } from "react-icons/ai";
-
+import { AiOutlineEye } from "react-icons/./ai";
 
 export const MoviesCards = ({ alt, movieTitle, img, id }) => {
   const isSmallScreen = useMediaQuery({
