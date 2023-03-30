@@ -20,12 +20,16 @@ import { useFetchDetails } from "../../hooks/useFetchDetails";
 import { Context } from "../../context/Context";
 import { ViewOffIcon } from "@chakra-ui/icons";
 import { useMediaQuery } from "react-responsive";
+import { useTranslate } from "../../hooks/useTranslate";
+import { generalTranslations } from "../../translations/generalTranslations";
 
 const TVDetails = () => {
   const params = useParams();
   const [trailer, setTrailer] = useState(true);
   const [isLoading, setLoading] = useState(false);
   const context = useContext(Context);
+  const translations = useTranslate(generalTranslations(context));
+
   const isSmallScreen = useMediaQuery({
     query: "(max-width: 768px)",
   });
@@ -157,18 +161,13 @@ const TVDetails = () => {
                       mt={{ base: "10px", md: "20px" }}
                       mb={{ base: "10px", md: "10px" }}
                       ml={{ base: "0", md: "40px" }}
-                      // mr={{ base: "0", md: "700px" }}
                       position="relative"
                       color="white"
                       fontWeight="extrabold"
                       display={"flex"}
                       justifyContent="flex-start"
                     >
-                      {context.language === "en" ? "GENRES" : ""}
-                      {context.language === "es" ? "GÉNEROS" : ""}
-                      {context.language === "fr" ? "GENRES" : ""}
-                      {context.language === "it" ? "GENERI" : ""}
-                      {context.language === "ru" ? "ЖАНРЫ" : ""}
+                      {translations.genre}
                     </Text>
                     <Flex justifyContent="flex-start">
                       <UnorderedList
@@ -177,7 +176,6 @@ const TVDetails = () => {
                         justifyContent="flex-start"
                         alignItems="flex-start"
                         ml={{ base: "0", md: "40px" }}
-                        // mr={{ base: "0", md: "700px" }}
                         position="relative"
                         color="white"
                       >
@@ -192,15 +190,11 @@ const TVDetails = () => {
                     mt={{ base: "10px", md: "20px" }}
                     mb={{ base: "10px", md: "20px" }}
                     mr={{ base: "10px", md: "10%" }}
-                    // mx={{ md: "30px" }}
                     position="relative"
                     color="white"
                     key={data.id}
-                    // className="text-center"
                     display={"flex"}
-                    // justifyContent="flex-start"
                     textAlign="start"
-                    // mr={{ base: "0", md: "10%" }}
                   >
                     {data.overview}
                   </Text>

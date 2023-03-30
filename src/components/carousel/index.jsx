@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { Context } from "../../context/Context";
 import { Box, Button, Flex, Text } from "@chakra-ui/react";
 import "react-responsive-carousel/lib/styles/carousel.min.css";

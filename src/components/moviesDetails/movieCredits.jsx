@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { useParams } from "react-router-dom";
 import "@splidejs/splide/dist/css/themes/splide-default.min.css";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
@@ -6,11 +6,14 @@ import { Card, Box, Text, ListItem, List } from "@chakra-ui/react";
 import { Context } from "../../context/Context";
 import { useFetchDetails } from "../../hooks/useFetchDetails";
 import noimage from "../../assets/noimage.png";
+import { useTranslate } from "../../hooks/useTranslate";
+import { generalTranslations } from "../../translations/generalTranslations";
 
 const MovieCredits = () => {
   const context = useContext(Context);
   const params = useParams();
   const api_key = import.meta.env.VITE_API_KEY;
+  const translations = useTranslate(generalTranslations(context));
 
   const { data } = useFetchDetails(
     `https://api.themoviedb.org/3/movie/${params.movieDetails}/credits?api_key=${api_key}&language=${context.language}`,
@@ -46,19 +49,7 @@ const MovieCredits = () => {
         fontWeight="extrabold"
         mb="20px"
       >
-        {context.language === "en"
-          ? "CAST"
-          : context.language === "es"
-          ? "ELENCO"
-          : context.language === "fr"
-          ? "DISTRIBUTION"
-          : context.language === "it"
-          ? "CAST"
-          : context.language === "ru"
-          ? "Актерский состав"
-          : context.language === "ch"
-          ? "投掷"
-          : null}
+        {translations.cast}
       </Text>
       <Splide options={options}>
         {data?.cast?.map((c, index) => (

@@ -1,7 +1,7 @@
 import { useFetch } from "../../hooks/useFetch";
 import { useContext, useEffect, useState } from "react";
 import { Context } from "../../context/Context";
-import { Card, Image, Text, Box, Button } from "@chakra-ui/react";
+import { Card, Image, Box, Button } from "@chakra-ui/react";
 import { generalTranslations } from "../../translations/generalTranslations";
 import { useTranslate } from "../../hooks/useTranslate";
 import { Spinner } from "@chakra-ui/react";
@@ -58,17 +58,7 @@ export const Portada = () => {
                 w={"200px"}
                 mb="20%"
               >
-                {context.language === "en"
-                  ? "More"
-                  : context.language === "es"
-                  ? "Más"
-                  : context.language === "fr"
-                  ? "Plus"
-                  : context.language === "it"
-                  ? "Di più"
-                  : context.language === "ru"
-                  ? "Больше"
-                  : null}
+                {translations.more}
               </Button>
             </Link>
           </Box>

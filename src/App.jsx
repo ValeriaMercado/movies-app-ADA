@@ -1,4 +1,3 @@
-import { Footer } from "./components/footer";
 import { Home } from "./components/home";
 import { Navbar } from "./components/navBar/index";
 import { ContextProvider } from "./provider/ContextProvider";

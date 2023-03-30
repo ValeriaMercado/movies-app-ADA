@@ -3,7 +3,7 @@ import { Context } from "../../context/Context";
 import { useTranslate } from "../../hooks/useTranslate";
 import { footerTranslations } from "../../translations/footerTranslations";
 import QRCode from "qrcode.react";
-import { Container, IconButton, Stack, Text, Box } from "@chakra-ui/react";
+import { Container, Stack, Text, Box } from "@chakra-ui/react";
 import { NavLink } from "react-router-dom";
 
 export const Footer = () => {
