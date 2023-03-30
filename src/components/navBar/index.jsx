@@ -20,14 +20,15 @@ import { Context } from "../../context/Context";
 import { navbarTranslations } from "../../translations/navbarTranslations";
 import logo1 from "../../assets/logo1.png";
 import logo2 from "../../assets/logo2.png";
-import { AiFillHome } from "react-icons/Ai";
-import { BiCameraMovie } from "react-icons/bi";
-import { FiTv } from "react-icons/Fi";
 import { SearchButton } from "../inputSearch";
 import { SelectLanguage } from "../selectLanguage";
 import { useMediaQuery } from "react-responsive";
-
-import { FiMoon, FiSun } from "react-icons/Fi";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faFilm } from "@fortawesome/free-solid-svg-icons";
+import { faTv } from "@fortawesome/free-solid-svg-icons";
+import { faHouse } from "@fortawesome/free-solid-svg-icons";
+import { faMoon } from "@fortawesome/free-solid-svg-icons";
+import { faSun } from "@fortawesome/free-solid-svg-icons";
 
 export const Navbar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -77,13 +78,13 @@ export const Navbar = () => {
               <Menu>
                 <NavLink to="/">
                   <MenuButton fontSize="40px">
-                    <AiFillHome />
+                    <FontAwesomeIcon icon={faHouse} />
                   </MenuButton>
                 </NavLink>
               </Menu>
               <Menu>
                 <MenuButton fontSize={"40px"}>
-                  <BiCameraMovie />
+                  <FontAwesomeIcon icon={faFilm} />
                 </MenuButton>
                 <MenuList
                   bg={context.clearTheme ? "brand.secondary" : "brand.accent"}
@@ -111,7 +112,7 @@ export const Navbar = () => {
               </Menu>
               <Menu>
                 <MenuButton fontSize={"40px"}>
-                  <FiTv />
+                  <FontAwesomeIcon icon={faTv} />
                 </MenuButton>
                 <MenuList
                   bg={context.clearTheme ? "brand.secondary" : "brand.accent"}
@@ -151,7 +152,13 @@ export const Navbar = () => {
 
             <IconButton
               _hover={{ background: "none" }}
-              icon={context.clearTheme ? <FiMoon /> : <FiSun />}
+              icon={
+                context.clearTheme ? (
+                  <FontAwesomeIcon icon={faMoon} />
+                ) : (
+                  <FontAwesomeIcon icon={faSun} />
+                )
+              }
               onClick={changeTheme}
               bg={"none"}
               color={context.clearTheme ? "black" : "white"}
@@ -175,7 +182,9 @@ export const Navbar = () => {
                     }
                     fontSize="25px"
                   >
-                    <AiFillHome />
+                    <Box mr={"35px"}>
+                      <FontAwesomeIcon icon={faHouse} />
+                    </Box>
                   </MenuButton>
                 </NavLink>
               </Menu>
@@ -190,7 +199,7 @@ export const Navbar = () => {
                   rightIcon={<ChevronDownIcon />}
                   fontSize="25px"
                 >
-                  <BiCameraMovie />
+                  <FontAwesomeIcon icon={faFilm} />
                 </MenuButton>
                 <MenuList
                   bg={context.clearTheme ? "brand.secondary" : "brand.accent"}
@@ -227,7 +236,7 @@ export const Navbar = () => {
                   }
                   fontSize="25px"
                 >
-                  <FiTv />
+                  <FontAwesomeIcon icon={faTv} />
                 </MenuButton>
                 <MenuList
                   bg={context.clearTheme ? "brand.secondary" : "brand.accent"}
